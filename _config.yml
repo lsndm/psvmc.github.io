@@ -21,6 +21,8 @@ nav:
     url: /archives.html
   - text: 分类归档
     url: /category.html
+  - text: 站点地图
+    url: /sitemap.xml
 
 #theme config
 themes: /themes/ztheme
