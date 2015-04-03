@@ -15,9 +15,6 @@ category: android
 	
 	/**
 	 * Log统一管理类
-	 * 
-	 * 
-	 * 
 	 */
 	public class L
 	{
@@ -1115,3 +1112,4 @@ SharedPreferencesCompat也可以给大家创建兼容类提供了一定的参考
 		}
 	}
 
+>转载至【[张鸿洋的博客](http://blog.csdn.net/lmj623565791/article/details/38965311)】
