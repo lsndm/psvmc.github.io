@@ -29,11 +29,11 @@ category: yum
 查询java版本 java -version  如果版本不对则配置java-home   
 打开文件/etc/profile    
 在profile文件末尾加入：       
-<pre>
-export JAVA_HOME=/usr/java/jdk1.7.0_60  
-export PATH=$JAVA_HOME/bin:$PATH   
-export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar  
-</pre> 
+
+	export JAVA_HOME=/usr/java/jdk1.7.0_60  
+	export PATH=$JAVA_HOME/bin:$PATH   
+	export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar  
+ 
 重启登录       
 ##Mysql
 安装mysql      
@@ -41,19 +41,19 @@ export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
 启动mysql    
 `service mysqld start `     
 设置mysql密码    
-<pre>
-mysql
-mysql>; USE mysql;   
-mysql>; UPDATE user SET Password=PASSWORD('123456') WHERE user='root';   
-mysql>; FLUSH PRIVILEGES;
-</pre>   
+
+	mysql
+	mysql>; USE mysql;   
+	mysql>; UPDATE user SET Password=PASSWORD('123456') WHERE user='root';   
+	mysql>; FLUSH PRIVILEGES;
+  
 设置允许远程登录      
-<pre>
-mysql -u root -p   
-Enter Password: <your new password>   
-mysql>GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '123456' WITH GRANT OPTION;   
-mysql>FLUSH   PRIVILEGES;   
-</pre>  
+
+	mysql -u root -p   
+	Enter Password: <your new password>   
+	mysql>GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '123456' WITH GRANT OPTION;   
+	mysql>FLUSH   PRIVILEGES;   
+ 
 设为开机启动      
 `chkconfig mysqld on ` 
 
