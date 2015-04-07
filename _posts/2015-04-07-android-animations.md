@@ -331,3 +331,54 @@ RotateAnimation类对象定义
 	//设置动画持续时间
 	myAnimation_Rotate.setDuration(3000);
 	//设置时间持续时间为 3000毫秒
+
+
+##综合实例
+`图片渐渐出现并放大`
+
+###xml方式
+
+xml代码(image_zoom.xml)
+
+	<?xml version="1.0" encoding="utf-8" standalone="no"?>
+	<set xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:interpolator="@android:anim/decelerate_interpolator" >
+	
+	    <alpha
+	        android:duration="3000"
+	        android:fromAlpha="0.0"
+	        android:toAlpha="1.0" />
+	
+	    <scale
+	        android:duration="3000"
+	        android:fillAfter="false"
+	        android:fromXScale="1.0"
+	        android:fromYScale="1.0"
+	        android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+	        android:pivotX="50%"
+	        android:pivotY="50%"
+	        android:toXScale="1.1"
+	        android:toYScale="1.1" />
+	
+	</set>
+
+调用方式
+
+	Animation animation = AnimationUtils.loadAnimation(this, R.anim.image_zoom);
+	imageView.setAnimation(animation);
+
+###java代码方式
+	AnimationSet animationSet = new AnimationSet(true);
+	AlphaAnimation alphaAnimation = new AlphaAnimation(0.2f, 1.0f);
+	ScaleAnimation scaleAnimation = new ScaleAnimation(1, 1.1f, 1, 1.1f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+	alphaAnimation.setDuration(3000);
+	scaleAnimation.setDuration(3000);
+	animationSet.addAnimation(alphaAnimation);
+	animationSet.addAnimation(scaleAnimation);
+
+调用方式
+
+	imageView.setAnimation(animationSet);
+
+
+
