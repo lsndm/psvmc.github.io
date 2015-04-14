@@ -9,9 +9,12 @@ category: easyui
 ---
 
 ##表单
-###按钮
+
+###日期选择（html初始化）
+	<input name="tadminModel.birthday" class="easyui-validatebox Wdate" style="width: 370px;" onclick="WdatePicker({dateFmt:'yyyy-MM-dd',position:{right:0,top:0}})"/>
+###按钮（html初始化）
 	<a type="button" href="javascript:;" class="easyui-linkbutton" id="book_publish_edit_picselect">选择</a>
-###textarea
+###textarea（html初始化）
 	
 	<textarea name="action.content" class="easyui-kindeditor" data-options="cssPath:'${basePath!}ht/lib/kindeditor-4.1.10/plugins/code/prettify.css',
 				uploadJson:'${basePath!}kindeditor/upload',fileManagerJson:'${basePath!}kindeditor/manager',allowFileManager : true,
@@ -57,63 +60,80 @@ category: easyui
 		</td>
 	</tr>
 
-###添加
+###图片上传(封装)
+	/**
+	 * 图片选择
+	 * 
+	 * @param K
+	 * @param basePath
+	 * @param funcId
+	 * @param showId
+	 * @param valueId
+	 */
+	eui.imgSelect=function(K,basePath,funcId,showId,valueId){
+		if ($('#'+showId).attr('src') == "") {
+			$('#'+showId).css("display", "none")
+		}
+		var editor = K.editor({
+			cssPath : basePath+'ht/lib/kindeditor-4.1.10/plugins/code/prettify.css',
+			uploadJson : basePath+'kindeditor/upload',
+			fileManagerJson : basePath+'kindeditor/manager',
+			allowFileManager : true,
+			allowImageUpload : true
+		});
+		if($('#'+valueId).val()){
+			var url=$('#'+valueId).val();
+			$('#'+valueId).val(url);
+			$('#'+showId).attr('src', url);
+			$('#'+showId).css("display", "block")
+		}
+		$('#'+funcId).click(function() {
+			editor.loadPlugin('image', function() {
+				editor.plugin.imageDialog({
+					showRemote : true,
+					imageUrl : $('#'+valueId).val(),
+					clickFn : function(url, title, width, height, border, align) {
+						$('#'+valueId).val(url);
+						$('#'+showId).attr('src', url);
+						editor.hideDialog();
+						$('#'+showId).css("display", "block")
+					}
+				});
+			});
+		});
+	}
+
+---
 	<tr>
-		<th>手机号</th>
+		<th>图标</th>
 		<td>
-			<input name="member.phone" class="easyui-validatebox" data-options="required:true" style="width: 370px;" />
+			<img id="resource_add_picshow" width="100px" />
+			<input name="tresourceModel.icon" id="resource_add_picvalue" style="display: none" />
+			<br />
+			<a type="button" href="javascript:;" class="easyui-linkbutton" id="resource_add_picfunc">选择</a>
 		</td>
 	</tr>
 
-###排序
+---
+	<script>
+		KindEditor.ready(function(K) {
+			eui.imgSelect(K, "${basePath!}", "resource_add_picfunc", "resource_add_picshow", "resource_add_picvalue");
+		});
+	</script>
+###可加减输入
 	<tr>
 		<th>资源排序</th>
 		<td>
 			<input name="tresource.seq" style="width: 370px;" class="easyui-numberspinner" data-options="min:0,max:999,editable:false,required:true,missingMessage:'请选择菜单排序'" value="10" style="width: 155px;" />
 		</td>
 	</tr>
-###combobox
-	<tr>
-		<th>推荐图书</th>
-		<td colspan="3">
-			<input id="mingrentuijian_add_goodsId" name="mingrentuijian.goodsId" class="easyui-combobox" data-options="valueField:'id',textField:'text',url:'${basePath!}goods_/combobox',required:true" style="width: 370px;" />
-			<span onclick="$('#mingrentuijian_add_goodsId').combobox('clear');" class="icon-block icon-cut"></span>
-		</td>
-	</tr>
----
-	public List<EasyuiCombobox> combobox() {
-		List<Record> l = Db.find("select * from dh_book_publish t");
-		List<EasyuiCombobox> nl = new ArrayList<EasyuiCombobox>();
-		if (l != null && l.size() > 0) {
-			for (Record record : l) {
-				EasyuiCombobox r = new EasyuiCombobox();
-				ZJ_BeanUtils.copyProperties(record.getColumns(), r, true);
-				r.setText(record.getStr("name"));
-				nl.add(r);
-			}
-		}
-		return nl;
-	}
-###combotree
-	<tr>
-		<th>所属分类</th>
-		<td>
-		<input id="bookType_pid" name="bookType.pid" class="easyui-combotree" data-options="url:'${basePath!}book_type_/combobox',parentField : 'pid',lines : true,multiple:false" style="width: 370px;" />
-		<span class="icon-cut icon-block" onclick="$('#bookType_pid').combotree('clear');"></span></td>
-	</tr>
+
 ###几折
 	class="easyui-numberbox" data-options="min:0,precision:1,suffix:'折'"
 
 ###价格
 	class="easyui-numberbox" data-options="min:0,precision:2,prefix:'￥'"
-###combotree
-	<tr>
-		<th>上级资源</th>
-		<td colspan="3">
-			<input id="admin_zyglAdd_pid" name="tresource.pid" class="easyui-combotree" data-options="url:'${basePath!}resource_/allTreeNode',parentField : 'pid',lines : true,required:true" style="width: 370px;" />
-			<span onclick="$('#admin_zyglAdd_pid').combotree('clear');" class="icon-block icon-cut"></span>
-		</td>
-	</tr>
+
 ###验证
 	<input id="vv" class="easyui-validatebox" data-options="required:true,validType:'email'" /> 
 	<input id="vv" class="easyui-validatebox" data-options="required:true,validType:'number'" /> 
@@ -136,6 +156,45 @@ category: easyui
 			<input name="pbook.bookNum" class="easyui-numberbox" data-options="min:0,precision:0,required:true" style="width: 370px;" />
 		</td>
 	</tr>
+###下拉菜单
+	<tr>
+		<th>推荐图书</th>
+		<td colspan="3">
+			<input id="mingrentuijian_add_goodsId" name="mingrentuijian.goodsId" class="easyui-combobox" data-options="valueField:'id',textField:'text',url:'${basePath!}goods_/combobox',required:true" style="width: 370px;" />
+			<span onclick="$('#mingrentuijian_add_goodsId').combobox('clear');" class="icon-block icon-cut"></span>
+		</td>
+	</tr>
+---
+	public List<EasyuiCombobox> combobox() {
+		List<Record> l = Db.find("select * from dh_book_publish t");
+		List<EasyuiCombobox> nl = new ArrayList<EasyuiCombobox>();
+		if (l != null && l.size() > 0) {
+			for (Record record : l) {
+				EasyuiCombobox r = new EasyuiCombobox();
+				ZJ_BeanUtils.copyProperties(record.getColumns(), r, true);
+				r.setText(record.getStr("name"));
+				nl.add(r);
+			}
+		}
+		return nl;
+	}
+
+###下拉树
+	<tr>
+		<th>所属分类</th>
+		<td>
+		<input id="bookType_pid" name="bookType.pid" class="easyui-combotree" data-options="url:'${basePath!}book_type_/combobox',parentField : 'pid',lines : true,multiple:false" style="width: 370px;" />
+		<span class="icon-cut icon-block" onclick="$('#bookType_pid').combotree('clear');"></span></td>
+	</tr>
+###combotree
+	<tr>
+		<th>上级资源</th>
+		<td colspan="3">
+			<input id="admin_zyglAdd_pid" name="tresource.pid" class="easyui-combotree" data-options="url:'${basePath!}resource_/allTreeNode',parentField : 'pid',lines : true,required:true" style="width: 370px;" />
+			<span onclick="$('#admin_zyglAdd_pid').combotree('clear');" class="icon-block icon-cut"></span>
+		</td>
+	</tr>
+
 ###combotree(单选)
 	<input name="article.articleClassId" class="easyui-combotree" data-options="valueField:'id',
 																			   textField:'name',
@@ -146,7 +205,7 @@ category: easyui
 
 
 ##列表
-###treegrid页面
+###treegrid(js初始化)
 	<script type="text/javascript">
 		$(function() {
 			$('#book_type_treegrid').treegrid({
@@ -329,7 +388,7 @@ category: easyui
 		<div onclick="book_type_edit_fun();" data-options="iconCls:'icon-edit'">编辑</div>
 	</div>
 
-###datagrid
+###datagrid(js初始化)
 	<script type="text/javascript">
 		$(function() {
 			$('#book_publish_datagrid').datagrid({
@@ -496,7 +555,7 @@ category: easyui
 	</div>
 
 
-###treegrid
+###treegrid(html初始化)
 
 	<table id="resource_treegrid" class="easyui-treegrid" style="width:100%;height:100%"
 		data-options="url:'${basePath!}resource/treegrid',
@@ -523,7 +582,7 @@ category: easyui
 		</thead>
 	</table>
 
-###datagrid
+###datagrid(html初始化)
 
 	<table id="action_datagrid" class="easyui-datagrid" style="width:100%;height:100%"
 		data-options="url:'${basePath!}action/datagrid',
