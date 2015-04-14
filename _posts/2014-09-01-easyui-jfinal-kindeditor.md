@@ -7,55 +7,24 @@ keywords: easyui
 category: easyui
 
 ---
+
+#表单
+##textarea
+	
+	<textarea name="action.content" class="easyui-kindeditor" data-options="cssPath:'${basePath!}ht/lib/kindeditor-4.1.10/plugins/code/prettify.css',
+				uploadJson:'${basePath!}kindeditor/upload',fileManagerJson:'${basePath!}kindeditor/manager',allowFileManager : true,
+				allowImageUpload : true" style="width: 97%;"></textarea>
 ##图片上传
-	<script>
-		KindEditor.ready(function(K) {
-			if ($('#book_publish_add_picshow').attr('src') == "") {
-				$('#book_publish_add_picshow').css("display", "none")
-			}
-			var editor = K.editor({
-				cssPath : '${basePath!}static/kindeditor-4.1.10/plugins/code/prettify.css',
-				uploadJson : '${basePath!}upload',
-				fileManagerJson : '${basePath!}fileManager',
-				allowFileManager : true,
-				allowImageUpload : true
-			});
-			$('#book_publish_add_picselect').click(function() {
-				editor.loadPlugin('image', function() {
-					editor.plugin.imageDialog({
-						showRemote : true,
-						imageUrl : $('#book_publish_add_pic').val(),
-						clickFn : function(url, title, width, height, border, align) {
-							$('#book_publish_add_pic').val(url);
-							$('#book_publish_add_picshow').attr('src', url);
-							editor.hideDialog();
-							$('#book_publish_add_picshow').css("display", "block")
-						}
-					});
-				});
-			});
-		});
-	</script>
----
-	<tr>
-		<th>logo</th>
-		<td>
-			<img src="" id="book_publish_add_picshow" width="100px" />
-			<input name="bookPublish.logoSrc" id="book_publish_add_pic" style="display: none" />
-			<br />
-			<input type="button" value="选择" id="book_publish_add_picselect" />
-		</td>
-	</tr>
----
+
 	<script>
 		KindEditor.ready(function(K) {
 			if ($('#book_publish_edit_picshow').attr('src') == "") {
 				$('#book_publish_edit_picshow').css("display", "none")
 			}
 			var editor = K.editor({
-				cssPath : '${basePath!}static/kindeditor-4.1.10/plugins/code/prettify.css',
-				uploadJson : '${basePath!}upload',
-				fileManagerJson : '${basePath!}fileManager',
+				cssPath : '${basePath!}ht/lib/kindeditor-4.1.10/plugins/code/prettify.css',
+				uploadJson : '${basePath!}kindeditor/upload',
+				fileManagerJson : '${basePath!}kindeditor/manager',
 				allowFileManager : true,
 				allowImageUpload : true
 			});
@@ -85,6 +54,96 @@ category: easyui
 			<input type="button" value="选择" id="book_publish_edit_picselect" />
 		</td>
 	</tr>
+
+##添加
+	<tr>
+		<th>手机号</th>
+		<td>
+			<input name="member.phone" class="easyui-validatebox" data-options="required:true" style="width: 370px;" />
+		</td>
+	</tr>
+
+##排序
+	<tr>
+		<th>资源排序</th>
+		<td>
+			<input name="tresource.seq" style="width: 370px;" class="easyui-numberspinner" data-options="min:0,max:999,editable:false,required:true,missingMessage:'请选择菜单排序'" value="10" style="width: 155px;" />
+		</td>
+	</tr>
+##combobox
+	<tr>
+		<th>推荐图书</th>
+		<td colspan="3">
+			<input id="mingrentuijian_add_goodsId" name="mingrentuijian.goodsId" class="easyui-combobox" data-options="valueField:'id',textField:'text',url:'${basePath!}goods_/combobox',required:true" style="width: 370px;" />
+			<span onclick="$('#mingrentuijian_add_goodsId').combobox('clear');" class="icon-block icon-cut"></span>
+		</td>
+	</tr>
+---
+	public List<EasyuiCombobox> combobox() {
+		List<Record> l = Db.find("select * from dh_book_publish t");
+		List<EasyuiCombobox> nl = new ArrayList<EasyuiCombobox>();
+		if (l != null && l.size() > 0) {
+			for (Record record : l) {
+				EasyuiCombobox r = new EasyuiCombobox();
+				ZJ_BeanUtils.copyProperties(record.getColumns(), r, true);
+				r.setText(record.getStr("name"));
+				nl.add(r);
+			}
+		}
+		return nl;
+	}
+##combotree
+	<tr>
+		<th>所属分类</th>
+		<td>
+		<input id="bookType_pid" name="bookType.pid" class="easyui-combotree" data-options="url:'${basePath!}book_type_/combobox',parentField : 'pid',lines : true,multiple:false" style="width: 370px;" />
+		<span class="icon-cut icon-block" onclick="$('#bookType_pid').combotree('clear');"></span></td>
+	</tr>
+##几折
+	class="easyui-numberbox" data-options="min:0,precision:1,suffix:'折'"
+
+##价格
+	class="easyui-numberbox" data-options="min:0,precision:2,prefix:'￥'"
+##combotree
+	<tr>
+		<th>上级资源</th>
+		<td colspan="3">
+			<input id="admin_zyglAdd_pid" name="tresource.pid" class="easyui-combotree" data-options="url:'${basePath!}resource_/allTreeNode',parentField : 'pid',lines : true,required:true" style="width: 370px;" />
+			<span onclick="$('#admin_zyglAdd_pid').combotree('clear');" class="icon-block icon-cut"></span>
+		</td>
+	</tr>
+##验证
+	<input id="vv" class="easyui-validatebox" data-options="required:true,validType:'email'" /> 
+	<input id="vv" class="easyui-validatebox" data-options="required:true,validType:'number'" /> 
+##提示
+	$.messager.show({
+		title : '提示',
+		msg : r.msg
+	});
+##时间
+	<tr>
+		<th>上架时间</th>
+		<td>
+			<input name="pbook.shelfTime" class="easyui-datetimebox" style="width: 370px;" data-options="editable:false,required:true" />
+		</td>
+	</tr>
+##数量
+	<tr>
+		<th>数量</th>
+		<td>
+			<input name="pbook.bookNum" class="easyui-numberbox" data-options="min:0,precision:0,required:true" style="width: 370px;" />
+		</td>
+	</tr>
+##combotree(单选)
+	<input name="article.articleClassId" class="easyui-combotree" data-options="valueField:'id',
+																			   textField:'name',
+																			   parentField:'pid',
+																			   url:'${basePath!}articleClass_/treegrid' " 
+																			   style="width: 370px;" />
+	
+
+
+#列表
 ##treegrid页面
 	<script type="text/javascript">
 		$(function() {
@@ -434,89 +493,52 @@ category: easyui
 		<a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-cancel',plain:true" onclick="$('#book_publish_datagrid').datagrid('load',{});$('#searchbox').searchbox('setValue','');">清空条件</a>
 	</div>
 
-##添加
-	<tr>
-		<th>手机号</th>
-		<td>
-			<input name="member.phone" class="easyui-validatebox" data-options="required:true" style="width: 370px;" />
-		</td>
-	</tr>
 
-##排序
-	<tr>
-		<th>资源排序</th>
-		<td>
-			<input name="tresource.seq" style="width: 370px;" class="easyui-numberspinner" data-options="min:0,max:999,editable:false,required:true,missingMessage:'请选择菜单排序'" value="10" style="width: 155px;" />
-		</td>
-	</tr>
-##combobox
-	<tr>
-		<th>推荐图书</th>
-		<td colspan="3">
-			<input id="mingrentuijian_add_goodsId" name="mingrentuijian.goodsId" class="easyui-combobox" data-options="valueField:'id',textField:'text',url:'${basePath!}goods_/combobox',required:true" style="width: 370px;" />
-			<span onclick="$('#mingrentuijian_add_goodsId').combobox('clear');" class="icon-block icon-cut"></span>
-		</td>
-	</tr>
----
-	public List<EasyuiCombobox> combobox() {
-		List<Record> l = Db.find("select * from dh_book_publish t");
-		List<EasyuiCombobox> nl = new ArrayList<EasyuiCombobox>();
-		if (l != null && l.size() > 0) {
-			for (Record record : l) {
-				EasyuiCombobox r = new EasyuiCombobox();
-				ZJ_BeanUtils.copyProperties(record.getColumns(), r, true);
-				r.setText(record.getStr("name"));
-				nl.add(r);
-			}
-		}
-		return nl;
-	}
-##combotree
-	<tr>
-		<th>所属分类</th>
-		<td>
-		<input id="bookType_pid" name="bookType.pid" class="easyui-combotree" data-options="url:'${basePath!}book_type_/combobox',parentField : 'pid',lines : true,multiple:false" style="width: 370px;" />
-		<span class="icon-cut icon-block" onclick="$('#bookType_pid').combotree('clear');"></span></td>
-	</tr>
-##几折
-	class="easyui-numberbox" data-options="min:0,precision:1,suffix:'折'"
+##treegrid
 
-##价格
-	class="easyui-numberbox" data-options="min:0,precision:2,prefix:'￥'"
-##combotree
-	<tr>
-		<th>上级资源</th>
-		<td colspan="3">
-			<input id="admin_zyglAdd_pid" name="tresource.pid" class="easyui-combotree" data-options="url:'${basePath!}resource_/allTreeNode',parentField : 'pid',lines : true,required:true" style="width: 370px;" />
-			<span onclick="$('#admin_zyglAdd_pid').combotree('clear');" class="icon-block icon-cut"></span>
-		</td>
-	</tr>
-##验证
-	<input id="vv" class="easyui-validatebox" data-options="required:true,validType:'email'" /> 
-	<input id="vv" class="easyui-validatebox" data-options="required:true,validType:'number'" /> 
-##提示
-	$.messager.show({
-		title : '提示',
-		msg : r.msg
-	});
-##时间
-	<tr>
-		<th>上架时间</th>
-		<td>
-			<input name="pbook.shelfTime" class="easyui-datetimebox" style="width: 370px;" data-options="editable:false,required:true" />
-		</td>
-	</tr>
-##数量
-	<tr>
-		<th>数量</th>
-		<td>
-			<input name="pbook.bookNum" class="easyui-numberbox" data-options="min:0,precision:0,required:true" style="width: 370px;" />
-		</td>
-	</tr>
-##详情
-	<tr>
-		<th>详情</th>
-		<td>
-			<input name="goods.introduction" class="easyui-kindeditor" style="width: 370px;" data-options="required:true" />
-		</td>
-	</tr>
+	<table id="resource_treegrid" class="easyui-treegrid" style="width:100%;height:100%"
+		data-options="url:'${basePath!}resource/treegrid',
+		border:true,
+		fit:true,
+		fitColumns:true, 
+		idField:'id', 
+		treeField:'text', 
+		parentField:'pid', 
+		pagination:false,
+		onLoadSuccess:function(row, data) {
+			//$('#resource_treegrid').treegrid('collapseAll');
+		},
+		toolbar:'#resource_toolbar' ">
+		<thead>
+			<tr>
+				<th data-options="field:'ck',checkbox:true" width="80"></th>
+				<th data-options="field:'text', title:'资源名称' " width="80"></th>
+				<th data-options="field:'url', title:'资源路径' " width="80"></th>
+				<th data-options="field:'icon', title:'图片', formatter:formatter " width="80"></th>
+				<th data-options="field:'level', title:'层级'" width="80"></th>
+				<th data-options="field:'seq', title:'顺序'" width="80"></th>
+			</tr>
+		</thead>
+	</table>
+
+##datagrid
+
+	<table id="action_datagrid" class="easyui-datagrid" style="width:100%;height:100%"
+		data-options="url:'${basePath!}action/datagrid',
+		border:true,
+		fit:true,
+		fitColumns:true, 
+		idField:'id', 
+		pagination:true,
+		toolbar:'#action_toolbar' ">
+		<thead>
+			<tr>
+				<th data-options="field:'ck',checkbox:true" width="80"></th>
+				<th data-options="field:'name', title:'动作名称' " width="80"></th>
+				<th data-options="field:'code', title:'唯一码' " width="80"></th>
+				<th data-options="field:'remarks', title:'注释'" width="80"></th>
+			</tr>
+		</thead>
+	</table>
+
+
