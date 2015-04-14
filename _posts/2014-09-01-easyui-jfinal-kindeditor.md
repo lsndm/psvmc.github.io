@@ -9,6 +9,8 @@ category: easyui
 ---
 
 ##表单
+###按钮
+	<a type="button" href="javascript:;" class="easyui-linkbutton" id="book_publish_edit_picselect">选择</a>
 ###textarea
 	
 	<textarea name="action.content" class="easyui-kindeditor" data-options="cssPath:'${basePath!}ht/lib/kindeditor-4.1.10/plugins/code/prettify.css',
@@ -51,7 +53,7 @@ category: easyui
 			<img src="${bookPublish.logoSrc!}" id="book_publish_edit_picshow" width="100px" />
 			<input name="bookPublish.logoSrc" id="book_publish_edit_pic" style="display: none" value="${bookPublish.logoSrc!}" />
 			<br />
-			<input type="button" value="选择" id="book_publish_edit_picselect" />
+			<a type="button" href="javascript:;" class="easyui-linkbutton" id="book_publish_edit_picselect">选择</a>
 		</td>
 	</tr>
 
