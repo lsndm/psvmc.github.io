@@ -19,6 +19,74 @@ category: easyui
 	<textarea name="action.content" class="easyui-kindeditor" data-options="cssPath:'${basePath!}ht/lib/kindeditor-4.1.10/plugins/code/prettify.css',
 				uploadJson:'${basePath!}kindeditor/upload',fileManagerJson:'${basePath!}kindeditor/manager',allowFileManager : true,
 				allowImageUpload : true" style="width: 97%;"></textarea>
+
+###可加减输入
+	<tr>
+		<th>资源排序</th>
+		<td>
+			<input name="tresource.seq" style="width: 370px;" class="easyui-numberspinner" data-options="min:0,max:999,editable:false,required:true,missingMessage:'请选择菜单排序'" value="10" style="width: 155px;" />
+		</td>
+	</tr>
+
+###几折
+	class="easyui-numberbox" data-options="min:0,precision:1,suffix:'折'"
+
+###价格
+	class="easyui-numberbox" data-options="min:0,precision:2,prefix:'￥'"
+
+###验证
+	<input id="vv" class="easyui-validatebox" data-options="required:true,validType:'email'" /> 
+	<input id="vv" class="easyui-validatebox" data-options="required:true,validType:'number'" /> 
+###提示
+	$.messager.show({
+		title : '提示',
+		msg : r.msg
+	});
+###时间
+	<tr>
+		<th>上架时间</th>
+		<td>
+			<input name="pbook.shelfTime" class="easyui-datetimebox" style="width: 370px;" data-options="editable:false,required:true" />
+		</td>
+	</tr>
+###数量
+	<tr>
+		<th>数量</th>
+		<td>
+			<input name="pbook.bookNum" class="easyui-numberbox" data-options="min:0,precision:0,required:true" style="width: 370px;" />
+		</td>
+	</tr>
+###combobox
+	<tr>
+		<th>推荐图书</th>
+		<td colspan="3">
+			<input id="mingrentuijian_add_goodsId" name="mingrentuijian.goodsId" class="easyui-combobox" data-options="valueField:'id',textField:'text',url:'${basePath!}goods_/combobox',required:true" style="width: 370px;" />
+			<span onclick="$('#mingrentuijian_add_goodsId').combobox('clear');" class="icon-block icon-cut"></span>
+		</td>
+	</tr>
+---
+	public List<EasyuiCombobox> combobox() {
+		List<Record> l = Db.find("select * from dh_book_publish t");
+		List<EasyuiCombobox> nl = new ArrayList<EasyuiCombobox>();
+		if (l != null && l.size() > 0) {
+			for (Record record : l) {
+				EasyuiCombobox r = new EasyuiCombobox();
+				ZJ_BeanUtils.copyProperties(record.getColumns(), r, true);
+				r.setText(record.getStr("name"));
+				nl.add(r);
+			}
+		}
+		return nl;
+	}
+
+
+###combotree(单选)
+	<input name="article.articleClassId" class="easyui-combotree" data-options="valueField:'id',
+																			   textField:'name',
+																			   parentField:'pid',
+																			   url:'${basePath!}articleClass_/treegrid' " 
+																			   style="width: 370px;" />
+	
 ###图片上传
 
 	<script>
@@ -120,90 +188,6 @@ category: easyui
 			eui.imgSelect(K, "${basePath!}", "resource_add_picfunc", "resource_add_picshow", "resource_add_picvalue");
 		});
 	</script>
-###可加减输入
-	<tr>
-		<th>资源排序</th>
-		<td>
-			<input name="tresource.seq" style="width: 370px;" class="easyui-numberspinner" data-options="min:0,max:999,editable:false,required:true,missingMessage:'请选择菜单排序'" value="10" style="width: 155px;" />
-		</td>
-	</tr>
-
-###几折
-	class="easyui-numberbox" data-options="min:0,precision:1,suffix:'折'"
-
-###价格
-	class="easyui-numberbox" data-options="min:0,precision:2,prefix:'￥'"
-
-###验证
-	<input id="vv" class="easyui-validatebox" data-options="required:true,validType:'email'" /> 
-	<input id="vv" class="easyui-validatebox" data-options="required:true,validType:'number'" /> 
-###提示
-	$.messager.show({
-		title : '提示',
-		msg : r.msg
-	});
-###时间
-	<tr>
-		<th>上架时间</th>
-		<td>
-			<input name="pbook.shelfTime" class="easyui-datetimebox" style="width: 370px;" data-options="editable:false,required:true" />
-		</td>
-	</tr>
-###数量
-	<tr>
-		<th>数量</th>
-		<td>
-			<input name="pbook.bookNum" class="easyui-numberbox" data-options="min:0,precision:0,required:true" style="width: 370px;" />
-		</td>
-	</tr>
-###下拉菜单
-	<tr>
-		<th>推荐图书</th>
-		<td colspan="3">
-			<input id="mingrentuijian_add_goodsId" name="mingrentuijian.goodsId" class="easyui-combobox" data-options="valueField:'id',textField:'text',url:'${basePath!}goods_/combobox',required:true" style="width: 370px;" />
-			<span onclick="$('#mingrentuijian_add_goodsId').combobox('clear');" class="icon-block icon-cut"></span>
-		</td>
-	</tr>
----
-	public List<EasyuiCombobox> combobox() {
-		List<Record> l = Db.find("select * from dh_book_publish t");
-		List<EasyuiCombobox> nl = new ArrayList<EasyuiCombobox>();
-		if (l != null && l.size() > 0) {
-			for (Record record : l) {
-				EasyuiCombobox r = new EasyuiCombobox();
-				ZJ_BeanUtils.copyProperties(record.getColumns(), r, true);
-				r.setText(record.getStr("name"));
-				nl.add(r);
-			}
-		}
-		return nl;
-	}
-
-###下拉树
-	<tr>
-		<th>所属分类</th>
-		<td>
-		<input id="bookType_pid" name="bookType.pid" class="easyui-combotree" data-options="url:'${basePath!}book_type_/combobox',parentField : 'pid',lines : true,multiple:false" style="width: 370px;" />
-		<span class="icon-cut icon-block" onclick="$('#bookType_pid').combotree('clear');"></span></td>
-	</tr>
-###combotree
-	<tr>
-		<th>上级资源</th>
-		<td colspan="3">
-			<input id="admin_zyglAdd_pid" name="tresource.pid" class="easyui-combotree" data-options="url:'${basePath!}resource_/allTreeNode',parentField : 'pid',lines : true,required:true" style="width: 370px;" />
-			<span onclick="$('#admin_zyglAdd_pid').combotree('clear');" class="icon-block icon-cut"></span>
-		</td>
-	</tr>
-
-###combotree(单选)
-	<input name="article.articleClassId" class="easyui-combotree" data-options="valueField:'id',
-																			   textField:'name',
-																			   parentField:'pid',
-																			   url:'${basePath!}articleClass_/treegrid' " 
-																			   style="width: 370px;" />
-	
-
-
 ##列表
 ###treegrid(js初始化)
 	<script type="text/javascript">
