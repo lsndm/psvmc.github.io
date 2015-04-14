@@ -8,13 +8,13 @@ category: easyui
 
 ---
 
-#表单
-##textarea
+##表单
+###textarea
 	
 	<textarea name="action.content" class="easyui-kindeditor" data-options="cssPath:'${basePath!}ht/lib/kindeditor-4.1.10/plugins/code/prettify.css',
 				uploadJson:'${basePath!}kindeditor/upload',fileManagerJson:'${basePath!}kindeditor/manager',allowFileManager : true,
 				allowImageUpload : true" style="width: 97%;"></textarea>
-##图片上传
+###图片上传
 
 	<script>
 		KindEditor.ready(function(K) {
@@ -55,7 +55,7 @@ category: easyui
 		</td>
 	</tr>
 
-##添加
+###添加
 	<tr>
 		<th>手机号</th>
 		<td>
@@ -63,14 +63,14 @@ category: easyui
 		</td>
 	</tr>
 
-##排序
+###排序
 	<tr>
 		<th>资源排序</th>
 		<td>
 			<input name="tresource.seq" style="width: 370px;" class="easyui-numberspinner" data-options="min:0,max:999,editable:false,required:true,missingMessage:'请选择菜单排序'" value="10" style="width: 155px;" />
 		</td>
 	</tr>
-##combobox
+###combobox
 	<tr>
 		<th>推荐图书</th>
 		<td colspan="3">
@@ -92,19 +92,19 @@ category: easyui
 		}
 		return nl;
 	}
-##combotree
+###combotree
 	<tr>
 		<th>所属分类</th>
 		<td>
 		<input id="bookType_pid" name="bookType.pid" class="easyui-combotree" data-options="url:'${basePath!}book_type_/combobox',parentField : 'pid',lines : true,multiple:false" style="width: 370px;" />
 		<span class="icon-cut icon-block" onclick="$('#bookType_pid').combotree('clear');"></span></td>
 	</tr>
-##几折
+###几折
 	class="easyui-numberbox" data-options="min:0,precision:1,suffix:'折'"
 
-##价格
+###价格
 	class="easyui-numberbox" data-options="min:0,precision:2,prefix:'￥'"
-##combotree
+###combotree
 	<tr>
 		<th>上级资源</th>
 		<td colspan="3">
@@ -112,29 +112,29 @@ category: easyui
 			<span onclick="$('#admin_zyglAdd_pid').combotree('clear');" class="icon-block icon-cut"></span>
 		</td>
 	</tr>
-##验证
+###验证
 	<input id="vv" class="easyui-validatebox" data-options="required:true,validType:'email'" /> 
 	<input id="vv" class="easyui-validatebox" data-options="required:true,validType:'number'" /> 
-##提示
+###提示
 	$.messager.show({
 		title : '提示',
 		msg : r.msg
 	});
-##时间
+###时间
 	<tr>
 		<th>上架时间</th>
 		<td>
 			<input name="pbook.shelfTime" class="easyui-datetimebox" style="width: 370px;" data-options="editable:false,required:true" />
 		</td>
 	</tr>
-##数量
+###数量
 	<tr>
 		<th>数量</th>
 		<td>
 			<input name="pbook.bookNum" class="easyui-numberbox" data-options="min:0,precision:0,required:true" style="width: 370px;" />
 		</td>
 	</tr>
-##combotree(单选)
+###combotree(单选)
 	<input name="article.articleClassId" class="easyui-combotree" data-options="valueField:'id',
 																			   textField:'name',
 																			   parentField:'pid',
@@ -143,8 +143,8 @@ category: easyui
 	
 
 
-#列表
-##treegrid页面
+##列表
+###treegrid页面
 	<script type="text/javascript">
 		$(function() {
 			$('#book_type_treegrid').treegrid({
@@ -327,7 +327,7 @@ category: easyui
 		<div onclick="book_type_edit_fun();" data-options="iconCls:'icon-edit'">编辑</div>
 	</div>
 
-##datagrid
+###datagrid
 	<script type="text/javascript">
 		$(function() {
 			$('#book_publish_datagrid').datagrid({
@@ -494,7 +494,7 @@ category: easyui
 	</div>
 
 
-##treegrid
+###treegrid
 
 	<table id="resource_treegrid" class="easyui-treegrid" style="width:100%;height:100%"
 		data-options="url:'${basePath!}resource/treegrid',
@@ -521,7 +521,7 @@ category: easyui
 		</thead>
 	</table>
 
-##datagrid
+###datagrid
 
 	<table id="action_datagrid" class="easyui-datagrid" style="width:100%;height:100%"
 		data-options="url:'${basePath!}action/datagrid',
