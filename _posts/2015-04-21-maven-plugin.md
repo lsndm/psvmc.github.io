@@ -1,8 +1,8 @@
 ---
 
 layout: post
-title: 我maven常用的插件
-description: 我maven常用的插件
+title: maven常用的插件
+description: maven常用的插件
 keywords: maven
 category: maven
 
