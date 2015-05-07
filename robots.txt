@@ -2,3 +2,4 @@ User-agent: *
 Disallow: /themes/
 Disallow: /js/
 Sitemap: /sitemap.xml
+
