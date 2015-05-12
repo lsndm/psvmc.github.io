@@ -1,8 +1,8 @@
 ---
 
 layout: post
-title: freemarker常用方法
-description: freemarker常用方法
+title: Freemarker常用方法
+description: Freemarker常用方法
 keywords: freemarker
 category: freemarker
 
