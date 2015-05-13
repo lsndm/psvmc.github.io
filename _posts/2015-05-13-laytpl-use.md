@@ -7,52 +7,6 @@ keywords: js
 category: js
 
 ---
-
-##demo
-	<!doctype html>
-	<html>
-	<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<script type="text/javascript" src="laytpl/laytpl.js"></script>
-	<script id="mytemplate" type="text/html">
-	<h1>{{ d.title }}</h1>
-	<ul>
-	{{# for(var i = 0, len = d.list.length; i < len; i++){ }}
-	    <li>
-	        <span>姓名：{{ d.list[i].name }}</span>
-	        <span>城市：{{ d.list[i].city }}</span>
-	    </li>
-	{{# } }}
-	</ul>
-	</script>
-	</head>
-	<body>
-		<div id="view"></div>
-		<script type="text/javascript">
-			var data = {
-				title : '前端攻城师',
-				list : [ {
-					name : '贤心',
-					city : '杭州'
-				}, {
-					name : '谢亮',
-					city : '北京'
-				}, {
-					name : '浅浅',
-					city : '杭州'
-				}, {
-					name : 'Dem',
-					city : '北京'
-				} ]
-			};
-			var gettpl = document.getElementById('mytemplate').innerHTML;
-			laytpl(gettpl).render(data, function(html) {
-				document.getElementById('view').innerHTML = html;
-			});
-		</script>
-	</body>
-	</html>
-
 ##模版语法
 	输出一个普通字段，不转义html：   {{ d.field }}
 	输出一个普通字段，并转义html：   {{= d.field }}
