@@ -35,8 +35,9 @@ category: easyui
 	class="easyui-numberbox" data-options="min:0,precision:2,prefix:'￥'"
 
 ###验证
-	<input id="vv" class="easyui-validatebox" data-options="required:true,validType:'email'" /> 
-	<input id="vv" class="easyui-validatebox" data-options="required:true,validType:'number'" /> 
+	<input  class="easyui-validatebox" data-options="required:true" /> 
+	<input  class="easyui-validatebox" data-options="required:true,validType:'email'" /> 
+	<input  class="easyui-validatebox" data-options="required:true,validType:'number'" /> 
 ###提示
 	$.messager.show({
 		title : '提示',
