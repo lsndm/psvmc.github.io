@@ -54,9 +54,9 @@ category: js
 	</html>
 
 ##模版语法
-+ 输出一个普通字段，不转义html：   `{{ d.field }}`
-+ 输出一个普通字段，并转义html：   `{{= d.field }}`
-+ JavaScript脚本： `{{# JavaScript statement }}`
+	输出一个普通字段，不转义html：   {{ d.field }}
+	输出一个普通字段，并转义html：   {{= d.field }}
+	JavaScript脚本： {{# JavaScript statement }}
 
 ##内置方法
 ###核心函数，返回一个对象
