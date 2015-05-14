@@ -82,11 +82,8 @@ category: easyui
 
 
 ###combotree(单选)
-	<input name="article.articleClassId" class="easyui-combotree" data-options="valueField:'id',
-																			   textField:'name',
-																			   parentField:'pid',
-																			   url:'${basePath!}articleClass_/treegrid' " 
-																			   style="width: 370px;" />
+	<input name="xzbModel.pid" id="xzb_edit_pid" value="${xzbModel.pid!}" class="easyui-combotree tableInput" data-options="valueField:'id',textField:'name',parentField:'pid',url:'${basePath!}tree/xzbTree' " style="width: 370px;" />
+	<a href="javascript:;" class="easyui-linkbutton" data-options="iconCls:'icon-laji'" onclick="$('#xzb_edit_pid').combotree('clear');"></a>
 	
 ###图片上传
 
