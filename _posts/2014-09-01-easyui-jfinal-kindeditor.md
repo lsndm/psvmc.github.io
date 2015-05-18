@@ -29,10 +29,10 @@ category: easyui
 	</tr>
 
 ###几折
-	class="easyui-numberbox" data-options="min:0,precision:1,suffix:'折'"
+	class="easyui-numberbox" data-options="min:0,precision:1,suffix:'折',required:true"
 
 ###价格
-	class="easyui-numberbox" data-options="min:0,precision:2,prefix:'￥'"
+	class="easyui-numberbox" data-options="min:0,precision:2,prefix:'￥',required:true"
 
 ###验证
 	<input  class="easyui-validatebox" data-options="required:true" /> 
