@@ -14,10 +14,10 @@ category: oracle
 
 	create sequence s_userId increment by 1 start with 1 maxvalue 999999999; 
 
-创建一个基于该表的before insert触发器，在触发器中使用该SEQUENCE 
+创建一个基于该表的before insert触发器，在触发器中使用该SEQUENCE     
 
 	create or replace trigger bef_ins_user 
-	before  insert on user 
+	before insert on user 
 	referencing old as old new as new for each row 
 	begin 
 	new.usrId=s_userId.nextval; 
