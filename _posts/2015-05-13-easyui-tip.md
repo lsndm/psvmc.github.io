@@ -21,7 +21,7 @@ category: easyui
 解决方式很简单 修改`fit:true` 改为`false` 就行了
 
 ##布局
-`panel` 中 `north`和`south` 必须设置高度 `east`和`west`必须设置宽度 必须要有`center`
+`panel` 中 `north`和`south` 必须设置高度 `east`和`west`必须设置宽度 必须要有`center`  
 
 
 
