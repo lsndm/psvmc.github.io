@@ -94,7 +94,7 @@ set JAVA_OPTS=-Xms256m -Xmx512m -Xss256K -XX:PermSize=64m -XX:MaxPermSize=128m
 		<Context path="" docBase="bbb" debug="0"/>
 	</Host>
 
-如下配置会导致项目名为aaa和bbb项目各重复启动两次  
+如下配置会导致项目名为aaa和bbb项目各重复发布两次  
 
 	<Host name="www.aaa.com"  appBase="data/webapps" unpackWARs="true" autoDeploy="true">
 		<Context path="" docBase="aaa" debug="0"/>
