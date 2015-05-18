@@ -83,14 +83,7 @@ set JAVA_OPTS=-Xms256m -Xmx512m -Xss256K -XX:PermSize=64m -XX:MaxPermSize=128m
 > 不建议配置多个端口   
 > 多个项目不要放在同一个文件夹中,也就是host配置下的appBase目录中只有一个项目   
 
-如下配置会导致项目名为aaa和bbb项目各重复启动两次  
-
-	<Host name="www.aaa.com"  appBase="data/webapps" unpackWARs="true" autoDeploy="true">
-		<Context path="" docBase="aaa" debug="0"/>
-	</Host>
-	<Host name="www.bbb.com"  appBase="data/webapps" unpackWARs="true" autoDeploy="true">
-		<Context path="" docBase="bbb" debug="0"/>
-	</Host>
+##推荐设置
 
 应该把如上项目分别再放到a和b文件夹中  
 
@@ -100,3 +93,13 @@ set JAVA_OPTS=-Xms256m -Xmx512m -Xss256K -XX:PermSize=64m -XX:MaxPermSize=128m
 	<Host name="www.bbb.com"  appBase="data/webapps/b" unpackWARs="true" autoDeploy="true">
 		<Context path="" docBase="bbb" debug="0"/>
 	</Host>
+
+如下配置会导致项目名为aaa和bbb项目各重复启动两次  
+
+	<Host name="www.aaa.com"  appBase="data/webapps" unpackWARs="true" autoDeploy="true">
+		<Context path="" docBase="aaa" debug="0"/>
+	</Host>
+	<Host name="www.bbb.com"  appBase="data/webapps" unpackWARs="true" autoDeploy="true">
+		<Context path="" docBase="bbb" debug="0"/>
+	</Host>
+
