@@ -1,8 +1,8 @@
 ---
 
 layout: post
-title: easyui
-description: easyui
+title: easyui常用组件
+description: easyui常用组件
 keywords: easyui
 category: easyui
 
