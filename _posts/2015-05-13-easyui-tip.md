@@ -23,5 +23,13 @@ category: easyui
 ##布局
 `panel` 中 `north`和`south` 必须设置高度 `east`和`west`必须设置宽度 必须要有`center`  
 
+##combobox点击弹出选项
+在公用js中添加以下代码
+
+	$.parser.onComplete = function() {
+		$(".combo").click(function() {
+			$(this).prev().combobox("showPanel");
+		});
+	}
 
 
