@@ -56,8 +56,18 @@ comment: true
 					<div class="main-article-contant" id="main-article-contant">{{ content }}</div>
 				</div>
 			</article>
-			<!-- 目录生成 -->
-			<script type="text/javascript">
+
+			<!-- 代码高亮 -->
+			<link href="{{ site.themes }}/google-code-prettify/css/mine.css" rel="stylesheet" type="text/css" media="all" />
+<script src="http://apps.bdimg.com/libs/prettify/r298/prettify.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(function() {
+		$('pre').addClass('prettyprint').attr('style', 'overflow:auto');
+		window.prettyPrint && prettyPrint();
+	});
+</script>
+<!-- 目录生成 -->
+<script type="text/javascript">
 	function categoryCreater(articleId) {
 		var cateh1 = "#" + articleId + " h1,";
 		var cateh2 = "#" + articleId + " h2,";
@@ -85,18 +95,7 @@ comment: true
 		$(".-h6").css("margin-left", 100);
 		$(".-ml").css("margin-left", 0).css("font-size", "20px");
 	}
-	$(document).ready(function() {
-		categoryCreater('main-article-contant');
-	});
-</script>
-			<!-- 代码高亮 -->
-			<link href="{{ site.themes }}/google-code-prettify/css/mine.css" rel="stylesheet" type="text/css" media="all" />
-			<script src="http://apps.bdimg.com/libs/prettify/r298/prettify.js" type="text/javascript"></script>
-			<script type="text/javascript">
-	$(function() {
-		$('pre').addClass('prettyprint').attr('style', 'overflow:auto');
-		window.prettyPrint && prettyPrint();
-	});
+	categoryCreater('main-article-contant');
 </script>
 			<nav class="pagination fn-clear" id="ztheme-paging">
 				<div class="pagination-list">
