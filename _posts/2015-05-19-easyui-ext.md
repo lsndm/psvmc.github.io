@@ -95,7 +95,13 @@ category: easyui
 		},
 		unnormal : {// 验证是否包含空格和非法字符
 			validator : function(value) {
-				return /.+/i.test(value);
+				var valid1 = /\s/;
+				var valid2 = /[\'\"\,\<\>\+\-\*\/\%\^\=\\\!\&\|\(\)\[\]\{\}\:\;\~\`\#\$]+/;
+				if (valid1.test(value) || valid2.test(value)) {
+					return false
+				} else {
+					return true;
+				}
 			},
 			message : '输入值不能为空和包含其他非法字符'
 		},
@@ -153,7 +159,6 @@ category: easyui
 			message : '两次输入的密码不一致！'
 		}
 	});
-
 ###调用方式
 无参数
 
@@ -162,6 +167,10 @@ category: easyui
 有参数
 
 	<input class="easyui-validatebox" data-options="required:true,validType:'length[1,100]' " />
+	
+多重验证
+
+	<input class="easyui-validatebox" data-options="required:true,validType:['unnormal','length[5,20]']" />
 
 ##tree相关组件支持id pid形式
 	/**
