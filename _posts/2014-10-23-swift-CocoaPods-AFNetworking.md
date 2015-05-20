@@ -3,8 +3,8 @@
 layout: post
 title: Swift引用AFNetworking
 description: Swift利用CocoaPods引用AFNetworking
-keywords: AFNetworking
-category: AFNetworking
+keywords: swift
+category: swift
 
 ---
 

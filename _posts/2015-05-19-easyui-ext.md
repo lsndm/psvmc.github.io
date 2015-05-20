@@ -105,11 +105,23 @@ category: easyui
 			},
 			message : '输入值不能为空和包含其他非法字符'
 		},
+		letter_num : {// 验证字母和数字下划线
+			validator : function(value) {
+				return /^[a-zA-Z0-9_]+$/i.test(value);
+			},
+			message : '输入不合法（允许字母数字下划线）'
+		},
 		username : {// 验证用户名
 			validator : function(value) {
 				return /^[a-zA-Z][a-zA-Z0-9_]{5,15}$/i.test(value);
 			},
 			message : '用户名不合法（字母开头，允许6-16字节，允许字母数字下划线）'
+		},
+		userpwd : {// 验证密码
+			validator : function(value) {
+				return /^[a-zA-Z0-9_]{6,16}$/i.test(value);
+			},
+			message : '密码不合法（允许6-16字节，允许字母数字下划线）'
 		},
 		faxno : {// 验证传真
 			validator : function(value) {
