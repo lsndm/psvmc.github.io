@@ -28,7 +28,12 @@ category: easyui
 
 	$.parser.onComplete = function() {
 		$(".combo").click(function() {
-			$(this).prev().combobox("showPanel");
+			var combo = $(this).prev().combo();
+			var options = combo.combo("options");
+			if (options && options.disabled) {
+			} else {
+				combo.combo("showPanel");
+			}
 		});
 	}
 

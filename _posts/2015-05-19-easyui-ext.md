@@ -93,6 +93,12 @@ category: easyui
 			},
 			message : '请输入英文'
 		},
+		approveNum:{
+			validator : function(value) {
+				return /^[\u4e00-\u9fa50-9a-zA-Z 〔〕（）()]+$/i.test(value);
+			},
+			message : '请输入正确的审批号（允许中文、数字、字母括号）'
+		},
 		unnormal : {// 验证是否包含空格和非法字符
 			validator : function(value) {
 				var valid1 = /\s/;
