@@ -32,7 +32,7 @@
 			<nav class="nav" id="ztheme-nav">
 				<ul class="nav-list">
 					{% for link in site.nav %} {% assign active = nil %} {% if page.url == link.url%} {% assign active = 'nav-item-active' %} {% endif %}
-					<li class="nav-item {{ active }}"><a href="{{ link.url }}" target="_blank"> {{ link.text }} </a> {{ indicator }}</li> {% endfor %}
+					<li class="nav-item {{ active }}"><a href="{{ link.url }}" target="{{ link.target }}"> {{ link.text }} </a> {{ indicator }}</li> {% endfor %}
 				</ul>
 			</nav>
 		</section>

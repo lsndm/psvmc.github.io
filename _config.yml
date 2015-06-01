@@ -17,12 +17,16 @@ url: http://www.psvmc.cn
 nav:
   - text: 首页
     url: /index.html
+    target: _self
   - text: 日期归档
     url: /archives.html
+    target: _self
   - text: 分类归档
     url: /category.html
+    target: _self
   - text: 我的插件
     url: /zjplugin/index.html
+    target: _blank
 
 #theme config
 themes: /themes/ztheme
