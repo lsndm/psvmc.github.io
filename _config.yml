@@ -21,6 +21,8 @@ nav:
     url: /archives.html
   - text: 分类归档
     url: /category.html
+  - text: 我的插件
+    url: /zjplugin/index.html
 
 #theme config
 themes: /themes/ztheme
