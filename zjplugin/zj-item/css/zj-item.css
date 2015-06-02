@@ -5,10 +5,15 @@
 
 .zj-item {
 	font-family: "Microsoft YaHei", "Arial", simsun, sans-serif;
+	border: 1px solid #ddd;
 }
 
 .zj-item ul {
-	
+	-moz-user-select: none; /*火狐*/
+	-webkit-user-select: none; /*webkit浏览器*/
+	-ms-user-select: none; /*IE10*/
+	-khtml-user-select: none; /*早期浏览器*/
+	user-select: none;
 }
 
 .zj-item ul li {
@@ -33,9 +38,12 @@
 	height: 100%;
 	display: inline-block;
 	color: #fff;
-	background-color: #ddd;
+	background-color: #666;
 	text-align: center;
 	overflow: hidden;
 	border-top: 1px solid #ddd;
 	border-bottom: 1px solid #ddd;
+	-webkit-border-radius: .5em; /*圆角*/
+	-moz-border-radius: .5em;
+	border-radius: .5em;
 }

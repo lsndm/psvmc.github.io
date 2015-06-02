@@ -4,96 +4,85 @@
 <title>demo.html</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css" href="./css/zj-item.css">
-<link rel="stylesheet" href="css/tinyscrollbar.css" type="text/css" media="screen" />
+<link rel="stylesheet" type="text/css" href="./css/lionbars.css" />
 <script type="text/javascript" src="js/jquery.min.js"></script>
-<script src="js/jquery.tinyscrollbar.min.js"></script>
+<script src="js/jquery.lionbars.0.3.js"></script>
 
 </head>
 
 <body style="padding: 50px;">
-	<div class="tiny-scrollbar">
-		<div class="scrollbar">
-			<div class="track">
-				<div class="thumb">
-					<div class="end"></div>
-				</div>
-			</div>
-		</div>
-		<div class="viewport">
-			<div class="overview">
-				<div class="zj-item">
-					<ul>
-						<li>
-							<a onclick="javascript:;">我的名字比较长</a>
-						</li>
-						<li>
-							<a onclick="javascript:;">我的名字比较长</a>
-						</li>
-						<li>
-							<a onclick="javascript:;">我的名字比较长</a>
-						</li>
-						<li>
-							<a onclick="javascript:;">我的名字比较长</a>
-						</li>
-						<li>
-							<a onclick="javascript:;">我的名字比较长</a>
-						</li>
-						<li>
-							<a onclick="javascript:;">我的名字比较长很长特别长无比长</a>
-						</li>
-						<li>
-							<a onclick="javascript:;">我的名字比较长</a>
-						</li>
-						<li>
-							<a onclick="javascript:;">我的名字比较长很长特别长无比长</a>
-						</li>
-						<li>
-							<a onclick="javascript:;">我的名字比较长</a>
-						</li>
-						<li>
-							<a onclick="javascript:;">我的名字比较长很长特别长无比长</a>
-						</li>
-						<li>
-							<a onclick="javascript:;">我的名字比较长</a>
-						</li>
-						<li>
-							<a onclick="javascript:;">我的名字比较长很长特别长无比长</a>
-						</li>
-						<li>
-							<a onclick="javascript:;">我的名字比较长</a>
-						</li>
-						<li>
-							<a onclick="javascript:;">我的名字比较长很长特别长无比长</a>
-						</li>
-						<li>
-							<a onclick="javascript:;">我的名字比较长</a>
-						</li>
-						<li>
-							<a onclick="javascript:;">我的名字比较长很长特别长无比长</a>
-						</li>
-						<li>
-							<a onclick="javascript:;">我的名字比较长</a>
-						</li>
-						<li>
-							<a onclick="javascript:;">我的名字比较长很长特别长无比长</a>
-						</li>
-						<li>
-							<a onclick="javascript:;">我的名字比较长</a>
-						</li>
-						<li>
-							<a onclick="javascript:;">我的名字比较长很长特别长无比长</a>
-						</li>
-						<li>
-							<a onclick="javascript:;">我的名字比较长</a>
-						</li>
-						<li>
-							<a onclick="javascript:;">我的名字比较长很长特别长无比长</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
+
+	<div class="zj-item" style="width: 200px;height: 300px;">
+		<ul>
+			<li>
+				<a onclick="javascript:;">我的名字比较长</a>
+			</li>
+			<li>
+				<a onclick="javascript:;">我的名字比较长</a>
+			</li>
+			<li>
+				<a onclick="javascript:;">我的名字比较长</a>
+			</li>
+			<li>
+				<a onclick="javascript:;">我的名字比较长</a>
+			</li>
+			<li>
+				<a onclick="javascript:;">我的名字比较长</a>
+			</li>
+			<li>
+				<a onclick="javascript:;">我的名字比较长很长特别长无比长</a>
+			</li>
+			<li>
+				<a onclick="javascript:;">我的名字比较长</a>
+			</li>
+			<li>
+				<a onclick="javascript:;">我的名字比较长很长特别长无比长</a>
+			</li>
+			<li>
+				<a onclick="javascript:;">我的名字比较长</a>
+			</li>
+			<li>
+				<a onclick="javascript:;">我的名字比较长很长特别长无比长</a>
+			</li>
+			<li>
+				<a onclick="javascript:;">我的名字比较长</a>
+			</li>
+			<li>
+				<a onclick="javascript:;">我的名字比较长很长特别长无比长</a>
+			</li>
+			<li>
+				<a onclick="javascript:;">我的名字比较长</a>
+			</li>
+			<li>
+				<a onclick="javascript:;">我的名字比较长很长特别长无比长</a>
+			</li>
+			<li>
+				<a onclick="javascript:;">我的名字比较长</a>
+			</li>
+			<li>
+				<a onclick="javascript:;">我的名字比较长很长特别长无比长</a>
+			</li>
+			<li>
+				<a onclick="javascript:;">我的名字比较长</a>
+			</li>
+			<li>
+				<a onclick="javascript:;">我的名字比较长很长特别长无比长</a>
+			</li>
+			<li>
+				<a onclick="javascript:;">我的名字比较长</a>
+			</li>
+			<li>
+				<a onclick="javascript:;">我的名字比较长很长特别长无比长</a>
+			</li>
+			<li>
+				<a onclick="javascript:;">我的名字比较长</a>
+			</li>
+			<li>
+				<a onclick="javascript:;">我的名字比较长很长超长特别长无比长</a>
+			</li>
+		</ul>
 	</div>
+
 
 
 	<script type="text/javascript">
@@ -116,9 +105,12 @@
 		$(".zj-item li").dblclick(function() {
 			$(this).remove();
 		})
-
-		$(document).ready(function() {
-			$('.tiny-scrollbar').tinyscrollbar();
+	</script>
+	<script type="text/javascript">
+		$(function() {
+			$('.zj-item').lionbars({
+				autohide : true
+			});
 		});
 	</script>
 </body>

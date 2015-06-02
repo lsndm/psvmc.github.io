@@ -10,7 +10,7 @@
  * @param $
  */
 (function($) {
-	$.zj_file_upload = function(options, method) {
+	$.zj_file_upload = function(options) {
 		var settings = {
 			imageBase : "./images/",
 			fileIcon : {
