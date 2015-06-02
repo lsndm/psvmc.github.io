@@ -1,0 +1,79 @@
+/* Tiny Scrollbar */
+.tiny-scrollbar {
+	width: 216px;
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+	moz-user-select: -moz-none;
+	-moz-user-select: none;
+	-o-user-select: none;
+	-khtml-user-select: none; /* you could also put this in a class */
+	-webkit-user-select: none; /* and add the CSS class here instead */
+	-ms-user-select: none;
+	user-select: none; /**禁止选中文字*/
+}
+
+.tiny-scrollbar .viewport {
+	width: 200px;
+	height: 300px;
+	overflow: hidden;
+	position: relative;
+}
+
+.tiny-scrollbar .overview {
+	list-style: none;
+	position: absolute;
+	left: 0;
+	top: 0;
+	padding: 0;
+	margin: 0;
+}
+
+.tiny-scrollbar .scrollbar {
+	background: transparent url(../images/bg-scrollbar-track-y.png)
+		no-repeat 0 0;
+	position: relative;
+	background-position: 0 0;
+	float: right;
+	width: 15px;
+}
+
+.tiny-scrollbar .track {
+	background: transparent url(../images/bg-scrollbar-trackend-y.png)
+		no-repeat 0 100%;
+	height: 100%;
+	width: 13px;
+	position: relative;
+	padding: 0 1px;
+}
+
+.tiny-scrollbar .thumb {
+	background: transparent url(../images/bg-scrollbar-thumb-y.png)
+		no-repeat 50% 100%;
+	height: 20px;
+	width: 25px;
+	cursor: pointer;
+	overflow: hidden;
+	position: absolute;
+	top: 0;
+	left: -5px;
+}
+
+.tiny-scrollbar .thumb .end {
+	background: transparent url(../images/bg-scrollbar-thumb-y.png)
+		no-repeat 50% 0;
+	overflow: hidden;
+	height: 5px;
+	width: 25px;
+}
+
+.tiny-scrollbar .disable {
+	display: none;
+}
+
+.tiny-scrollbar .noSelect {
+	user-select: none;
+	-o-user-select: none;
+	-moz-user-select: none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+}

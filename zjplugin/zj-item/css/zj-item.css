@@ -5,10 +5,6 @@
 
 .zj-item {
 	font-family: "Microsoft YaHei", "Arial", simsun, sans-serif;
-	height: 400px;
-	width: 200px;
-	overflow-y: auto;
-	border: 1px solid #ddd;
 }
 
 .zj-item ul {
@@ -40,4 +36,6 @@
 	background-color: #ddd;
 	text-align: center;
 	overflow: hidden;
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
 }

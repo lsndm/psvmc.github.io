@@ -1,5 +1,5 @@
 /**
- * @desc: 公用js
+ * @desc: 公用js 
  * @depend: jQuery, jQuery scrollTo
  */
 $(document).ready(function() {
