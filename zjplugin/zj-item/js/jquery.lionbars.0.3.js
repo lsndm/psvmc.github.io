@@ -20,7 +20,9 @@
 				if (needScrollbars(elements[i]) && !$(elements[i]).hasClass('nolionbars')) {
 					// add the element to the main array
 					target = elements[i];
-
+					$(target).children().resize(function() {
+						console.info($(target).hasClass('lb-content'));
+					});
 					// get some values before the element is wrapped
 					getDimentions(target);
 
@@ -42,6 +44,7 @@
 
 					// prepare for next element
 					resetVars();
+
 				}
 			}
 		}

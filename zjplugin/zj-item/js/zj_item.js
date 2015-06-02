@@ -91,6 +91,18 @@
 				a.attr("value", itemData["id"])
 				li.append(a);
 				ul.append(li);
+				li.dblclick(function() {
+					var id=$(this).find("a").attr("value");
+					var $obj=$(this).closest(".zj-item");
+					var itemOptions = JSON.parse($obj.attr("data-options"));
+					var idList = itemOptions.idList;
+					$(this).remove();
+					if(methods.isContains(idList, id)){
+						idList.splice(idList.indexOf(id), 1);
+					}
+					itemOptions.idList = idList;
+					$obj.attr("data-options", JSON.stringify(itemOptions));
+				});
 			},
 			getValueArr : function(obj) {
 				var $obj = $(obj);
@@ -117,14 +129,28 @@
 			addItem : function(obj, item) {
 				var $obj = $(obj);
 				var ul = $obj.find("ul");
-				methods.ulAddLi(ul, item);
+				var itemOptions = JSON.parse($obj.attr("data-options"));
+				var idList = itemOptions.idList;
+				if (methods.isContains(idList, item["id"])) {
+					// alert("该项已存在");
+				} else {
+					idList.push(item["id"]);
+					methods.ulAddLi(ul, item);
+					itemOptions.idList = idList;
+					$obj.attr("data-options", JSON.stringify(itemOptions));
+				}
 
 			},
 			delItem : function(obj, id) {
 				var $obj = $(obj);
+				var itemOptions = JSON.parse($obj.attr("data-options"));
+				var idList = itemOptions.idList;
 				$obj.find("a[value=" + id + "]").each(function(index) {
+					idList.splice(idList.indexOf(id), 1);
 					$(this).closest("li").remove();
 				})
+				itemOptions.idList = idList;
+				$obj.attr("data-options", JSON.stringify(itemOptions));
 
 			}
 		}
@@ -155,8 +181,6 @@
 			if (options && typeof (options) == "object") {
 				settings = $.extend({}, settings, options);
 			}
-			console.info(methods.isContains([ "1", "22" ], "1"));
-			console.info(methods.isContains("22111fsf", "11"));
 			this.each(function(index) {
 				var itemOptions = methods.getOptions(this);
 				itemOptions = $.extend({}, settings, itemOptions);
@@ -176,7 +200,9 @@
 						}
 					}
 				}
-				zj_item.attr();
+				itemOptions={};
+				itemOptions.idList = idList;
+				zj_item.attr("data-options", JSON.stringify(itemOptions));
 			})
 
 		}
