@@ -32,14 +32,14 @@ nav:
     target: _blank
 
 #theme config
-themes: /_themes/ztheme
+themes: /jekyll-themes/ztheme
 
 #配置你喜欢的顶部背景图片
 headimg:
-  - item: /_themes/ztheme/images/hdbg01.jpg
-  - item: /_themes/ztheme/images/hdbg02.jpg
-  - item: /_themes/ztheme/images/hdbg03.jpg
-  - item: /_themes/ztheme/images/hdbg04.jpg
+  - item: /jekyll-themes/ztheme/images/hdbg01.jpg
+  - item: /jekyll-themes/ztheme/images/hdbg02.jpg
+  - item: /jekyll-themes/ztheme/images/hdbg03.jpg
+  - item: /jekyll-themes/ztheme/images/hdbg04.jpg
 
 #关注我
 follow:
