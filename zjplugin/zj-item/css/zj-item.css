@@ -19,6 +19,7 @@
 	list-style: none;
 	height: 38px;
 	line-height: 38px;
+	cursor: pointer;
 }
 
 .zj-item ul li a {

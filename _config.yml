@@ -29,7 +29,7 @@ nav:
     target: _blank
 
 #theme config
-themes: /themes/ztheme
+themes: /_themes/ztheme
 
 #配置你喜欢的顶部背景图片
 headimg:
