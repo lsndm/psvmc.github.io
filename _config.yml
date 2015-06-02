@@ -27,6 +27,9 @@ nav:
   - text: 我的插件
     url: /zjplugin/index.html
     target: _blank
+  - text: 第三方插件
+    url: /otplugin/index.html
+    target: _blank
 
 #theme config
 themes: /_themes/ztheme
