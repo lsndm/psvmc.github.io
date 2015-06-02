@@ -36,10 +36,10 @@ themes: /_themes/ztheme
 
 #配置你喜欢的顶部背景图片
 headimg:
-  - item: /themes/ztheme/images/hdbg01.jpg
-  - item: /themes/ztheme/images/hdbg02.jpg
-  - item: /themes/ztheme/images/hdbg03.jpg
-  - item: /themes/ztheme/images/hdbg04.jpg
+  - item: /_themes/ztheme/images/hdbg01.jpg
+  - item: /_themes/ztheme/images/hdbg02.jpg
+  - item: /_themes/ztheme/images/hdbg03.jpg
+  - item: /_themes/ztheme/images/hdbg04.jpg
 
 #关注我
 follow:
