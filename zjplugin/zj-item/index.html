@@ -27,29 +27,49 @@ fieldset {
 <body style="padding:20px;">
 	<fieldset>
 		<legend>配置在HTML中</legend>
-		<div style="height: 400px;">
-			<input class="zj-item" data-options="url:'',data:data,parentField:'pid',width:200,fit:true,dbClick:function(data){
+		<input class="zj-item" data-options="url:'',data:data,parentField:'pid',width:200,fit:true,dbClick:function(data){
 		console.info(data);
 		},afterChangeFunc:function(){
 		alert('111');
+		},afterInitFunc:function(){
+		console.info('初始化完毕11');
 		}" />
-			<input type="button" value="获取值" onclick="getValues(this)">
-			<input type="button" value="获取文本" onclick="getTexts(this)">
-			<input type="button" value="添加一项" onclick="addItem(this)">
-			<input type="button" value="删除一项" onclick="delItem(this)">
-		</div>
+		<input type="button" value="获取值" onclick="getValues(this)">
+		<input type="button" value="获取文本" onclick="getTexts(this)">
+		<input type="button" value="添加一项" onclick="addItem(this)">
+		<input type="button" value="删除一项" onclick="delItem(this)">
+	</fieldset>
+	<fieldset>
+		<legend>配置在HTML中</legend>
+		<input class="zj-item" data-options="url:'',data:data,parentField:'pid',width:200,fit:true,dbClick:function(data){
+		console.info(data);
+		},afterChangeFunc:function(){
+		alert('222');
+		},afterInitFunc:function(){
+		console.info('初始化完毕22');
+		}" />
+		<input type="button" value="获取值" onclick="getValues(this)">
+		<input type="button" value="获取文本" onclick="getTexts(this)">
+		<input type="button" value="添加一项" onclick="addItem(this)">
+		<input type="button" value="删除一项" onclick="delItem(this)">
 	</fieldset>
 	<fieldset>
 		<legend>配置在js中</legend>
-		<div style="height: 400px;">
-			<input class="zj-item" data-options="url:'',data:data,parentField:'pid',width:200,fit:true,dbClick:function(data){
-		console.info(data);
-		}" />
-			<input type="button" value="获取值" onclick="getValues(this)">
-			<input type="button" value="获取文本" onclick="getTexts(this)">
-			<input type="button" value="添加一项" onclick="addItem(this)">
-			<input type="button" value="删除一项" onclick="delItem(this)">
-		</div>
+		<input id="test003" />
+		<p>
+			值:
+			<label id="test003_value"></label>
+		</p>
+		<p>
+			文本:
+			<label id="test003_text"></label>
+		</p>
+
+
+		<input type="button" value="获取值" onclick="getValues(this)">
+		<input type="button" value="获取文本" onclick="getTexts(this)">
+		<input type="button" value="添加一项" onclick="addItem(this)">
+		<input type="button" value="删除一项" onclick="delItem(this)">
 	</fieldset>
 
 
@@ -59,7 +79,7 @@ fieldset {
 			"icon" : null,
 			"text" : "系统管理",
 			"level" : 1,
-			"seq" : 10,
+
 			"pid" : null,
 			"attributes" : {
 				"url" : null
@@ -70,56 +90,48 @@ fieldset {
 			"id" : "002",
 			"icon" : null,
 			"text" : "动作管理",
-			"level" : 3,
-			"seq" : 10,
-			"pid" : "IA968C130B",
+
 			"attributes" : {
 				"url" : "action\/list"
 			},
-			"url" : "action\/list",
+
 			"iconCls" : null
 		}, {
 			"id" : "003",
 			"icon" : null,
 			"text" : "模块管理",
-			"level" : 3,
-			"seq" : 10,
-			"pid" : "IA968C130B",
+
 			"attributes" : {
 				"url" : "resource\/list"
 			},
-			"url" : "resource\/list",
+
 			"iconCls" : null
 		}, {
 			"id" : "004",
 			"icon" : null,
 			"text" : "用户管理",
-			"level" : 3,
-			"seq" : 10,
-			"pid" : "IA968C130B",
+
 			"attributes" : {
 				"url" : "admin\/list"
 			},
-			"url" : "admin\/list",
+
 			"iconCls" : null
 		}, {
 			"id" : "005",
 			"icon" : null,
 			"text" : "角色管理",
-			"level" : 3,
-			"seq" : 10,
-			"pid" : "IA968C130B",
+
 			"attributes" : {
 				"url" : "role\/list"
 			},
-			"url" : "role\/list",
+
 			"iconCls" : null
 		}, {
 			"id" : "I8IHWCU500",
 			"icon" : null,
 			"text" : "投资管理",
 			"level" : 1,
-			"seq" : 10,
+
 			"pid" : null,
 			"attributes" : {
 				"url" : null
@@ -130,21 +142,18 @@ fieldset {
 			"id" : "I8IHXKW301",
 			"icon" : null,
 			"text" : "乡镇办年度目标管理",
-			"level" : 3,
-			"seq" : 10,
-			"pid" : "IA96AXRG0C",
+
 			"attributes" : {
 				"url" : "xzbYear\/list"
 			},
-			"url" : "xzbYear\/list",
+
 			"iconCls" : null
 		}, {
 			"id" : "I8IHYWOO02",
 			"icon" : null,
 			"text" : "固定资产投资",
 			"level" : 2,
-			"seq" : 10,
-			"pid" : "I8IHWCU500",
+
 			"attributes" : {
 				"url" : null
 			},
@@ -154,49 +163,41 @@ fieldset {
 			"id" : "I8IHZCW503",
 			"icon" : null,
 			"text" : "固定资产投资",
-			"level" : 3,
-			"seq" : 10,
-			"pid" : "I8IHYWOO02",
+
 			"attributes" : {
 				"url" : "gdzctz\/list"
 			},
-			"url" : "gdzctz\/list",
+
 			"iconCls" : null
 		}, {
 			"id" : "I926AYLW01",
 			"icon" : null,
 			"text" : "规上文化产业增加值",
-			"level" : 3,
-			"seq" : 10,
-			"pid" : "I8IIAAQ70Z",
+
 			"attributes" : {
 				"url" : "tcGswhzjz\/list"
 			},
-			"url" : "tcGswhzjz\/list",
+
 			"iconCls" : null
 		}, {
 			"id" : "I9AYE39500",
 			"icon" : null,
 			"text" : "区域管理",
-			"level" : 3,
-			"seq" : 10,
-			"pid" : "IA968C130B",
+
 			"attributes" : {
 				"url" : "area\/list"
 			},
-			"url" : "area\/list",
+
 			"iconCls" : null
 		}, {
 			"id" : "I9NHSEAV00",
 			"icon" : null,
 			"text" : "重点项目监控",
-			"level" : 3,
-			"seq" : 10,
-			"pid" : "IA96DPZD0E",
+
 			"attributes" : {
 				"url" : "zdxmJk\/list"
 			},
-			"url" : "zdxmJk\/list",
+
 			"iconCls" : null
 		} ];
 
@@ -217,6 +218,22 @@ fieldset {
 		}
 		$(function() {
 			$(".zj-item").zj_item();
+
+			$("#test003").zj_item({
+				url : '',
+				data : data,
+				parentField : 'pid',
+				width : 200,
+				fit : true,
+				afterChangeFunc : function() {
+					$("#test003_value").text($("#test003").zj_item("getValues"));
+					$("#test003_text").text($("#test003").zj_item("getTexts"));
+				},
+				afterInitFunc : function() {
+					$("#test003_value").text($("#test003").zj_item("getValues"));
+					$("#test003_text").text($("#test003").zj_item("getTexts"));
+				}
+			});
 			$(".zj-item").lionbars({
 				autohide : true
 			});

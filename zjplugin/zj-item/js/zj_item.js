@@ -100,8 +100,9 @@
 					$(this).remove();
 					if (methods.isContains(idList, id)) {
 						idList.splice(idList.indexOf(id), 1);
-						if (settings && settings.afterChangeFunc) {
-							afterChangeFunc(settings);
+						var itemOptions = $.data($obj[0], "itemOptions");
+						if (itemOptions && itemOptions.afterChangeFunc) {
+							itemOptions.afterChangeFunc();
 						}
 					}
 					$obj.find(".zj-item-hidden").attr("idList", JSON.stringify(idList));
@@ -138,8 +139,9 @@
 				} else {
 					idList.push(item["id"]);
 					methods.ulAddLi(ul, item);
-					if (settings && settings.afterChangeFunc) {
-						afterChangeFunc(settings);
+					var itemOptions = $.data($obj[0], "itemOptions");
+					if (itemOptions && itemOptions.afterChangeFunc) {
+						itemOptions.afterChangeFunc();
 					}
 					$obj.find(".zj-item-hidden").attr("idList", JSON.stringify(idList));
 				}
@@ -151,6 +153,10 @@
 				$obj.find("a[value=" + id + "]").each(function(index) {
 					idList.splice(idList.indexOf(id), 1);
 					$(this).closest("li").remove();
+					var itemOptions = $.data($obj[0], "itemOptions");
+					if (itemOptions && itemOptions.afterChangeFunc) {
+						itemOptions.afterChangeFunc();
+					}
 				})
 				$obj.find(".zj-item-hidden").attr("idList", JSON.stringify(idList));
 
@@ -187,9 +193,14 @@
 				}
 				var itemOptions = methods.getOptions(this);
 				itemOptions = $.extend({}, settings, itemOptions);
+				// 绑定数据
 				var data = methods.getData(itemOptions);
 				var zj_item = $('<div class="zj-item" style="width: 200px;height: 300px;" />');
-				var zj_item_hidden=$('<input type="hidden" class="zj-item-hidden" />');
+				zj_item.attr("id",$(this).attr("id"));
+				zj_item.attr("name",$(this).attr("name"));
+				zj_item.attr("class",$(this).attr("class"));
+				$.data(zj_item[0], "itemOptions", itemOptions);
+				var zj_item_hidden = $('<input type="hidden" class="zj-item-hidden" />');
 				zj_item.append(zj_item_hidden);
 				zj_item.addClass("zj-item");
 				if (itemOptions.height) {
@@ -210,6 +221,9 @@
 							idList.push(data[i]["id"]);
 							methods.ulAddLi(ul, data[i], itemOptions);
 						}
+					}
+					if (itemOptions && itemOptions.afterInitFunc) {
+						itemOptions.afterInitFunc();
 					}
 				}
 				zj_item_hidden.attr("idList", JSON.stringify(idList));
