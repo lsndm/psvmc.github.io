@@ -6,6 +6,7 @@
 .zj-item {
 	font-family: "Microsoft YaHei", "Arial", simsun, sans-serif;
 	border: 1px solid #ddd;
+	overflow-x: hidden;
 }
 
 .zj-item ul {
@@ -43,7 +44,5 @@
 	overflow: hidden;
 	border-top: 1px solid #ddd;
 	border-bottom: 1px solid #ddd;
-	-webkit-border-radius: .5em; /*圆角*/
-	-moz-border-radius: .5em;
-	border-radius: .5em;
+
 }
