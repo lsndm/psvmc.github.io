@@ -195,9 +195,9 @@
 				// 绑定数据
 				var data = methods.getData(itemOptions);
 				var zj_item = $('<div class="zj-item" style="width: 200px;height: 300px;" />');
-				zj_item.attr("id",$(this).attr("id"));
-				zj_item.attr("name",$(this).attr("name"));
-				zj_item.attr("class",$(this).attr("class"));
+				zj_item.attr("id", $(this).attr("id"));
+				zj_item.attr("name", $(this).attr("name"));
+				zj_item.attr("class", $(this).attr("class"));
 				$.data(zj_item[0], "itemOptions", itemOptions);
 				var zj_item_hidden = $('<input type="hidden" class="zj-item-hidden" />');
 				zj_item.append(zj_item_hidden);
@@ -221,9 +221,9 @@
 							methods.ulAddLi(ul, data[i], itemOptions);
 						}
 					}
-					if (itemOptions && itemOptions.afterInitFunc) {
-						itemOptions.afterInitFunc();
-					}
+				}
+				if (itemOptions && itemOptions.afterInitFunc) {
+					itemOptions.afterInitFunc();
 				}
 				zj_item_hidden.attr("idList", JSON.stringify(idList));
 			})
