@@ -16,7 +16,6 @@
 			"url" : null,
 			"idField" : "id",
 			"textField" : "text",
-			"onClick" : null,
 			"width" : 200,
 			"height" : 300,
 			"fit" : false,

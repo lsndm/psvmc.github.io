@@ -218,12 +218,15 @@ fieldset {
 		}
 		$(function() {
 			$(".zj-item").zj_item();
-
+			$(".zj-item").lionbars({
+				autohide : true
+			});
 			$("#test003").zj_item({
 				url : '',
 				data : data,
 				parentField : 'pid',
 				width : 200,
+				height : 200,
 				fit : true,
 				afterChangeFunc : function() {
 					$("#test003_value").text($("#test003").zj_item("getValues"));
@@ -234,9 +237,10 @@ fieldset {
 					$("#test003_text").text($("#test003").zj_item("getTexts"));
 				}
 			});
-			$(".zj-item").lionbars({
+			$("#test003").lionbars({
 				autohide : true
 			});
+			
 		})
 	</script>
 </body>
