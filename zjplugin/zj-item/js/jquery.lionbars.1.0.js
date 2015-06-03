@@ -18,9 +18,29 @@
 		function mainLoop() {
 			for ( var i = 0; elements[i] !== undefined; i++) {
 				if (needScrollbars(elements[i]) && !$(elements[i]).hasClass('nolionbars')) {
-					// add the element to the main array
-					target = elements[i];
 
+					target = elements[i];
+					// 容器大小变化重新计算滚动条
+					$(target).children().resize(function() {
+						$(target).find(".lb-wrap").each(function() {
+							// 获取宽高
+							getDimentions($(this).parent(), {
+								height : $(this).children('.lb-content').get(0).scrollHeight,
+								width : $(this).children('.lb-content').get(0).scrollWidth
+							});
+
+							// 计算滚动条的宽高
+							reduceScrollbarsWidthHeight($(this).parent());
+							setSlidersHeight($(this).parent());
+
+							// 计算滚动速度
+							setScrollRatios($(this).parent());
+
+							// 重置全局变量
+							resetVars();
+						});
+
+					});
 					// get some values before the element is wrapped
 					getDimentions(target);
 
@@ -42,6 +62,7 @@
 
 					// prepare for next element
 					resetVars();
+
 				}
 			}
 		}
@@ -422,7 +443,6 @@
 		}
 
 		return this.each(function() {
-			// var $this = $(this);
 		});
 	};
 })(jQuery);
