@@ -19,50 +19,50 @@
 			for ( var i = 0; elements[i] !== undefined; i++) {
 				if (needScrollbars(elements[i]) && !$(elements[i]).hasClass('nolionbars')) {
 
-					target = elements[i];
+					var target = elements[i];
+
+					if ($(target).find(".lb-wrap").length == 0) {
+						// get some values before the element is wrapped
+						getDimentions(target);
+
+						// wrap the element
+						wrap(target, addVScroll, addHScroll);
+
+						// hide the default scrollbar
+						hideScrollbars(target, addVScroll, addHScroll);
+
+						// Calculate the size of the scrollbars
+						reduceScrollbarsWidthHeight(target);
+						setSlidersHeight(target);
+
+						// Set variables needed to calculate scroll speed, etc.
+						setScrollRatios(target);
+
+						// Set events
+						setEvents(target);
+
+						// prepare for next element
+						resetVars();
+					}
 					// 容器大小变化重新计算滚动条
-					$(target).children().resize(function() {
-						$(target).find(".lb-wrap").each(function() {
-							// 获取宽高
-							getDimentions($(this).parent(), {
-								height : $(this).children('.lb-content').get(0).scrollHeight,
-								width : $(this).children('.lb-content').get(0).scrollWidth
-							});
-
-							// 计算滚动条的宽高
-							reduceScrollbarsWidthHeight($(this).parent());
-							setSlidersHeight($(this).parent());
-
-							// 计算滚动速度
-							setScrollRatios($(this).parent());
-
-							// 重置全局变量
-							resetVars();
+					$(".lb-content").children().resize(function() {
+						var $this = $(this).closest(".lb-wrap");
+						// 获取宽高
+						getDimentions($this.parent(), {
+							height : $this.children('.lb-content').get(0).scrollHeight,
+							width : $this.children('.lb-content').get(0).scrollWidth
 						});
 
+						// 计算滚动条的宽高
+						reduceScrollbarsWidthHeight($this.parent());
+						setSlidersHeight($this.parent());
+
+						// 计算滚动速度
+						setScrollRatios($this.parent());
+
+						// 重置全局变量
+						resetVars();
 					});
-					// get some values before the element is wrapped
-					getDimentions(target);
-
-					// wrap the element
-					wrap(target, addVScroll, addHScroll);
-
-					// hide the default scrollbar
-					hideScrollbars(target, addVScroll, addHScroll);
-
-					// Calculate the size of the scrollbars
-					reduceScrollbarsWidthHeight(target);
-					setSlidersHeight(target);
-
-					// Set variables needed to calculate scroll speed, etc.
-					setScrollRatios(target);
-
-					// Set events
-					setEvents(target);
-
-					// prepare for next element
-					resetVars();
-
 				}
 			}
 		}
