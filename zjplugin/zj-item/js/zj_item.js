@@ -18,8 +18,10 @@
 			"textField" : "text",
 			"onClick" : null,
 			"width" : 200,
-			"height" : 555,
-			"fit" : false
+			"height" : 300,
+			"fit" : false,
+			"afterInitFunc" : null,
+			"afterChangeFunc" : null
 		}
 		// 解决IE8下没有indexOf方法
 		if (!Array.prototype.indexOf) {
@@ -92,16 +94,17 @@
 				li.append(a);
 				ul.append(li);
 				li.dblclick(function() {
-					var id=$(this).find("a").attr("value");
-					var $obj=$(this).closest(".zj-item");
-					var itemOptions = JSON.parse($obj.attr("data-options"));
-					var idList = itemOptions.idList;
+					var id = $(this).find("a").attr("value");
+					var $obj = $(this).closest(".zj-item");
+					var idList = JSON.parse($obj.find(".zj-item-hidden").attr("idList"));
 					$(this).remove();
-					if(methods.isContains(idList, id)){
+					if (methods.isContains(idList, id)) {
 						idList.splice(idList.indexOf(id), 1);
+						if (settings && settings.afterChangeFunc) {
+							afterChangeFunc(settings);
+						}
 					}
-					itemOptions.idList = idList;
-					$obj.attr("data-options", JSON.stringify(itemOptions));
+					$obj.find(".zj-item-hidden").attr("idList", JSON.stringify(idList));
 				});
 			},
 			getValueArr : function(obj) {
@@ -129,28 +132,27 @@
 			addItem : function(obj, item) {
 				var $obj = $(obj);
 				var ul = $obj.find("ul");
-				var itemOptions = JSON.parse($obj.attr("data-options"));
-				var idList = itemOptions.idList;
+				var idList = JSON.parse($obj.find(".zj-item-hidden").attr("idList"));
 				if (methods.isContains(idList, item["id"])) {
 					// alert("该项已存在");
 				} else {
 					idList.push(item["id"]);
 					methods.ulAddLi(ul, item);
-					itemOptions.idList = idList;
-					$obj.attr("data-options", JSON.stringify(itemOptions));
+					if (settings && settings.afterChangeFunc) {
+						afterChangeFunc(settings);
+					}
+					$obj.find(".zj-item-hidden").attr("idList", JSON.stringify(idList));
 				}
 
 			},
 			delItem : function(obj, id) {
 				var $obj = $(obj);
-				var itemOptions = JSON.parse($obj.attr("data-options"));
-				var idList = itemOptions.idList;
+				var idList = JSON.parse($obj.find(".zj-item-hidden").attr("idList"));
 				$obj.find("a[value=" + id + "]").each(function(index) {
 					idList.splice(idList.indexOf(id), 1);
 					$(this).closest("li").remove();
 				})
-				itemOptions.idList = idList;
-				$obj.attr("data-options", JSON.stringify(itemOptions));
+				$obj.find(".zj-item-hidden").attr("idList", JSON.stringify(idList));
 
 			}
 		}
@@ -178,14 +180,24 @@
 				alert("没有该方法");
 			}
 		} else {
-			if (options && typeof (options) == "object") {
-				settings = $.extend({}, settings, options);
-			}
+
 			this.each(function(index) {
+				if (options && typeof (options) == "object") {
+					settings = $.extend({}, settings, options);
+				}
 				var itemOptions = methods.getOptions(this);
 				itemOptions = $.extend({}, settings, itemOptions);
 				var data = methods.getData(itemOptions);
 				var zj_item = $('<div class="zj-item" style="width: 200px;height: 300px;" />');
+				var zj_item_hidden=$('<input type="hidden" class="zj-item-hidden" />');
+				zj_item.append(zj_item_hidden);
+				zj_item.addClass("zj-item");
+				if (itemOptions.height) {
+					zj_item.css("height", itemOptions.height + "px");
+				}
+				if (itemOptions.width) {
+					zj_item.css("width", itemOptions.width + "px");
+				}
 				var ul = $('<ul />');
 				zj_item.append(ul);
 				$(this).replaceWith(zj_item);
@@ -196,13 +208,11 @@
 
 						} else {
 							idList.push(data[i]["id"]);
-							methods.ulAddLi(ul, data[i]);
+							methods.ulAddLi(ul, data[i], itemOptions);
 						}
 					}
 				}
-				itemOptions={};
-				itemOptions.idList = idList;
-				zj_item.attr("data-options", JSON.stringify(itemOptions));
+				zj_item_hidden.attr("idList", JSON.stringify(idList));
 			})
 
 		}

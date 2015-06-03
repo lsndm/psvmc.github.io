@@ -287,30 +287,23 @@
 					scrollTop : '-=220px'
 				}, "slow");
 			});
-			// 设置滚动状态为false
-			zj_tree.find(".first-menu").attr("scrol", "false");
 			methods.scrollEvent(zj_tree.find(".first-menu")[0], function(data) {
 				var menu = zj_tree.find(".first-menu");
 				if (menu.attr("scrol") == "false") {
-					// 触发滚动时修改为true
-					menu.attr("scrol", "true");
-					if (data == 1) {
-						menu.animate({
-							scrollTop : '+=150px'
-						}, "normal", function() {
-							// 滚动结束修改为false
-							menu.attr("scrol", "false");
-						});
-					} else {
-						menu.animate({
-							scrollTop : '-=150px'
-						}, "normal", function() {
-							// 滚动结束修改为false
-							menu.attr("scrol", "false");
-						});
-					}
 				}
-
+				if (data == 1) {
+					menu.stop();
+					menu.animate({
+						scrollTop : '+=150px'
+					}, "normal", function() {
+					});
+				} else {
+					menu.stop();
+					menu.animate({
+						scrollTop : '-=150px'
+					}, "normal", function() {
+					});
+				}
 			})
 
 			function randomColor() {

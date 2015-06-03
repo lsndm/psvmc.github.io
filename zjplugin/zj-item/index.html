@@ -25,15 +25,33 @@ fieldset {
 </style>
 </head>
 <body style="padding:20px;">
-	<div style="height: 400px;">
-		<input class="zj-item" data-options="url:'',data:data,parentField:'pid',width:200,fit:true,dbClick:function(data){
+	<fieldset>
+		<legend>配置在HTML中</legend>
+		<div style="height: 400px;">
+			<input class="zj-item" data-options="url:'',data:data,parentField:'pid',width:200,fit:true,dbClick:function(data){
+		console.info(data);
+		},afterChangeFunc:function(){
+		alert('111');
+		}" />
+			<input type="button" value="获取值" onclick="getValues(this)">
+			<input type="button" value="获取文本" onclick="getTexts(this)">
+			<input type="button" value="添加一项" onclick="addItem(this)">
+			<input type="button" value="删除一项" onclick="delItem(this)">
+		</div>
+	</fieldset>
+	<fieldset>
+		<legend>配置在js中</legend>
+		<div style="height: 400px;">
+			<input class="zj-item" data-options="url:'',data:data,parentField:'pid',width:200,fit:true,dbClick:function(data){
 		console.info(data);
 		}" />
-		<input type="button" value="获取值" onclick="getValues()">
-		<input type="button" value="获取文本" onclick="getTexts()">
-		<input type="button" value="添加一项" onclick="addItem()">
-		<input type="button" value="删除一项" onclick="delItem()">
-	</div>
+			<input type="button" value="获取值" onclick="getValues(this)">
+			<input type="button" value="获取文本" onclick="getTexts(this)">
+			<input type="button" value="添加一项" onclick="addItem(this)">
+			<input type="button" value="删除一项" onclick="delItem(this)">
+		</div>
+	</fieldset>
+
 
 	<script type="text/javascript">
 		var data = [ {
@@ -182,20 +200,20 @@ fieldset {
 			"iconCls" : null
 		} ];
 
-		function getValues() {
-			alert($('.zj-item').zj_item('getValues'));
+		function getValues(obj) {
+			alert($(obj).parent().find(".zj-item").zj_item('getValues'));
 		}
-		function getTexts() {
-			alert($('.zj-item').zj_item('getTexts'));
+		function getTexts(obj) {
+			alert($(obj).parent().find(".zj-item").zj_item('getTexts'));
 		}
-		function addItem() {
-			$('.zj-item').zj_item('addItem', {
+		function addItem(obj) {
+			$(obj).parent().find(".zj-item").zj_item('addItem', {
 				id : "newitem",
 				text : "新加项"
 			});
 		}
-		function delItem() {
-			$('.zj-item').zj_item('delItem', 'newitem');
+		function delItem(obj) {
+			$(obj).parent().find(".zj-item").zj_item('delItem', 'newitem');
 		}
 		$(function() {
 			$(".zj-item").zj_item();
