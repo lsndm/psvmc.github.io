@@ -2,16 +2,10 @@
 	float: left;
 	margin-top: 5px;
 	font-family: "微软雅黑";
-	height: 32px;
-	line-height: 32px;
-	border: 1px solid rgb(171, 173, 178);
+	height: 30px;
+	line-height: 30px;
+	border: 1px solid #ddd;
 	padding-left: 5px;
-	-moz-border-radius: 6px;
-	-webkit-border-radius: 6px;
-	border-radius: 6px 6px 6px 6px;
-	border-bottom-color: rgb(171, 173, 178);
-	-moz-border-radius: 6px;
-	border: 1px solid rgb(171, 173, 178);
 	margin: 5px;
 }
 
@@ -22,24 +16,20 @@
 }
 
 .cityslide {
-	width: 150px;
+	min-width: 160px;
 	list-style: none;
 	margin: -2px 0 0 -2px;
-	padding: 0;
-	border: 1px solid #E4F4FF;
-	border-right-color: #3485C0;
-	border-bottom-color: #3485C0;
-	box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
-	-moz-border-radius: 6px;
-	-webkit-border-radius: 6px;
-	border-radius: 6px 6px 6px 6px;
+	padding: 0px;
+	border: 1px solid #ddd;
+	background-color: #fff;
 }
 
 .cityslide li {
 	list-style: none;
 	overflow: hidden;
-	height: 16px;
-	padding: 4px 5px;
+	height: 20px;
+	line-height: 20px;
+	padding: 4px 7px;
 }
 
 .cityslide li.on {
@@ -73,7 +63,7 @@
 	width: 480px;
 	border: 1px solid #E4F4FF;
 	overflow: hidden;
-	box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+	box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .cityBox ul {

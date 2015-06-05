@@ -2,6 +2,39 @@
  * 全局空间 ZJ
  * */
 var ZJ = {};
+/* 正则表达式 筛选中文城市名、拼音、首字母 */
+ZJ.regEx = /^([\u4E00-\u9FA5\uf900-\ufa2d]+)\|(\w+)\|(\w)\w*$/i;
+ZJ.regExChiese = /([\u4E00-\u9FA5\uf900-\ufa2d]+)/;
+ZJ.allCity = [];
+ZJ.hotCitys = [ '北京|beijing|bj', '上海|shanghai|sh', '重庆|chongqing|cq', '深圳|shenzhen|sz', '广州|guangzhou|gz', '杭州|hangzhou|hz', '南京|nanjing|nj', '苏州|suzhou|sz', '天津|tianjin|tj', '成都|chengdu|cd', '南昌|nanchang|nc', '三亚|sanya|sy', '青岛|qingdao|qd', '厦门|xiamen|xm', '西安|xian|xa', '长沙|changsha|cs', '合肥|hefei|hf', '西藏|xizang|xz', '内蒙古|neimenggu|nmg' ];
+ZJ.allCitys = {
+	"A" : [ '安庆|anqing|aq', '阿泰勒|ataile|atl', '安康|ankang|ak', '阿克苏|akesu|aks' ],
+	"B" : [ '北京|beijing|bj', '包头|baotou|bt', '北海|beihai|bh', '百色|baise|bs', '保山|baoshan|bs' ],
+	"C" : [ '成都|chengdu|cd', '长沙|changsha|cs', '重庆|chongqing|cq', '长治|changzhi|cz', '长春|changchun|cc', '常州|changzhou|cz', '昌都|changdu|cd', '朝阳|chaoyang|cy', '常德|changde|cd', '长白山|changbaishan|cbs', '赤峰|chifeng|cf' ],
+	"D" : [ '大同|datong|dt', '大连|dalian|dl', '达县|daxian|dx', '东营|dongying|dy', '大庆|daqing|dq', '丹东|dandong|dd', '大理|dali|dl', '敦煌|dunhuang|dh' ],
+	"E" : [ '鄂尔多斯|eerduosi|eeds', '恩施|enshi|es' ],
+	"F" : [ '福州|fuzhou|fz', '阜阳|fuyang|fy' ],
+	"G" : [ '广州|guangzhou|gz', '贵阳|guiyang|gy', '桂林|guilin|gl', '广元|guangyuan|gy', '格尔木|geermu|gem' ],
+	"H" : [ '杭州|hangzhou|hz', '合肥|hefei|hf', '呼和浩特|huhehaote|hhht', '哈密|hami|hm', '黑河|heihe|hh', '海拉尔|hailaer|hle', '哈尔滨|haerbin|heb', '海口|haikou|hk', '黄山|huangshan|hs', '邯郸|handan|hd', '汉中|hanzhong|hz', '和田|hetian|ht' ],
+	"I" : [],
+	"J" : [ '晋江|jinjiang|jj', '锦州|jinzhou|jz', '景德镇|jingdezhen|jdz', '嘉峪关|jiayuguan|jyg', '井冈山|jinggangshan|jgs', '济宁|jining|jn', '九江|jiujiang|jj', '佳木斯|jiamusi|jms', '济南|jinan|jn' ],
+	"K" : [ '喀什|kashi|ks', '昆明|kunming|km', '康定|kangding|kd', '克拉玛依|kelamayi|klmy', '库尔勒|kuerle|kel', '库车|kuche|kc' ],
+	"L" : [ '兰州|lanzhou|lz', '洛阳|luoyang|ly', '丽江|lijiang|lj', '林芝|linzhi|lz', '柳州|liuzhou|lz', '泸州|luzhou|lz', '连云港|lianyungang|lyg', '黎平|liping|lp', '连成|liancheng|lc', '拉萨|lasa|ls', '临沧|lincang|lc', '临沂|linyi|ly' ],
+	"M" : [ '芒市|mangshi|ms', '牡丹江|mudanjiang|mdj', '满洲里|manzhouli|mzl', '绵阳|mianyang|my', '梅县|meixian|mx', '漠河|mohe|mh' ],
+	"N" : [ '南昌|nanchang|nc', '南京|nanjing|nj', '内蒙古|neimenggu|nmg', '南充|nanchong|nc', '南宁|nanning|nn', '南阳|nanyang|ny', '南通|nantong|nt', '那拉提|nalati|nlt', '宁波|ningbo|nb' ],
+	"O" : [],
+	"P" : [ '攀枝花|panzhihua|pzh' ],
+	"Q" : [ '青岛|qingdao|qd', '衢州|quzhou|qz', '秦皇岛|qinhuangdao|qhd', '庆阳|qingyang|qy', '齐齐哈尔|qiqihaer|qqhe' ],
+	"R" : [],
+	"S" : [ '苏州|suzhou|sz', '上海|shanghai|sh', '深圳|shenzhen|sz', '三亚|sanya|sy', '三门峡|sanmenxia|smx', '石家庄|shijiazhuang|sjz', '沈阳|shenyang|sy', '思茅|simao|sm' ],
+	"T" : [ '天津|tianjin|tj', '铜仁|tongren|tr', '塔城|tacheng|tc', '腾冲|tengchong|tc', '台州|taizhou|tz', '通辽|tongliao|tl', '太原|taiyuan|ty' ],
+	"U" : [],
+	"V" : [],
+	"W" : [ '威海|weihai|wh', '梧州|wuzhou|wz', '文山|wenshan|ws', '无锡|wuxi|wx', '潍坊|weifang|wf', '武夷山|wuyishan|wys', '乌兰浩特|wulanhaote|wlht', '温州|wenzhou|wz', '乌鲁木齐|wulumuqi|wlmq', '万州|wanzhou|wz', '乌海|wuhai|wh' ],
+	"X" : [ '厦门|xiamen|xm', '西藏|xizang|xz', '西安|xian|xa', '兴义|xingyi|xy', '西昌|xichang|xc', '襄樊|xiangfan|xf', '西宁|xining|xn', '锡林浩特|xilinhaote|xlht', '西双版纳|xishuangbanna|xsbn', '徐州|xuzhou|xz' ],
+	"Y" : [ '义乌|yiwu|yw', '永州|yongzhou|yz', '榆林|yulin|yl', '延安|yanan|ya', '运城|yuncheng|yc', '烟台|yantai|yt', '银川|yinchuan|yc', '宜昌|yichang|yc', '宜宾|yibin|yb', '盐城|yancheng|yc', '延吉|yanji|yj', '玉树|yushu|ys', '伊宁|yining|yn' ],
+	"Z" : [ '珠海|zhuhai|zh', '昭通|zhaotong|zt', '张家界|zhangjiajie|zjj', '舟山|zhoushan|zs', '郑州|zhengzhou|zz', '中卫|zhongwei|zw', '芷江|zhijiang|zj', '湛江|zhanjiang|zj' ]
+};
 /*******************************************************************************
  * 静态方法集
  * 
@@ -94,58 +127,52 @@ ZJ._m = {
 		return str.replace(/^\s+|\s+$/g, '');
 	}
 };
-
-/* 所有城市数据,可以按照格式自行添加（北京|beijing|bj），前16条为热门城市 */
-
-ZJ.allCity = [ '北京|beijing|bj', '上海|shanghai|sh', '重庆|chongqing|cq', '深圳|shenzhen|sz', '广州|guangzhou|gz', '杭州|hangzhou|hz', '南京|nanjing|nj', '苏州|suzhou|sz', '天津|tianjin|tj', '成都|chengdu|cd', '南昌|nanchang|nc', '三亚|sanya|sy', '青岛|qingdao|qd', '厦门|xiamen|xm', '西安|xian|xa', '长沙|changsha|cs', '合肥|hefei|hf', '西藏|xizang|xz', '内蒙古|neimenggu|nmg', '安庆|anqing|aq', '阿泰勒|ataile|atl', '安康|ankang|ak', '阿克苏|akesu|aks', '包头|baotou|bt', '北海|beihai|bh', '百色|baise|bs', '保山|baoshan|bs', '长治|changzhi|cz',
-		'长春|changchun|cc', '常州|changzhou|cz', '昌都|changdu|cd', '朝阳|chaoyang|cy', '常德|changde|cd', '长白山|changbaishan|cbs', '赤峰|chifeng|cf', '大同|datong|dt', '大连|dalian|dl', '达县|daxian|dx', '东营|dongying|dy', '大庆|daqing|dq', '丹东|dandong|dd', '大理|dali|dl', '敦煌|dunhuang|dh', '鄂尔多斯|eerduosi|eeds', '恩施|enshi|es', '福州|fuzhou|fz', '阜阳|fuyang|fy', '贵阳|guiyang|gy', '桂林|guilin|gl', '广元|guangyuan|gy', '格尔木|geermu|gem', '呼和浩特|huhehaote|hhht', '哈密|hami|hm', '黑河|heihe|hh', '海拉尔|hailaer|hle', '哈尔滨|haerbin|heb',
-		'海口|haikou|hk', '黄山|huangshan|hs', '邯郸|handan|hd', '汉中|hanzhong|hz', '和田|hetian|ht', '晋江|jinjiang|jj', '锦州|jinzhou|jz', '景德镇|jingdezhen|jdz', '嘉峪关|jiayuguan|jyg', '井冈山|jinggangshan|jgs', '济宁|jining|jn', '九江|jiujiang|jj', '佳木斯|jiamusi|jms', '济南|jinan|jn', '喀什|kashi|ks', '昆明|kunming|km', '康定|kangding|kd', '克拉玛依|kelamayi|klmy', '库尔勒|kuerle|kel', '库车|kuche|kc', '兰州|lanzhou|lz', '洛阳|luoyang|ly', '丽江|lijiang|lj', '林芝|linzhi|lz', '柳州|liuzhou|lz', '泸州|luzhou|lz', '连云港|lianyungang|lyg',
-		'黎平|liping|lp', '连成|liancheng|lc', '拉萨|lasa|ls', '临沧|lincang|lc', '临沂|linyi|ly', '芒市|mangshi|ms', '牡丹江|mudanjiang|mdj', '满洲里|manzhouli|mzl', '绵阳|mianyang|my', '梅县|meixian|mx', '漠河|mohe|mh', '南充|nanchong|nc', '南宁|nanning|nn', '南阳|nanyang|ny', '南通|nantong|nt', '那拉提|nalati|nlt', '宁波|ningbo|nb', '攀枝花|panzhihua|pzh', '衢州|quzhou|qz', '秦皇岛|qinhuangdao|qhd', '庆阳|qingyang|qy', '齐齐哈尔|qiqihaer|qqhe', '三门峡|sanmenxia|smx', '石家庄|shijiazhuang|sjz', '沈阳|shenyang|sy', '思茅|simao|sm', '铜仁|tongren|tr',
-		'塔城|tacheng|tc', '腾冲|tengchong|tc', '台州|taizhou|tz', '通辽|tongliao|tl', '太原|taiyuan|ty', '威海|weihai|wh', '梧州|wuzhou|wz', '文山|wenshan|ws', '无锡|wuxi|wx', '潍坊|weifang|wf', '武夷山|wuyishan|wys', '乌兰浩特|wulanhaote|wlht', '温州|wenzhou|wz', '乌鲁木齐|wulumuqi|wlmq', '万州|wanzhou|wz', '乌海|wuhai|wh', '兴义|xingyi|xy', '西昌|xichang|xc', '襄樊|xiangfan|xf', '西宁|xining|xn', '锡林浩特|xilinhaote|xlht', '西双版纳|xishuangbanna|xsbn', '徐州|xuzhou|xz', '义乌|yiwu|yw', '永州|yongzhou|yz', '榆林|yulin|yl', '延安|yanan|ya',
-		'运城|yuncheng|yc', '烟台|yantai|yt', '银川|yinchuan|yc', '宜昌|yichang|yc', '宜宾|yibin|yb', '盐城|yancheng|yc', '延吉|yanji|yj', '玉树|yushu|ys', '伊宁|yining|yn', '珠海|zhuhai|zh', '昭通|zhaotong|zt', '张家界|zhangjiajie|zjj', '舟山|zhoushan|zs', '郑州|zhengzhou|zz', '中卫|zhongwei|zw', '芷江|zhijiang|zj', '湛江|zhanjiang|zj' ];
-
-/* 正则表达式 筛选中文城市名、拼音、首字母 */
-
-ZJ.regEx = /^([\u4E00-\u9FA5\uf900-\ufa2d]+)\|(\w+)\|(\w)\w*$/i;
-ZJ.regExChiese = /([\u4E00-\u9FA5\uf900-\ufa2d]+)/;
-
+// 入口
 (function() {
 	var citys = ZJ.allCity, match, letter, regEx = ZJ.regEx, reg2 = /^[a-h]$/i, reg3 = /^[i-p]$/i, reg4 = /^[q-z]$/i;
 	if (!ZJ.oCity) {
 		ZJ.oCity = {
 			hot : {},
-			ABCDEFGH : {},
-			IJKLMNOP : {},
-			QRSTUVWXYZ : {}
+			ABCD : {},
+			EFGH : {},
+			IJKL : {},
+			MNOPQ : {},
+			RSTUVW : {},
+			XYZ : {}
 		};
-		// console.log(citys.length);
-		for (var i = 0, n = citys.length; i < n; i++) {
-			match = regEx.exec(citys[i]);
-			letter = match[3].toUpperCase();
-			if (reg2.test(letter)) {
-				if (!ZJ.oCity.ABCDEFGH[letter])
-					ZJ.oCity.ABCDEFGH[letter] = [];
-				ZJ.oCity.ABCDEFGH[letter].push(match[1]);
-			} else if (reg3.test(letter)) {
-				if (!ZJ.oCity.IJKLMNOP[letter])
-					ZJ.oCity.IJKLMNOP[letter] = [];
-				ZJ.oCity.IJKLMNOP[letter].push(match[1]);
-			} else if (reg4.test(letter)) {
-				if (!ZJ.oCity.QRSTUVWXYZ[letter])
-					ZJ.oCity.QRSTUVWXYZ[letter] = [];
-				ZJ.oCity.QRSTUVWXYZ[letter].push(match[1]);
-			}
-			/* 热门城市 前16条 */
-			if (i < 16) {
-				if (!ZJ.oCity.hot['hot'])
-					ZJ.oCity.hot['hot'] = [];
-				ZJ.oCity.hot['hot'].push(match[1]);
+
+		for (key in ZJ.oCity) {
+
+			if (key == "hot") {
+				for (j in ZJ.hotCitys) {
+					var city = ZJ.hotCitys[j];
+					match = regEx.exec(city);
+					if (!ZJ.oCity.hot['hot']) {
+						ZJ.oCity.hot['hot'] = [];
+					} else {
+						ZJ.oCity.hot['hot'].push(match[1]);
+					}
+				}
+			} else {
+				for ( var i = 0; i < key.length; i++) {
+					var letter = "" + key.charAt(i);
+					var itemCitys = ZJ.allCitys[letter];
+					for (j in itemCitys) {
+						var city = itemCitys[j];
+						ZJ.allCity.push(city);
+						match = regEx.exec(city);
+						if (!ZJ.oCity[key][letter]) {
+							ZJ.oCity[key][letter] = [];
+							ZJ.oCity[key][letter].push(match[1]);
+						} else {
+							ZJ.oCity[key][letter].push(match[1]);
+						}
+					}
+				}
 			}
 		}
 	}
 })();
-/* 城市HTML模板 */
-ZJ._template = [ '<p class="tip">热门城市(支持汉字/拼音)</p>', '<ul>', '<li class="on">热门城市</li>', '<li>ABCDEFGH</li>', '<li>IJKLMNOP</li>', '<li>QRSTUVWXYZ</li>', '</ul>' ];
 
 /*******************************************************************************
  * 城市控件构造函数
@@ -154,7 +181,6 @@ ZJ._template = [ '<p class="tip">热门城市(支持汉字/拼音)</p>', '<ul>',
  */
 
 ZJ.CitySelector = function() {
-
 	this.initialize.apply(this, arguments);
 };
 
@@ -169,13 +195,8 @@ ZJ.CitySelector.prototype = {
 		this.input = ZJ._m.$('#' + input);
 		this.inputEvent();
 	},
-
-	/***************************************************************************
-	 * @createWarp 创建城市BOX HTML 框架
-	 */
-
+	// 生成html
 	createWarp : function() {
-
 		var inputPos = ZJ._m.getPos(this.input);
 		var div = this.rootDiv = document.createElement('div');
 		var that = this;
@@ -191,7 +212,6 @@ ZJ.CitySelector.prototype = {
 			var target = ZJ._m.getTarget(event);
 			if (target == that.input)
 				return false;
-			// console.log(target.className);
 			if (that.cityBox)
 				ZJ._m.addClass('hide', that.cityBox);
 			if (that.ul)
@@ -220,7 +240,14 @@ ZJ.CitySelector.prototype = {
 		var childdiv = this.cityBox = document.createElement('div');
 		childdiv.className = 'cityBox';
 		childdiv.id = 'cityBox';
-		childdiv.innerHTML = ZJ._template.join('');
+		var _template = [ '<p class="tip">热门城市(支持汉字/拼音)</p>', '<ul>', '<li class="on">热门城市</li>' ];
+		for (key in ZJ.oCity) {
+			if (key != "hot") {
+				_template.push("<li>" + key + "</li>");
+			}
+		}
+		_template.push('</ul>');
+		childdiv.innerHTML = _template.join('');
 		var hotCity = this.hotCity = document.createElement('div');
 		hotCity.className = 'hotCity';
 		childdiv.appendChild(hotCity);
@@ -245,13 +272,13 @@ ZJ.CitySelector.prototype = {
 				// ckey按照ABCDEDG顺序排序
 				sortKey.sort();
 			}
-			for (var j = 0, k = sortKey.length; j < k; j++) {
+			for ( var j = 0, k = sortKey.length; j < k; j++) {
 				odl = document.createElement('dl');
 				odt = document.createElement('dt');
 				odd = document.createElement('dd');
 				odt.innerHTML = sortKey[j] == 'hot' ? '&nbsp;' : sortKey[j];
 				odda = [];
-				for (var i = 0, n = oCity[key][sortKey[j]].length; i < n; i++) {
+				for ( var i = 0, n = oCity[key][sortKey[j]].length; i < n; i++) {
 					str = '<a href="javascript:;">' + oCity[key][sortKey[j]][i] + '</a>';
 					odda.push(str);
 				}
@@ -281,10 +308,10 @@ ZJ.CitySelector.prototype = {
 		var lis = ZJ._m.$('li', this.cityBox);
 		var divs = ZJ._m.$('div', this.hotCity);
 		var that = this;
-		for (var i = 0, n = lis.length; i < n; i++) {
+		for ( var i = 0, n = lis.length; i < n; i++) {
 			lis[i].index = i;
 			lis[i].onclick = function() {
-				for (var j = 0; j < n; j++) {
+				for ( var j = 0; j < n; j++) {
 					ZJ._m.removeClass('on', lis[j]);
 					ZJ._m.addClass('hide', divs[j]);
 				}
@@ -305,7 +332,7 @@ ZJ.CitySelector.prototype = {
 	linkEvent : function() {
 		var links = ZJ._m.$('a', this.hotCity);
 		var that = this;
-		for (var i = 0, n = links.length; i < n; i++) {
+		for ( var i = 0, n = links.length; i < n; i++) {
 			links[i].onclick = function() {
 				that.input.value = this.innerHTML;
 				ZJ._m.addClass('hide', that.cityBox);
@@ -369,7 +396,6 @@ ZJ.CitySelector.prototype = {
 	 */
 
 	createUl : function() {
-		// console.log('createUL');
 		var str;
 		var value = ZJ._m.trim(this.input.value);
 		// 当value不等于空的时候执行
@@ -377,7 +403,7 @@ ZJ.CitySelector.prototype = {
 			var reg = new RegExp("^" + value + "|\\|" + value, 'gi');
 			// 此处需设置中文输入法也可用onpropertychange
 			var searchResult = [];
-			for (var i = 0, n = ZJ.allCity.length; i < n; i++) {
+			for ( var i = 0, n = ZJ.allCity.length; i < n; i++) {
 				if (reg.test(ZJ.allCity[i])) {
 					var match = ZJ.regEx.exec(ZJ.allCity[i]);
 					if (searchResult.length !== 0) {
@@ -443,7 +469,7 @@ ZJ.CitySelector.prototype = {
 			this.count++;
 			if (this.count > len - 1)
 				this.count = 0;
-			for (var i = 0; i < len; i++) {
+			for ( var i = 0; i < len; i++) {
 				ZJ._m.removeClass('on', lis[i]);
 			}
 			ZJ._m.addClass('on', lis[this.count]);
@@ -476,7 +502,7 @@ ZJ.CitySelector.prototype = {
 	liEvent : function() {
 		var that = this;
 		var lis = ZJ._m.$('li', this.ul);
-		for (var i = 0, n = lis.length; i < n; i++) {
+		for ( var i = 0, n = lis.length; i < n; i++) {
 			ZJ._m.on(lis[i], 'click', function(event) {
 				event = ZJ._m.getEvent(event);
 				var target = ZJ._m.getTarget(event);
