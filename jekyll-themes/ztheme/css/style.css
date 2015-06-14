@@ -618,7 +618,15 @@ a:hover {
 
 .main-article ol {
 	list-style-type: decimal-leading-zero;
+	margin:10px;
+	padding-left:10px;
 }
+
+.main-article ol li {
+	line-height:20px;
+	height:20px;
+}
+
 
 .main-article em {
 	font-style: italic;
