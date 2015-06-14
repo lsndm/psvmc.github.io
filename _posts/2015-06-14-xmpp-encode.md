@@ -8,6 +8,8 @@ category: xmpp
 
 ---
 
+
+##描述
 openfire是一个非常不错的IM服务器，而且是纯Java实现，具有多个平台的版本，他的数据存储可以采用多种数据库，如MySQL，Oracle等。  
 
 在实际使用时大家遇到最多的就是采用MySQL数据库后的中文乱码问题，这个问题十分有趣，而且从现象上可以看出openfire内部的一些机制。  
@@ -16,7 +18,9 @@ openfire是一个非常不错的IM服务器，而且是纯Java实现，具有多
 
 1. openfire具有应用层缓存
 2. 数据库编码存在问题
-  
+
+##解决方法
+###数据库设置
 解决办法其实也很简单，首先要保证你为openfire创建的数据库编码是utf8的，建表语句如下：
 
 	create database openfire default character set utf8 default collate utf8_general_ci
@@ -26,7 +30,7 @@ openfire是一个非常不错的IM服务器，而且是纯Java实现，具有多
  	alter database openfire default character set utf8 default collate utf8_general_ci;
 
  
-
+###连接字符串设置
 其次，在初始化openfire数据库，即第一次配置openfire服务器时，在连接数据库那里的连接串要加入字符编码格式，必须在连接里增加UTF8的编码要求，连接字符串设置如下：
 
 	jdbc:mysql://127.0.0.1:3306/openfire?useUnicode=true&characterEncoding=utf8
