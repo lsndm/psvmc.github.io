@@ -1,7 +1,7 @@
 .city_select {
 	float: left;
 	margin-top: 5px;
-	font-family: "微软雅黑";
+	font-family: "Microsoft YaHei";
 	height: 30px;
 	line-height: 30px;
 	border: 1px solid #ddd;
@@ -10,7 +10,7 @@
 }
 
 .citySelector {
-	font: 14px/1.5 '微软雅黑', arial, \5b8b\4f53;
+	font: 14px/1.5 'Microsoft YaHei', arial, \5b8b\4f53;
 	background: #fff;
 	text-align: left;
 }
