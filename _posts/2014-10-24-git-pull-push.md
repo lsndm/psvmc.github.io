@@ -54,6 +54,16 @@ category: git
 + 添加到git index中 `Add to Git index`
 + commit并push `commit and push`
 
+##设置用户名与邮箱
+###设置
+	git config --global user.name "psvmc"
+	git config --global user.email "183518918@qq.com"
+###查看
+	git config --get user.name
+	git config --get user.email
+
+
+
 
 
 
