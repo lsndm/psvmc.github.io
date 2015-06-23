@@ -29,7 +29,7 @@ category: swift
 + 查看用到的镜像  
 `gem sources -l`   
 + 安装  
-`gem install cocoapods`
+`sudo gem install cocoapods`
   
 ###使用
 
