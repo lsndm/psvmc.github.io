@@ -18,13 +18,17 @@ category: ios
                 userbookListNotification ->Void in
                 println("通知传过来的数据为：\(userbookListNotification.object?.description)");
         });
-        
+  
+      
 ####发送通知
 	NSNotificationCenter.defaultCenter().postNotificationName("userbookListNotification", object: "我是发送的信息");  
 	
 > 注意:  
 > 必须先添加观察者才能接受发送的通知  
 > 所以只适合从子页面传值到父页面
+
+
+---
 
 ###通过segue传值
 新的方式，在`storybord`的`A`和`B`两个ViewController拖出一条`segue`，假如从`A`跳到`B`  
@@ -57,6 +61,8 @@ category: ios
     
 B中的按钮拖一条线到`BController`的`Exit`上，选择`returnToA`
  
+ ---
+ 
 ###通过文件传值NSUserDefaults和Sqllite等  
  以下说一下NSUserDefaults的赋值与取值
 ####赋值
@@ -66,9 +72,14 @@ B中的按钮拖一条线到`BController`的`Exit`上，选择`returnToA`
 	defaults.synchronize();
 ####取值
 	var userId: String? = NSUserDefaults.standardUserDefaults().stringForKey("userID")
+
+---
 	
 ###通过AppDelegate传值
 	var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+
+---
+
 	
 ###通过协议
 假设A传值到B  
