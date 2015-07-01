@@ -22,15 +22,15 @@ isArchive: true
 					{% capture tempPostCategory %}
 						{{post.category|downcase}}
 					{% endcapture %} 
-				{% if tempPostCategory == tempCategory %}
-				<li>
-				<a href="{{ post.url }}">
-					<div class="post_date">{{ post.date | date_to_utc | date: '%Y-%m-%d' }}</div>
-					<div class="post_title">{{ post.title }}</div>
-					<div class="post_keywords">{{ post.keywords }}</div>
-				</a>
-				</li>
-				{% endif %}
+					{% if tempPostCategory == tempCategory %}
+					<li>
+					<a href="{{ post.url }}">
+						<div class="post_date">{{ post.date | date_to_utc | date: '%Y-%m-%d' }}</div>
+						<div class="post_title">{{ post.title }}</div>
+						<div class="post_keywords">{{ post.keywords }}</div>
+					</a>
+					</li>
+					{% endif %}
 			   	{% endfor %}
 			</ul>
 			{% endfor %}
