@@ -693,7 +693,7 @@ a:hover {
 
 .main-article .article-year li {
 	width: 150px;
-	height: 170px;
+	height: 180px;
 	float: left;
 	border: 2px solid #fff;
 	list-style-type: none;
@@ -725,7 +725,7 @@ a:hover {
 	font-size:12px;
 	overflow:hidden;
 	border: 1px solid rgb(238, 238, 238);
-	padding: 1px 2px;
+	padding: 1px 1px;
 	height: 20px;
 	-webkit-border-radius: 3px; /*圆角*/
     -moz-border-radius: 3px;
