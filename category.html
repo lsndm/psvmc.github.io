@@ -18,11 +18,7 @@ isArchive: true
 			<h3>{{ category | first }} 共{{ category | last | size }}篇</h3>
 			{% capture tempCategory %}{{category | first}}{% endcapture %}
 			<ul class="article-year">
-				{% for post in site.posts %} 
-					{% capture tempPostCategory %}
-						{{post.category|downcase}}
-					{% endcapture %} 
-					{% if tempPostCategory == tempCategory %}
+				{% for post in site.posts %}{% capture tempPostCategory %}{{post.category|downcase}}{% endcapture %}{% if tempPostCategory == tempCategory %}
 					<li>
 					<a href="{{ post.url }}">
 						<div class="post_date">{{ post.date | date_to_utc | date: '%Y-%m-%d' }}</div>
@@ -30,8 +26,7 @@ isArchive: true
 						<div class="post_keywords">{{ post.keywords }}</div>
 					</a>
 					</li>
-					{% endif %}
-			   	{% endfor %}
+				{% endif %}{% endfor %}
 			</ul>
 			{% endfor %}
 			<!-- 随机色块 -->
