@@ -721,7 +721,6 @@ a:hover {
 	display: block;
 	color: #FFF;
 	text-align: center;
-	width: 100%;
 	font-size:12px;
 	overflow:hidden;
 	border: 1px solid #FFF;
@@ -734,11 +733,11 @@ a:hover {
 
 
 .main-article .article-year li a {
-	padding: 15px 15px;
+	padding: 10px 10px;
 	color: #000000;
 	display: block;
 	text-align: center;
-	height: 150px;
+	height: 160px;
 	overflow: hidden;
 }
 
