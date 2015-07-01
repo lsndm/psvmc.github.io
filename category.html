@@ -20,7 +20,11 @@ isArchive: true
 			<ul class="article-year fn-clear">
 				{% for post in site.posts %} {% capture tempPostCategory %}{{post.category|downcase}}{% endcapture %} {% if tempPostCategory == tempCategory %}
 				<li>
-					<a href="{{ post.url }}"><span>{{ post.date | date_to_utc | date: '%Y-%m-%d' }}</span>{{ post.title }}</a>
+				<a href="{{ post.url }}">
+					<span class="post_date">{{ post.date | date_to_utc | date: '%Y-%m-%d' }}</span>
+					{{ post.title }}
+					<span class="post_keywords">{{ post.keywords }}</span>
+				</a>
 				</li>
 				{% endif %} {% endfor %}
 			</ul>
