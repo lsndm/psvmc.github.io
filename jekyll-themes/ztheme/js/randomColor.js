@@ -5,7 +5,7 @@ function randomColor() {
 	$(".main-article li").each(function(i, item) {
 		randomNum = Math.floor(Math.random() * colorArray.length);
 		while (tempColor == randomNum) {
-			randomNum = Math.round(Math.random() * colorArray.length);
+			randomNum = Math.floor(Math.random() * colorArray.length);
 		}
 		$(item).css("background", colorArray[randomNum]);
 		tempColor = randomNum;
