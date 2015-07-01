@@ -692,7 +692,7 @@ a:hover {
 }
 
 .main-article .article-year li {
-	width: 130px;
+	width: 150px;
 	height: 170px;
 	float: left;
 	border: 2px solid #fff;
@@ -712,9 +712,8 @@ a:hover {
 	display: block;
 	color: #FFF;
 	text-align: center;
-	margin-bottom: 20px;
 	width: 100%;
-	height:128px;
+	height:97px;
 }
 
 .main-article .article-year li .post_keywords {
@@ -723,6 +722,7 @@ a:hover {
 	text-align: center;
 	width: 100%;
 	height:20px;
+	font-size:12px;
 }
 
 
@@ -731,7 +731,6 @@ a:hover {
 	color: #000000;
 	display: block;
 	text-align: center;
-	width: 100px;
 	height: 150px;
 	overflow: hidden;
 }
