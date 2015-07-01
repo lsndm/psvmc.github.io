@@ -1,5 +1,5 @@
 function randomColor() {
-	var colorArray = [ "#99CCFF", "#FFCC00", "#FF9966", "#66CCCC", "#99CCCC", "#CCFF99", "#99CC66", "#FF9900", "rgba(0, 153, 204, 0.4)", "#FF9966" ];
+	var colorArray = [ "#FF9900", "#336699", "#336666", "#0099CC", "#3366CC", "#009966", "#FF6600", "#CC6600"];
 	var tempColor = 0;
 	var randomNum = 0;
 	$(".main-article li").each(function(i, item) {
