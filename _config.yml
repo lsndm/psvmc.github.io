@@ -24,12 +24,16 @@ nav:
   - text: 分类归档
     url: /category.html
     target: _self
+  - text: 我的工具
+    url: /zjtools/index.html
+    target: _blank
   - text: 我的插件
     url: /zjplugin/index.html
     target: _blank
   - text: 第三方插件
     url: /otplugin/index.html
     target: _blank
+
 
 #theme config
 themes: /jekyll-themes/ztheme

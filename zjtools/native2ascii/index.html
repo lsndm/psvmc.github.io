@@ -1,0 +1,81 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>native2ascii工具</title>
+<style type="text/css">
+table {
+	height: 600px;
+	width: 100%;
+}
+textarea {
+	margin-left: 2px;
+	margin-right: 2px;
+	width: 100%;
+	margin-top: 2px;
+	margin-bottom: 2px;
+	height: 100%;
+	resize:none;
+}
+</style>
+<script type="text/javascript">
+	function native2ascii() {
+	var character=document.getElementById("characterTa").value.split("");
+	var ascii="";
+	for(var i=0;i<character.length;i++) {
+		var code=Number(character[i].charCodeAt(0));
+		if(!document.getElementById("ignoreLetter").checked||code>127) {
+			var charAscii=code.toString (16);
+			charAscii=new String("0000").substring(charAscii.length,4)+charAscii;
+			ascii+="\\u"+charAscii;
+		}else {
+			ascii+=character[i];
+		}
+	}document.getElementById("asciiTa").value=ascii;
+}
+function ascii2native() {
+	var character=document.getElementById("asciiTa").value.split("\\u");
+	if(character.length==1){
+		character=document.getElementById("asciiTa").value.split("\\U");
+	}
+	var native1=character[0];
+	for(var i=1;i<character.length;i++) {
+		var code=character[i];
+		native1+=String.fromCharCode(parseInt("0x"+code.substring(0,4)));
+		if(code.length>4) {
+			native1+=code.substring(4,code.length);
+		}
+	}
+	
+	document.getElementById("characterTa").value=native1;
+}
+</script>
+</head>
+<body>
+<center>
+  <table>
+    <tr>
+      <td colspan="3"><h1  style="text-align:center">native2ascii</h1></td>
+    </tr>
+    <tr>
+      <td colspan="3">主要用于各类代码中各类本地字符的Unicode转换，可以将整个代码直接拷入转换，系统将自动跳过字母、数字与字符。</td>
+    </tr>
+    <tr>
+      <td colspan="3"><input type="checkbox" checked="true" id="ignoreLetter" name="ignoreLetter" />
+        不转换字母和数字。</td>
+    </tr>
+    <tr height="20">
+      <td>Native</td>
+      <td width="10">&nbsp;</td>
+      <td>Ascii</td>
+    </tr>
+    <tr style="height:90%;">
+      <td><textarea  onKeyUp="native2ascii()"  onKeyDown="native2ascii()" name="characterTa" id="characterTa"></textarea></td>
+      <td width="10"><input type="button"  onclick="native2ascii()"   value="&gt;&gt;" />
+        <br />
+        <input type="button"  onclick="ascii2native()"  value="&lt;&lt;" /></td>
+      <td><textarea onKeyUp="ascii2native()" onKeyDown="ascii2native()" name="asciiTa" id="asciiTa"></textarea></td>
+    </tr>
+  </table>
+</center>
+</body>
+</html>
