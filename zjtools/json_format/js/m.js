@@ -1,57 +1,66 @@
-	_uacct = "UA-2223138-1";
-	urchinTracker();
+_uacct = "UA-2223138-1";
 function onLoad() {
-    var version = getSilverlightVersion();
-    if (version) { __utmSetVar(version); }
+	var version = getSilverlightVersion();
+	if (version) {
+	}
 }
 function getSilverlightVersion() {
 
-    var version = 'No Silverlight';
+	var version = 'No Silverlight';
 
-    var container = null;
+	var container = null;
 
-    try {
+	try {
 
-        var control = null;
+		var control = null;
 
-        if (window.ActiveXObject) {
+		if (window.ActiveXObject) {
 
-            control = new ActiveXObject('AgControl.AgControl');
+			control = new ActiveXObject('AgControl.AgControl');
 
-        }
+		}
 
-        else {
+		else {
 
-            if (navigator.plugins['Silverlight Plug-In']) {
+			if (navigator.plugins['Silverlight Plug-In']) {
 
-                container = document.createElement('div');
+				container = document.createElement('div');
 
-                document.body.appendChild(container);
+				document.body.appendChild(container);
 
-                container.innerHTML= '<embed type="application/x-silverlight" src="data:," />';
+				container.innerHTML = '<embed type="application/x-silverlight" src="data:," />';
 
-                control = container.childNodes[0];
+				control = container.childNodes[0];
 
-            }
+			}
 
-        }
+		}
 
-        if (control) {
+		if (control) {
 
-            if (control.isVersionSupported('5.0')) { version = 'Silverlight/5.0'; }
+			if (control.isVersionSupported('5.0')) {
+				version = 'Silverlight/5.0';
+			}
 
-            else if (control.isVersionSupported('4.0')) { version = 'Silverlight/4.0'; }
+			else if (control.isVersionSupported('4.0')) {
+				version = 'Silverlight/4.0';
+			}
 
-            else if (control.isVersionSupported('3.0')) { version = 'Silverlight/3.0'; }
+			else if (control.isVersionSupported('3.0')) {
+				version = 'Silverlight/3.0';
+			}
 
-            else if (control.isVersionSupported('2.0')) { version = 'Silverlight/2.0'; }
-            else if (control.isVersionSupported('1.0')) { version = 'Silverlight/1.0'; }
-        }
-    }
-    catch (e) { }
-    if (container) {
-        document.body.removeChild(container);
-    }
-    return version;
+			else if (control.isVersionSupported('2.0')) {
+				version = 'Silverlight/2.0';
+			} else if (control.isVersionSupported('1.0')) {
+				version = 'Silverlight/1.0';
+			}
+		}
+	} catch (e) {
+	}
+	if (container) {
+		document.body.removeChild(container);
+	}
+	return version;
 }
 onLoad();
