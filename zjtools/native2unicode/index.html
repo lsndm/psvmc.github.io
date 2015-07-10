@@ -1,7 +1,7 @@
 ﻿<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>native2ascii工具</title>
+<title>中文转Unicode工具</title>
 <style type="text/css">
 table {
 	height: 600px;
@@ -54,7 +54,7 @@ function ascii2native() {
 <center>
   <table>
     <tr>
-      <td colspan="3"><h1  style="text-align:center">native2ascii</h1></td>
+      <td colspan="3"><h1  style="text-align:center">中文转Unicode工具</h1></td>
     </tr>
     <tr>
       <td colspan="3">主要用于各类代码中各类本地字符的Unicode转换，可以将整个代码直接拷入转换，系统将自动跳过字母、数字与字符。</td>
@@ -69,11 +69,15 @@ function ascii2native() {
       <td>Ascii</td>
     </tr>
     <tr style="height:90%;">
-      <td><textarea  onKeyUp="native2ascii()"  onKeyDown="native2ascii()" name="characterTa" id="characterTa"></textarea></td>
+      <td>
+	  	<textarea  onKeyUp="native2ascii()" onpaste="native2ascii()" name="characterTa" id="characterTa"></textarea>
+	  </td>
       <td width="10"><input type="button"  onclick="native2ascii()"   value="&gt;&gt;" />
         <br />
         <input type="button"  onclick="ascii2native()"  value="&lt;&lt;" /></td>
-      <td><textarea onKeyUp="ascii2native()" onKeyDown="ascii2native()" name="asciiTa" id="asciiTa"></textarea></td>
+		<td>
+	  		<textarea onKeyUp="ascii2native()" onpaste="ascii2native()"  name="asciiTa" id="asciiTa"></textarea>
+		</td>
     </tr>
   </table>
 </center>

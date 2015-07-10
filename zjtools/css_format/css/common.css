@@ -1,0 +1,188 @@
+*,html, body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, blockquote {
+    margin: 0;
+}
+
+img, body, html, div, td, th, h3, input{
+    border: 0;
+    font-family: Tahoma, Arial, Verdana, sans-serif;
+}
+input.text, textarea.textarea, select.select, input.input, textarea.input, select.input {
+	background:#FFFFFF url(/static/default/images/fieldbg.gif) repeat-x scroll center top;
+	border-color:#7C7C7C #C3C3C3 #DDDDDD;
+	border-style:solid;
+	border-width:1px;
+	color:#333333;
+	font-size:14px;
+	margin:0;
+	padding:2px;
+}
+select.select, input.input{
+	height:16px;
+}
+a:link, a:visited {
+color:#0063DC;
+outline-style:none;
+outline-width:medium;
+text-decoration:none;
+}
+a:hover{color:#FFFFFF; background:#0063DC;text-decoration:none;}
+.aclick{
+	background:#B9E2FF none repeat scroll 0 0;
+	border-color:#094FA1 #66ACFF #66ACFF #094FA1;
+	border-style:solid;
+	border-width:1px;
+	font-weight:bolder;
+	color:#0063DC;
+	padding:1px;
+	display:block;
+}
+.aclick1{
+	background:#B9E2FF none repeat scroll 0 0;
+	border-color:#094FA1 #66ACFF #66ACFF #094FA1;
+	border-style:solid;
+	border-width:1px;
+	font-weight:bolder;
+	color:#0063DC;
+	padding:1px;
+}
+.x-panel-header ul li{
+	float:left;
+	display:inline;
+	padding:2px;
+}
+.png {
+    behavior: expression((T=this,T.runtimeStyle.behavior="none")&&(T.p?0:((T.runtimeStyle.backgroundImage = "none", T.runtimeStyle.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + T.src + "',sizingMethod='image')", T.src = "/s.gif" ) ), T.p = 1 ) )
+}
+.error, .tips1, .success {padding:.15em;margin-bottom:1.2em;border:2px solid #ddd;}
+.error {background:#FBE3E4;color:#8a1f11;border-color:#FBC2C4;}
+.tips1 {position:absolute;background:#FFF6BF;color:#514721;border-color:#FFD324;margin-top:3px;}
+.success {background:#E6EFC2;color:#264409;border-color:#C6D880;}
+span.addbtn{
+	float:left;
+}
+/**Rounded corners**/
+.nifty{
+	position:absolute;
+    display:none;
+    color:#637a31;
+}
+.nifty{ margin: 0 auto;z-index:999;}
+.nifty .content { padding:0 5px;font-size:16px;}
+.b1,.b2,.b3,.b4,.b1b,.b2b,.b3b,.b4b,.b{display:block;overflow:hidden;}
+.b1,.b2,.b3,.b1b,.b2b,.b3b{height:1px;}
+.b2,.b3,.b4,.b2b,.b3b,.b4b,.b{border-left:1px solid #999;border-right:1px solid #999;}
+.b1,.b1b{margin:0 5px;background:#999;}
+.b2,.b2b{margin:0 3px;border-width:2px;}
+.b3,.b3b{margin:0 2px;}
+.b4,.b4b{height:2px;margin:0 1px;}
+.d1{background:#F7F8F9;}
+.tipsShow{
+	display:block;
+}
+/**end**/
+
+span.addbtn ul{
+	margin-top:10px;
+	padding:.15em;
+}
+span.addbtn ul li{
+	float:left;
+	display:inline;
+	padding-left:30px;
+}
+.selectsite{
+    width:auto;
+    height:20px;
+    margin:-2px 0 0 -2px;
+    background:#eee;
+}
+.general,.personalized{
+	font-family:verdana,sans-serif;
+	font-weight:normal;
+}
+#copyright{
+	clear:both;
+	margin:0 auto;
+	position:relative;
+	text-align:right;
+	font-size:12px;
+	padding:10px;
+	width:950px;
+}
+.main {
+    width: 950px;
+    margin: 0 auto;
+    text-align: left;
+    position: relative;
+}
+#conditions{
+	margin: 10px 0;
+}
+#bottom {
+    margin: 10px 20px;
+    padding: 10px;
+    text-align: right;
+    font-size: 12px;
+}
+
+.miibeian a:link {
+    color: #cccccc;
+    text-decoration: none;
+}
+
+.miibeian a:visited {
+    color: #cccccc;
+    text-decoration: none;
+}
+
+.miibeian a:hover {
+    color: #999999;
+    background: none;
+}
+
+.miibeian a:active {
+    color: #999999;
+    background: none;
+}
+.button {
+	background:#2680E9 none repeat scroll 0 0;
+	border-color:#66ACFF #094FA1 #094FA1 #66ACFF;
+	border-style:solid;
+	border-width:1px;
+	color:#FFFFFF;
+	cursor:pointer;
+	display:block;
+	font-size:12px;
+	height:23px;
+	line-height:20px;
+	padding:0 5px;
+	text-align:center;
+	vertical-align:middle;
+}
+.yregasterisk{
+	font-family: verdana, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #F68622;
+	font-weight: bold;
+}
+.hidden{
+	display:none;
+}
+.code{
+	font-family:"Courier New",Courier,monospace;
+}
+.top {
+    height: 100px;
+    overflow: hidden;
+    position: relative;
+    background: url(/static/default/images/topbg.jpg);
+    background-repeat: repeat-x;
+    background-position: top;
+}
+input#ip{
+	width:300px;
+	height:24px;
+	font-size:20px;
+	font-weight:bold;
+	border:1px solid #999;
+}
