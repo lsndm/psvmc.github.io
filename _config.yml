@@ -4,6 +4,7 @@ highlighter: pygments
 permalink: /:title.html
 paginate: 15
 baseurl: "/"
+excerpt_separator: "<!-- more -->"
 exclude: ['vendor', 'README.md', 'Gemfile', 'Gemfile.lock', 'config.ru', 'unicorn.rb', 'Procfile']
 
 #站点基础配置
