@@ -9,28 +9,28 @@ isArchive: true
 	<div class="ztheme-title">
 		<h3 class="ztheme-title-item">
 			分类归档
-			<span>(共{[ site.posts | size ]}篇)</span>
+			<span>(共{{ site.posts | size }}篇)</span>
 		</h3>
 	</div>
 	<div class="ztheme-post">
 		<div class="main-article-contant">
 			{% for category in site.categories %}
-			<h3>{[ category | first ]} 共{[ category | last | size ]}篇</h3>
-			{% capture tempCategory %}{[category | first]}{% endcapture %}
+			<h3>{{ category | first }} 共{{ category | last | size }}篇</h3>
+			{% capture tempCategory %}{{category | first}}{% endcapture %}
 			<ul class="article-year fn-clear">
-				{% for post in site.posts %}{% capture tempPostCategory %}{[post.category|downcase]}{% endcapture %}{% if tempPostCategory == tempCategory %}
+				{% for post in site.posts %}{% capture tempPostCategory %}{{post.category|downcase}}{% endcapture %}{% if tempPostCategory == tempCategory %}
 					<li>
-					<a href="{[ post.url ]}">
-						<div class="post_date">{[ post.date | date_to_utc | date: '%Y-%m-%d' ]}</div>
-						<div class="post_title">{[ post.title ]}</div>
-						<div class="post_keywords">{[ post.keywords ]}</div>
+					<a href="{{ post.url }}">
+						<div class="post_date">{{ post.date | date_to_utc | date: '%Y-%m-%d' }}</div>
+						<div class="post_title">{{ post.title }}</div>
+						<div class="post_keywords">{{ post.keywords }}</div>
 					</a>
 					</li>
 				{% endif %}{% endfor %}
 			</ul>
 			{% endfor %}
 			<!-- 随机色块 -->
-			<script type="text/javascript" src="{[ site.themes ]}/js/randomColor.js"></script>
+			<script type="text/javascript" src="{{ site.themes }}/js/randomColor.js"></script>
 			<script type="text/javascript">
 				$(document).ready(function() {
 					randomColor();

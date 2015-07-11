@@ -5,19 +5,19 @@
 <META http-equiv="Cache-Control" content="no-siteapp" />
 <meta name="baidu-site-verification" content="KLY6sTPdzP" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-<title>{% if page.title %} {[ page.title ]} {% else %} {[ site.title ]} {% endif %}</title>
+<title>{% if page.title %} {{ page.title }} {% else %} {{ site.title }} {% endif %}</title>
 <meta name="generator" content="Jekyll" />
-<meta name="author" content="{[ site.author.name ]}" />
-<meta name="description" content="{% if page.description %}{[ page.description ]}{% else %}{[ site.description ]}{% endif %}" />
-<meta name="keywords" content="{% if page.keywords %}{[ page.keywords | join: ',' ]}{% else %}{[ site.keywords | join: ',']}{% endif %}" />
+<meta name="author" content="{{ site.author.name }}" />
+<meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}" />
+<meta name="keywords" content="{% if page.keywords %}{{ page.keywords | join: ',' }}{% else %}{{ site.keywords | join: ','}}{% endif %}" />
 <!-- //页面样式 -->
-<link rel="stylesheet" href="{[ site.themes ]}/css/style.css" type="text/css" />
-<link rel="alternate" type="application/atom+xml" title="Recent Entries" href="{[ site.feed ]}" />
+<link rel="stylesheet" href="{{ site.themes }}/css/style.css" type="text/css" />
+<link rel="alternate" type="application/atom+xml" title="Recent Entries" href="{{ site.feed }}" />
 <link href="http://libs.baidu.com/fontawesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
-<link rel="shortcut icon" href="{[ site.themes ]}/images/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="{{ site.themes }}/images/favicon.ico" type="image/x-icon" />
 <!-- jquery -->
 <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.8.3/jquery.js"></script>
-<!--[if lt IE 9]><script src="{[ site.themes ]}/js/html5.js"></script><![endif]-->
+<!--[if lt IE 9]><script src="{{ site.themes }}/js/html5.js"></script><![endif]-->
 
 </head>
 <body id="ztheme">
@@ -25,39 +25,39 @@
 		<section class="head" id="ztheme-head">
 			<header class="header" id="ztheme-header">
 				<h1 class="logo">
-					<a href="/">{[ site.title ]}</a>
+					<a href="/">{{ site.title }}</a>
 				</h1>
-				<h2 class="subtitle">{[ site.subTitle ]}</h2>
+				<h2 class="subtitle">{{ site.subTitle }}</h2>
 			</header>
 			<nav class="nav" id="ztheme-nav">
 				<ul class="nav-list">
 					{% for link in site.nav %} {% assign active = nil %} {% if page.url == link.url%} {% assign active = 'nav-item-active' %} {% endif %}
-					<li class="nav-item {[ active ]}"><a href="{[ link.url ]}" target="{[ link.target ]}"> {[ link.text ]} </a> {[ indicator ]}</li> {% endfor %}
+					<li class="nav-item {{ active }}"><a href="{{ link.url }}" target="{{ link.target }}"> {{ link.text }} </a> {{ indicator }}</li> {% endfor %}
 				</ul>
 			</nav>
 		</section>
-		<section class="main" id="ztheme-main">{[ content ]}</section>
+		<section class="main" id="ztheme-main">{{ content }}</section>
 		<footer class="foot" id="ztheme-foot">
 			<div class="footer fn-clear">
 				<h1 class="logo"></h1>
 			</div>
 			<div class="copyright">
 				<div class="copyright-cnt fn-clear">
-					{% for link in site.follow %} <a class="follow" href="{[ link.url ]}" target="_blank"> <i class="fa {[ link.class ]}"></i>
+					{% for link in site.follow %} <a class="follow" href="{{ link.url }}" target="_blank"> <i class="fa {{ link.class }}"></i>
 					</a> {% endfor %}
 					<p class="text">
-						© 2014-2017 &nbsp; <a href="/index.html" style="text-decoration:none;">{[ site.title ]}</a>
+						© 2014-2017 &nbsp; <a href="/index.html" style="text-decoration:none;">{{ site.title }}</a>
 					</p>
 				</div>
 			</div>
 		</footer>
 	</div>
-	<script type="text/javascript" src="{[ site.themes ]}/js/jquery.scrollTo.min.js"></script>
-	<script type="text/javascript" src="{[ site.themes ]}/js/common.js"></script>
+	<script type="text/javascript" src="{{ site.themes }}/js/jquery.scrollTo.min.js"></script>
+	<script type="text/javascript" src="{{ site.themes }}/js/common.js"></script>
 	<script type="text/javascript">
         var headImgArr = [];
         {% for imgsrc in site.headimg %}
-            headImgArr.push("{[ imgsrc.item ]}");
+            headImgArr.push("{{ imgsrc.item }}");
         {% endfor %}
         if(headImgArr.length <= 0) {
             headImgArr = ["/jekyll-themes/ztheme/images/hdbg01.jpg"];
