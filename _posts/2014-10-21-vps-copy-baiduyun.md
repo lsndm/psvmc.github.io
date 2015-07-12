@@ -4,7 +4,7 @@ layout: post
 title: 服务器备份至百度云
 description: 服务器备份至百度云
 keywords: vps
-category: vps
+categories: vps
 
 ---
 ##安装
