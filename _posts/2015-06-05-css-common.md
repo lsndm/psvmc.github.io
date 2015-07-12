@@ -27,7 +27,9 @@ category: css
 
 ##禁止选择
 
-	-moz-user-select: none; /*火狐*/
+	moz-user-select: -moz-none;/*火狐浏览器*/
+	-moz-user-select: none;/*火狐浏览器*/
+	-o-user-select: none;/*opera浏览器*/
 	-webkit-user-select: none; /*webkit浏览器*/
 	-ms-user-select: none; /*IE10*/
 	-khtml-user-select: none; /*早期浏览器*/
