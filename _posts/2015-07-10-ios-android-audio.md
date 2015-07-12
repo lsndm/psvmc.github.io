@@ -4,7 +4,7 @@ layout: post
 title: iOS Android音频格式的选择
 description: iOS Android音频格式的选择
 keywords: ios,android,audio
-category: audio
+categories: ios android audio
 
 ---
 
