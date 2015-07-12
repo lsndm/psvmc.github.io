@@ -20,7 +20,7 @@ comment: true
 <link rel="alternate" type="application/atom+xml" title="Recent Entries" href="{{ site.feed }}" />
 <link href="http://libs.baidu.com/fontawesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
 <link rel="shortcut icon" href="{{ site.themes }}/images/favicon.ico" type="image/x-icon" />
-<!-- jquery --> 
+<!-- jquery -->
 <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.8.3/jquery.js"></script>
 <!--[if lt IE 9]><script src="{{ site.themes }}/js/html5.js"></script><![endif]-->
 
@@ -37,7 +37,11 @@ comment: true
 			<nav class="nav" id="ztheme-nav">
 				<ul class="nav-list">
 					{% for link in site.nav %} {% assign active = nil %} {% if page.url == link.url%} {% assign active = 'nav-item-active' %} {% endif %}
-					<li class="nav-item {{ active }}"><a href="{{ link.url }}"> {{ link.text }} </a> {{ indicator }}</li> {% endfor %}
+					<li class="nav-item {{ active }}">
+						<a href="{{ link.url }}"> {{ link.text }} </a>
+						{{ indicator }}
+					</li>
+					{% endfor %}
 				</ul>
 			</nav>
 		</section>
@@ -57,17 +61,83 @@ comment: true
 				</div>
 			</article>
 
-			<!-- 代码高亮 -->
-			<link href="{{ site.themes }}/google-code-prettify/css/mine.css" rel="stylesheet" type="text/css" media="all" />
-<script src="http://apps.bdimg.com/libs/prettify/r298/prettify.js" type="text/javascript"></script>
-<script type="text/javascript">
+
+			<nav class="pagination fn-clear" id="ztheme-paging">
+				<div class="pagination-list">
+					{% if page.previous %}
+					<a class="prev" href="{{ page.previous.url }}" rel="bookmark">
+						<i class="fa fa-chevron-circle-left"></i>
+						{{ page.previous.title | truncatewords:5 }}
+					</a>
+					{% endif %} {% if page.next %}
+					<a class="next" href="{{ page.next.url }}" rel="bookmark">
+						{{ page.next.title | truncatewords:5 }}
+						<i class="fa fa-chevron-circle-right"></i>
+					</a>
+					{% endif %}
+				</div>
+			</nav>
+			<div class="comment">
+				{% if site.disqus.config %}
+				<div class="comment-cnt">
+					<div id="disqus_thread"></div>
+				</div>
+				{% else %} {% if site.duoshuo.config %}
+				<div class="comment-cnt">
+					<div class="ds-thread"></div>
+				</div>
+				{% endif %} {% endif %}
+			</div>
+		</section>
+		<footer class="foot" id="ztheme-foot">
+			<div class="footer fn-clear">
+				<h1 class="logo"></h1>
+			</div>
+			<div class="copyright">
+				<div class="copyright-cnt fn-clear">
+					{% for link in site.follow %}
+					<a class="follow" href="{{ link.url }}" target="_blank">
+						<i class="fa {{ link.class }}"></i>
+					</a>
+					{% endfor %}
+					<p class="text">
+						© 2014-2017 &nbsp;
+						<a href="/index.html" style="text-decoration:none;">PSVMC</a>
+					</p>
+				</div>
+			</div>
+		</footer>
+	</div>
+	<script type="text/javascript" src="{{ site.themes }}/js/jquery.scrollTo.min.js"></script>
+	<script type="text/javascript" src="{{ site.themes }}/js/common.js"></script>
+
+	<script type="text/javascript">
+        var headImgArr = [];
+        {% for imgsrc in site.headimg %}
+            headImgArr.push("{{ imgsrc.item }}");
+        {% endfor %}
+        if(headImgArr.length <= 0) {
+            headImgArr = ["/jekyll-themes/ztheme/images/hdbg01.jpg"];
+            var item = 0;
+        } else {
+            var item = Math.floor(Math.random() * (headImgArr.length));
+        }
+        $("#ztheme-head").css({
+            "background-image": "url(" + headImgArr[item] + ")"
+        });
+    </script>
+
+	<!-- 代码高亮 -->
+	<link href="{{ site.themes }}/google-code-prettify/css/mine.css" rel="stylesheet" type="text/css" media="all" />
+	<script src="http://apps.bdimg.com/libs/prettify/r298/prettify.js" type="text/javascript"></script>
+	<script type="text/javascript">
 	$(function() {
 		$('pre').addClass('prettyprint').attr('style', 'overflow:auto');
 		window.prettyPrint && prettyPrint();
 	});
-</script>
-<!-- 目录生成 -->
-<script type="text/javascript">
+	</script>
+	<!-- 目录生成 -->
+	<script type="text/javascript">
 	function categoryCreater(articleId) {
 		var cateh1 = "#" + articleId + " h1,";
 		var cateh2 = "#" + articleId + " h2,";
@@ -96,59 +166,7 @@ comment: true
 		$(".-ml").css("margin-left", 0).css("font-size", "20px");
 	}
 	categoryCreater('main-article-contant');
-</script>
-			<nav class="pagination fn-clear" id="ztheme-paging">
-				<div class="pagination-list">
-					{% if page.previous %} <a class="prev" href="{{ page.previous.url }}" rel="bookmark"> <i class="fa fa-chevron-circle-left"></i> {{ page.previous.title | truncatewords:5 }}
-					</a> {% endif %} {% if page.next %} <a class="next" href="{{ page.next.url }}" rel="bookmark"> {{ page.next.title | truncatewords:5 }} <i class="fa fa-chevron-circle-right"></i>
-					</a> {% endif %}
-				</div>
-			</nav>
-			<div class="comment">
-				{% if site.disqus.config %}
-				<div class="comment-cnt">
-					<div id="disqus_thread"></div>
-				</div>
-				{% else %} {% if site.duoshuo.config %}
-				<div class="comment-cnt">
-					<div class="ds-thread"></div>
-				</div>
-				{% endif %} {% endif %}
-			</div>
-		</section>
-		<footer class="foot" id="ztheme-foot">
-			<div class="footer fn-clear">
-				<h1 class="logo"></h1>
-			</div>
-			<div class="copyright">
-				<div class="copyright-cnt fn-clear">
-					{% for link in site.follow %} <a class="follow" href="{{ link.url }}" target="_blank"> <i class="fa {{ link.class }}"></i>
-					</a> {% endfor %}
-					<p class="text">
-						© 2014-2017 &nbsp; <a href="/index.html" style="text-decoration:none;">PSVMC</a>
-					</p>
-				</div>
-			</div>
-		</footer>
-	</div>
-	<script type="text/javascript" src="{{ site.themes }}/js/jquery.scrollTo.min.js"></script>
-	<script type="text/javascript" src="{{ site.themes }}/js/common.js"></script>
-
-	<script type="text/javascript">
-        var headImgArr = [];
-        {% for imgsrc in site.headimg %}
-            headImgArr.push("{{ imgsrc.item }}");
-        {% endfor %}
-        if(headImgArr.length <= 0) {
-            headImgArr = ["/jekyll-themes/ztheme/images/hdbg01.jpg"];
-            var item = 0;
-        } else {
-            var item = Math.floor(Math.random() * (headImgArr.length));
-        }
-        $("#ztheme-head").css({
-            "background-image": "url(" + headImgArr[item] + ")"
-        });
-    </script>
+	</script>
 	{% if page.comment %} {% if site.disqus.config %}
 	<script type="text/javascript">
             //disqus
