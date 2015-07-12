@@ -25,8 +25,8 @@ nav:
     url: /category.html
     target: _self
   - text: 我的工具
-    url: /zjtools/zjtools.html
-    target: _blank
+    url: /zjtools/index.html
+    target: _self
   - text: 我的插件
     url: /zjplugin/index.html
     target: _blank
