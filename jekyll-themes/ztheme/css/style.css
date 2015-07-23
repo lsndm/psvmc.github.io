@@ -667,6 +667,9 @@ a:hover {
 	position: relative;
 	margin-bottom: 1em;
 	color: #4d4d4d;
+	-moz-border-radius: 6px; /* Mozilla浏览器的私有属性 */
+	-webkit-border-radius: 6px; /* Webkit浏览器的私有属性 */
+	border-radius: 6px 6px 6px 6px; /* 四个半径值分别是左上角、右上角、右下角和左下角 */
 }
 
 .main-article table th,.main-article table td {
