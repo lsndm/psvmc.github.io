@@ -677,6 +677,7 @@ a:hover {
 	border: 1px solid #d0d0d0;
 	text-indent: 6px;
 	padding: 0px 30px;
+	line-height:2;
 }
 
 .main-article table th {
