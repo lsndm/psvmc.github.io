@@ -17,6 +17,8 @@ categories: sqlite
 + TEXT: 文本字符串，存储使用的编码方式为UTF-8、UTF-16BE、UTF-16LE。
 + BLOB: 存储Blob数据，该类型数据和输入数据完全相同。
 
+---
+
 1. 布尔数据类型：  
     SQLite并没有提供专门的布尔存储类型，取而代之的是存储整型1表示true，0表示false。
 2. 日期和时间数据类型：    
