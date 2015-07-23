@@ -1,5 +1,5 @@
 * {
-	font-family: Consolas, Helvetica, Open Sans, "微软雅黑", sans-serif;
+	font-family: Consolas, Helvetica, Open Sans, "Microsoft YaHei", sans-serif;
 }
 
 html {
@@ -42,6 +42,7 @@ input,select,textarea {
 }
 
 table {
+	border-collapse: collapse;
 	border-spacing: 0;
 }
 
