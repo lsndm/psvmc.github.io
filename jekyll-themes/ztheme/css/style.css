@@ -661,11 +661,14 @@ a:hover {
 	position: relative;
 	margin-bottom: 1em;
 	color: #4d4d4d;
-	border: 1px solid #36BB33;
+	border-top:  1px solid rgba(208, 208, 208, 0.38);
+	border-left:  1px solid rgba(208, 208, 208, 0.38);
+
 }
 
 .main-article table th,.main-article table td {
-	border:  1px solid rgba(208, 208, 208, 0.38);
+	border-right:1px solid rgba(208, 208, 208, 0.38);
+	border-bottom:  1px solid rgba(208, 208, 208, 0.38);
 	text-indent: 6px;
 	padding: 0px 30px;
 	line-height:2;
