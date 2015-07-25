@@ -564,7 +564,10 @@ a:hover {
 }
 
 .categoryGroup ul li a sup{
-	color:#dddddd;
+	color:#eeeeee;
+	font-family: Monaco,Consolas, Helvetica, Open Sans, "Microsoft YaHei", sans-serif;
+	font-size:11px;
+
 }
 
 .categoryGroup ul li a:hover {
