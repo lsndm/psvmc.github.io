@@ -15,7 +15,6 @@ isArchive: true
 	<div class="ztheme-post">
 		<div class="main-article-contant">
 			{% for category in site.categories %}
-			{{ category }}
 			<h3>{{ category | first }} 共{{ category | last | size }}篇</h3>
 			{% capture tempCategory %}{{category | first}}{% endcapture %}
 			<ul class="article-year fn-clear">
