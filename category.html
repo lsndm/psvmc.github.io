@@ -19,8 +19,8 @@ isArchive: true
 			{% capture categoryStr %}{% for category in site.categories %}{{category | first}}{{ ' ' }}{% endfor %}{% endcapture %}
 			{% assign categoryArr = categoryStr | split: ' ' %}
 			{{ categoryArr | size }}
-			{{ '1-3-2' | split:'-' |sort:'asc' }}
-			{{ '1-3-2' | split:'-' |sort:'asc' |join:'#' }}
+			{{ 'a-c-b' | split:'-' |reverse }}
+			{{ 'a-c-b' | split:'-' |sort:'asc' |join:'#' }}
 			{% for category in categoryArr | sort:'asc' %}
 			<h3>{{ category }} 共01篇</h3>
 			<ul class="article-year fn-clear">
