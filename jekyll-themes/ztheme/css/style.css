@@ -533,6 +533,9 @@ a:hover {
 		
 }
 .categoryGroup ul li{
+	height:30px;
+	line-height:30px;
+	overflow:hidden;
 	margin:3px;
 	float:left;
 	list-style-type:none;
