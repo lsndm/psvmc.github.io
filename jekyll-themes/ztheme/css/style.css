@@ -58,7 +58,7 @@ iframe {
 	display: block;
 }
 
-abbr,acronym {
+abbr {
 	border: 0;
 	font-variant: normal;
 }
@@ -530,6 +530,8 @@ a:hover {
 	clear:both;
 }
 .categoryGroup{
+	font-family: Monaco,Consolas, Helvetica, Open Sans, "Microsoft YaHei", sans-serif;
+	font-size:12px;
 	background-color:#eee;
 	width:100%;
 	height:auto;	  
