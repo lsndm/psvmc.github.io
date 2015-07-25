@@ -14,9 +14,9 @@ isArchive: true
 	</div>
 	<div class="ztheme-post">
 		<div class="main-article-contant">
-			{% for category in (site.categories | sort:'asc') %}
-			<h3>{{ category | sort:'asc' | first }} 共{{ category | sort:'asc' | last | size }}篇</h3>
-			{% capture tempCategory %}{{category | sort:'asc' | first}}{% endcapture %}
+			{% for category in site.categories %}
+			<h3>{{ category | first }} {{ category | last }}共{{ category | last | size }}篇</h3>
+			{% capture tempCategory %}{{category | first}}{% endcapture %}
 			<ul class="article-year fn-clear">
 				{% for post in site.posts %}
 					{% for post_category in post.categories %}
