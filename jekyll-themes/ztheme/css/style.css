@@ -788,6 +788,12 @@ a:hover {
 	font-style:oblique;
 }
 
+.highlight *{
+	font-family: Monaco,Consolas, Helvetica, Open Sans, "Microsoft YaHei", sans-serif;
+	font-size:13px;
+
+}
+
 
 .main-article .article-year li a {
 	padding: 5px 5px;
