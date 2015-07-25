@@ -784,6 +784,9 @@ a:hover {
 	border-top: 1.0px solid rgba(255, 255, 255, 0.7);
 	padding: 1px 1px;
 	height: 20px;
+	font-family: Monaco,Consolas, Helvetica, Open Sans, "Microsoft YaHei", sans-serif;
+	font-size:11px;
+
 }
 
 
