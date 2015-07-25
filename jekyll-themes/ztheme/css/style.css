@@ -549,7 +549,7 @@ a:hover {
 
 .categoryGroup ul {
 	margin:10px;
-	width:100%;
+	width:auto;
 	height:100%;
 }
 
@@ -557,7 +557,7 @@ a:hover {
 	display:block;
 	width:auto;
 	height:100%;
-	padding:0px 10px;
+	padding:0px 20px;
 	color:#ffffff;
 }
 
