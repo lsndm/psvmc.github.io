@@ -536,15 +536,19 @@ a:hover {
 	margin:5px;
 	float:left;
 	list-style-type:none;
+}
+
+.categoryGroup ul li a{
+	display:block;
+	width:auto;
+	height:100%;
+	padding:5px;
+	color:#ffffff;
 	border: 1px dashed #ddd;
 	-moz-border-radius: 6px; /* Mozilla浏览器的私有属性 */
 	-webkit-border-radius: 6px; /* Webkit浏览器的私有属性 */
 	border-radius: 6px 6px 6px 6px; /* 四个半径值分别是左上角、右上角、右下角和左下角 */
-}
 
-.categoryGroup ul li a{
-	padding:5px;
-	color:#ffffff;
 }
 
 .categoryGroup ul li a sup{
