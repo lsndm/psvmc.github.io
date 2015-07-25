@@ -530,8 +530,6 @@ a:hover {
 	clear:both;
 }
 .categoryGroup{
-	font-family: Monaco,Consolas, Helvetica, Open Sans, "Microsoft YaHei", sans-serif;
-	font-size:12px;
 	background-color:#eee;
 	width:100%;
 	height:auto;	  
@@ -556,6 +554,8 @@ a:hover {
 }
 
 .categoryGroup ul li a{
+	font-family: Monaco,Consolas, Helvetica, Open Sans, "Microsoft YaHei", sans-serif;
+	font-size:12px;
 	display:block;
 	width:auto;
 	height:100%;
