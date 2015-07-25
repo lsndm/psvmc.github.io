@@ -16,8 +16,8 @@ isArchive: true
 		<div class="main-article-contant">
 
 			<!-- 拼接category字符串 以空格分割 -->
-			{% capture categoryStr %}{% for category in site.categories %}{{category | first}}{{ ' ' }}{% endfor %}{% endcapture %}
-			{% capture categoryArr %}{{ categoryStr | split: ' ' | sort:'asc' }}{% endcapture %}
+			{% capture categoryStr %}{% for category in site.categories %}{{category | first}}{{ '#-#' }}{% endfor %}{% endcapture %}
+			{% capture categoryArr %}{{ categoryStr | split: '#-#' | sort:'asc' }}{% endcapture %}
 			{% for category in categoryArr %}
 			<h3>{{ category }} 共0篇</h3>
 			<ul class="article-year fn-clear">
