@@ -15,7 +15,7 @@ isArchive: true
 	<div class="ztheme-post">
 		<div class="main-article-contant">
 			{% assign categoryStr = "value" %}
-			{% for category in (site.categories | sort_by: '0', 'asc') %}
+			{% for category in (site.categories | sort_by:'desc') %}
 			{{ category | first }}
 
 			{{ categoryStr }}
