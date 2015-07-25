@@ -4,7 +4,7 @@ layout: post
 title: html背景色渐变
 description: html背景色渐变
 keywords: background
-category: html
+category: css
 
 ---
 ##一. Webkit浏览器
