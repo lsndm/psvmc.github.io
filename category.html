@@ -16,7 +16,7 @@ isArchive: true
 		<div class="main-article-contant">
 
 			
-			{% capture categoryStr %} {% for category in site.categories %} {{category | first}} {% endfor %} {% endcapture %}
+			{% capture categoryStr %}{% for category in site.categories %}{{category | first}}{{ "---" }}{% endfor %}{% endcapture %}
 			{{ categoryStr }}
 
 
