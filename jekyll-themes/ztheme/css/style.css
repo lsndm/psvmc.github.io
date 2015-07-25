@@ -746,7 +746,7 @@ a:hover {
 }
 
 .main-article .article-year li {
-	width: 130px;
+	width: 138px;
 	height: 180px;
 	float: left;
 	border: 5px solid #fff;
@@ -779,14 +779,13 @@ a:hover {
 	display: block;
 	color: #FFF;
 	text-align: center;
-	font-size:12px;
 	overflow:hidden;
 	border-top: 1.0px solid rgba(255, 255, 255, 0.7);
 	padding: 1px 1px;
 	height: 20px;
 	font-family: Monaco,Consolas, Helvetica, Open Sans, "Microsoft YaHei", sans-serif;
 	font-size:11px;
-
+	font-style:oblique;
 }
 
 
