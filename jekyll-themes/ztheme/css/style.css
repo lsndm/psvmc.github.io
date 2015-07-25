@@ -529,6 +529,7 @@ a:hover {
 		
 }
 .categoryGroup ul li{
+	padding:10px;
 	float:left;
 	list-style-type:none;
 }
