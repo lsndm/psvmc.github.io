@@ -537,6 +537,11 @@ a:hover {
 	margin:3px;
 	float:left;
 	list-style-type:none;
+	border: 1px solid #fff;
+	-moz-border-radius: 10px 10px 10px 10px; /* Mozilla浏览器的私有属性 */
+	-webkit-border-radius:10px 10px 10px 10px; /* Webkit浏览器的私有属性 */
+	border-radius: 10px 10px 10px 10px; /* 四个半径值分别是左上角、右上角、右下角和左下角 */
+
 }
 
 .categoryGroup ul li a{
