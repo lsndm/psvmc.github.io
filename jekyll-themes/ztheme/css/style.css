@@ -533,14 +533,13 @@ a:hover {
 		
 }
 .categoryGroup ul li{
-	overflow:hidden;
 	margin:3px;
 	float:left;
 	list-style-type:none;
 	border: 1px solid #fff;
-	-moz-border-radius: 10px 10px 10px 10px; /* Mozilla浏览器的私有属性 */
-	-webkit-border-radius:10px 10px 10px 10px; /* Webkit浏览器的私有属性 */
-	border-radius: 10px 10px 10px 10px; /* 四个半径值分别是左上角、右上角、右下角和左下角 */
+	-moz-border-radius: 6px 6px 6px 6px; /* Mozilla浏览器的私有属性 */
+	-webkit-border-radius:6px 6px 6px 6px; /* Webkit浏览器的私有属性 */
+	border-radius: 6px 6px 6px 6px; /* 四个半径值分别是左上角、右上角、右下角和左下角 */
 
 }
 
@@ -560,6 +559,11 @@ a:hover {
 	text-decoration: none;
 	color: #FFFFFF;
 	background-color: #333;
+	border: 1px solid #fff;
+	-moz-border-radius: 6px 6px 6px 6px; /* Mozilla浏览器的私有属性 */
+	-webkit-border-radius:6px 6px 6px 6px; /* Webkit浏览器的私有属性 */
+	border-radius: 6px 6px 6px 6px; /* 四个半径值分别是左上角、右上角、右下角和左下角 */
+
 }
 
 
