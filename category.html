@@ -14,6 +14,10 @@ isArchive: true
 	</div>
 	<div class="ztheme-post">
 		<div class="main-article-contant">
+
+			{% capture namew %} {% for category in (site.categories) %} {% category | first | append:' ' %} {% endfor %} {% endcapture %}
+			{{ namew }}
+
 			{% assign categoryStr = "value" %}
 			{% for category in (site.categories) %}
 			{{ category | first }}
@@ -21,6 +25,8 @@ isArchive: true
 			{{ categoryStr }}
 			<br />
 			{% endfor %}
+
+
 			{% for category in site.categories %}
 			<h3>{{ category | first }} 共{{ category | last | size }}篇</h3>
 			{% capture tempCategory %}{{category | first}}{% endcapture %}
