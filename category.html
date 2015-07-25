@@ -16,8 +16,8 @@ isArchive: true
 		<div class="main-article-contant">
 			{% assign categoryStr = "value" %}
 			{% for category in site.categories %}
-			{{ category | first }}
-			
+			{{ category | size }}
+
 			{{ categoryStr }}
 			<br />
 			{% endfor %}
