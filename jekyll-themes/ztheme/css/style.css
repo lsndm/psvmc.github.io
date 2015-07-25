@@ -661,6 +661,9 @@ a:hover {
 	vertical-align: baseline;
 	padding: 2px 2px;
 	margin: 4px 1px;
+	font-family: Monaco,Consolas, Helvetica, Open Sans, "Microsoft YaHei", sans-serif;
+	font-size:13px;
+
 }
 
 .main-article pre code {
