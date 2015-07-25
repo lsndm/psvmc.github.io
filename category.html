@@ -20,6 +20,7 @@ isArchive: true
 					{% for category in site.categories %}
 					<li>
 						<a href="#{{ category | first }}">
+							<span class="left_dian"></span>
 							{{ category | first }}
 							<sup>{{ category | last | size }}</sup>
 						</a>
