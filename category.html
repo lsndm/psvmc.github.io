@@ -16,7 +16,10 @@ isArchive: true
 		<div class="main-article-contant">
 			{% assign categoryStr = "value" %}
 			{% for category in site.categories %}
-			{{ category | first }}{{ categoryStr }}
+			{{ category | first }}
+			{% categoryStr += (category | first) %}
+			{{ categoryStr }}
+			<br />
 			{% endfor %}
 			{% for category in site.categories %}
 			<h3>{{ category | first }} 共{{ category | last | size }}篇</h3>
