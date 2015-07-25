@@ -17,7 +17,8 @@ isArchive: true
 
 			<!-- 拼接category字符串 以空格分割 -->
 			{% capture categoryStr %}{% for category in site.categories %}{{category | first}}{{ ' ' }}{% endfor %}{% endcapture %}
-			{% for category in (categoryStr | split: ' ' | sort:'asc') %}
+			{% capture categoryArr %}{{ categoryStr | split: ' ' | sort:'asc' }}{% endcapture %}
+			{% for category in categoryArr %}
 			<h3>{{ category }} 共0篇</h3>
 			<ul class="article-year fn-clear">
 				{% for post in site.posts %}
