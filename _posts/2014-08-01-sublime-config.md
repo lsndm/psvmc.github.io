@@ -4,7 +4,7 @@ layout: post
 title: 我的sublime-text-2配置
 description: 我的sublime-text-2配置
 keywords: sublime-text-2
-categories: sublime-text-2 文本编辑器
+categories: sublime 文本编辑器
 
 ---
 ###配置
