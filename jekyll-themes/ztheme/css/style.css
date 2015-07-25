@@ -566,7 +566,8 @@ a:hover {
 	-moz-border-radius: 3px; /* Mozilla浏览器的私有属性 */
 	-webkit-border-radius:3px; /* Webkit浏览器的私有属性 */
 	border-radius: 3px; /* 四个半径值分别是左上角、右上角、右下角和左下角 */
-	width:6px;height:6px;display:block;
+	width:6px;height:6px;display:inline-block;
+	background-color:#ffffff;
 }
 
 .categoryGroup ul li a sup{
