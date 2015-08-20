@@ -15,7 +15,47 @@ layer.masksToBounds=true;
 layer.cornerRadius = cell.leftImageView.bounds.size.width/2;
 
 ```
+###我常用的全局设置
+```swift
+let appear = UINavigationBar.appearance();
+appear.translucent = false;
+//设置Item的样式
+appear.tintColor = UIColor.whiteColor();
+//设置bar的颜色
+appear.barTintColor = UIColor(red: 52/255, green: 146/255, blue: 233/255, alpha: 1.0);
+//设置背景色（不透明时没用,因为barTintColor在backgroundColor的上一层）
+appear.backgroundColor = UIColor(red: 253/255, green: 150/255, blue: 13/255, alpha: 1.0);
+//去掉navigationBar下的黑线
+appear.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
+appear.shadowImage = UIImage();
+//设置标题样式
+appear.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor(),NSFontAttributeName: UIFont(name: "Heiti SC", size: 18.0)!];
+        
+let tabbarAppear = UITabBar.appearance();
+tabbarAppear.tintColor = UIColor(red: 56/255, green: 173/255, blue: 255/255, alpha: 1.0);
+        
+let searchBarAppear = UISearchBar.appearance();
+searchBarAppear.translucent = false;
+searchBarAppear.backgroundColor = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1.0);
+searchBarAppear.barTintColor = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1.0);
+searchBarAppear.layer.borderColor = UIColor(hexString: "#ffffff")!.CGColor;
+searchBarAppear.layer.borderWidth = 0;
+searchBarAppear.backgroundImage = UIImage();
+```
+####注意优先级顺序
+`控制器中代码设置` > `storybord设置` > `全局设置`   
+优先级高的会覆盖优先级低的配置，比如storybord中的设置了navigationbar的样式 那么全局设置就不生效
 
+###设置状态栏
+```swift
+//文字白色
+UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
+//文字白色
+UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.Default, animated: true)
+```
+####注意 
+项目的配置`Info`中添加key为`View controller-based status bar appearance`值为`NO`  
+也可以设置全局的样式 添加key为`Status bar style`值为`UIStatusBarStyleLightContent`
 ###NavigationController
 属性设置
 
