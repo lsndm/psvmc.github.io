@@ -96,14 +96,15 @@ function init() {
 				$(this).closest("ul").find(".dizhiRight").each(function(item, obj) {
 					$(obj).removeClass("checkedImage");
 				});
-				console.info($(this).find(".dizhiDetail").html());
 				$(this).find(".dizhiRight").addClass("checkedImage");
-
+				myendPosition = new qq.maps.LatLng($(this).find(".itemlat").val(), $(this).find(".itemlng").val());
+				getResult();
 			})
 
 			document.getElementById('end').value = result.detail.address;
 		}
 	});
+
 	qq.maps.event.addListener(map, "tilesloaded", function() {
 		removeLogo();
 		var centerPoint = map.getCenter();
@@ -113,8 +114,8 @@ function init() {
 	qq.maps.event.addListener(map, "mouseover", function() {
 		removeLogo();
 	});
+
 	qq.maps.event.addListener(map, 'click', function(event) {
-		myendPosition = event.latLng;
 		if (endMarker) {
 			endMarker.setPosition(event.latLng)
 		} else {
@@ -125,6 +126,7 @@ function init() {
 		}
 		geocoder.getAddress(event.latLng)
 	});
+
 	qq.maps.event.addListener(map, "dragend", function() {
 		yuanlaiTop = document.getElementById("iMarker").offsetTop;
 		var centerPoint = map.getCenter();
@@ -156,7 +158,6 @@ function getResult() {
 	});
 	//获取距离
 	drivingService.setComplete(function(result) {
-		console.info(result.detail.distance);
 		jvli.innerHTML = result.detail.distance;
 	});
 }
