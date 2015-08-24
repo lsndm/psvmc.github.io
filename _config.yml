@@ -33,6 +33,9 @@ nav:
   - text: 第三方插件
     url: /otplugin/index.html
     target: _self
+  - text: Demo演示
+    url: /zjdemo/index.html
+    target: _self
 
 
 #theme config
