@@ -8,11 +8,16 @@ var mystartPosition = new qq.maps.LatLng(34.8068225119258, 113.693930500652);
 var myendPosition;
 
 //跳动动画
+var hasInit = false;
+var yuanTop = 0;
+var newTop = 0;
 function jumpTwo() {
 	var $iMarker = $("#iMarker");
-	var yuanTop = $iMarker.position().top;
-	var newTop = parseInt(yuanTop) - 15;
-
+	if(!hasInit){
+		yuanTop = $iMarker.position().top;
+		newTop = parseInt(yuanTop) - 15;
+		hasInit = true;
+	}
 	$iMarker.animate({
 		top: newTop,
 	}, 300, "linear", function() {
