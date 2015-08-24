@@ -7,6 +7,7 @@ var endMarker;
 var mystartPosition = new qq.maps.LatLng(34.8068225119258, 113.693930500652);
 var myendPosition;
 
+//跳动动画
 function jumpTwo() {
 	var $iMarker = $("#iMarker");
 	var yuanTop = $iMarker.position().top;
@@ -29,6 +30,7 @@ function jumpTwo() {
 	});
 }
 
+//移除腾讯logo
 function removeLogo() {
 	var logo = $(".csssprite").closest("a").closest("div");
 	logo.css("display", "none");
@@ -36,6 +38,7 @@ function removeLogo() {
 
 }
 
+//初始化入口
 function init() {
 	var center = new qq.maps.LatLng(34.8068225119258, 113.693930500652);
 	map = new qq.maps.Map(document.getElementById('container'), {
@@ -51,7 +54,7 @@ function init() {
 	centerControl.index = 1; //设置在当前布局中的顺序
 	map.controls[qq.maps.ControlPosition.CENTER].push(centerControl);
 
-
+	//定义定位对象
 	var geocoder = new qq.maps.Geocoder({
 		complete: function(result) {
 			var nearPois = result.detail.nearPois;
@@ -105,16 +108,19 @@ function init() {
 		}
 	});
 
+	//地图层片加载完成事件
 	qq.maps.event.addListener(map, "tilesloaded", function() {
 		removeLogo();
 		var centerPoint = map.getCenter();
 		geocoder.getAddress(centerPoint)
 	});
 
+	//地图鼠标移动事件
 	qq.maps.event.addListener(map, "mouseover", function() {
 		removeLogo();
 	});
 
+	//地图点击事件
 	qq.maps.event.addListener(map, 'click', function(event) {
 		if (endMarker) {
 			endMarker.setPosition(event.latLng)
@@ -127,17 +133,19 @@ function init() {
 		geocoder.getAddress(event.latLng)
 	});
 
+	//地图拖动事件
 	qq.maps.event.addListener(map, "dragend", function() {
 		yuanlaiTop = document.getElementById("iMarker").offsetTop;
 		var centerPoint = map.getCenter();
 
 		jumpTwo();
-		geocoder.getAddress(centerPoint)
+		geocoder.getAddress(centerPoint);
 	});
 
 	//自动补全地址
 	var ap = new qq.maps.place.Autocomplete(document.getElementById('start'));
 	var aq = new qq.maps.place.Autocomplete(document.getElementById('end'));
+
 	//设置路线规划
 	drivingService = new qq.maps.DrivingService({
 		location: "郑州",
@@ -146,6 +154,7 @@ function init() {
 
 }
 
+//获取导航
 function getResult() {
 	//设置searchRequest
 	var jvli = document.getElementById("jvli")
