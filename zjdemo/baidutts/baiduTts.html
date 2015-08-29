@@ -32,7 +32,7 @@
 		<h1>百度语音Demo</h1>
 		<fieldset>
 			<legend>获取Access Token</legend>
-			<form action = "https://openapi.baidu.com/oauth/2.0/token" method="post">
+			<form action = "https://openapi.baidu.com/oauth/2.0/token" method="get" id="tokenGet">
 				<table>
 					<tr>
 						<td>固定值：</td>
@@ -117,30 +117,48 @@
 			  }
 			  return paramStr.substr(1);
 			};
+
 			function testTTS(ttsContent){
-				$.post("https://openapi.baidu.com/oauth/2.0/token",{"grant_type":"","client_id":"MHOY6cW7vlCpluhDMnoh9qdx","client_secret":"2a14cb0576b1a8e4aa5b168fb99efcec"},function(data){
-						var token = data["access_token"];
-						var url = "http://tsn.baidu.com/text2audio";
-						var data={
-							"tex":ttsContent,
-							"lan":"zh",
-							"tok":token,
-							"ctp":"1",
-							"cuid":"ac:87:a3:01:6c:49",
-							"spd":"5",
-							"pit":"5",
-							"vol":"5",
-							"per":"0"
-						};
-						var parastr  = parseParam(data);
-						$("#ttsIframe").attr("src",url+"?"+parastr);
-				},"json");
+				var tokenUrl = "https://openapi.baidu.com/oauth/2.0/token";
+				var tokenData ={"grant_type":"client_credentials",
+					"client_id":"MHOY6cW7vlCpluhDMnoh9qdx",
+					"client_secret":"2a14cb0576b1a8e4aa5b168fb99efcec"
+				};
+				var tokenTotalUrl = tokenUrl+"?"+parseParam(tokenData);
+				$("#ttsIframe").attr("src",tokenTotalUrl);
+				setInterval(function(){
+				var win = document.getElementById('ttsIframe').contentWindow;
+    			console.info( win.document.body.innerText );
+				},1000);
+				console.info($("#ttsIframe").html());
+
+				// $.post(tokenUrl,
+				// 	tokenData,
+				// 	function(data){
+				// 		var token = data["access_token"];
+				// 		var url = "http://tsn.baidu.com/text2audio";
+				// 		var data={
+				// 			"tex":ttsContent,
+				// 			"lan":"zh",
+				// 			"tok":token,
+				// 			"ctp":"1",
+				// 			"cuid":"ac:87:a3:01:6c:49",
+				// 			"spd":"5",
+				// 			"pit":"5",
+				// 			"vol":"5",
+				// 			"per":"0"
+				// 		};
+				// 		var parastr  = parseParam(data);
+				// 		$("#ttsIframe").attr("src",url+"?"+parastr);
+				// },"json");
 				
 
 			}
+
 			</script>
 			<input type="button" value="测试" onclick="testTTS('我是超级无敌super man')" />
-			<iframe id="ttsIframe" style="display:none;" src=""></iframe>
+			
+			<iframe id="ttsIframe" style="display:none;" name="ttsIframe" src=""></iframe>
 		</fieldset>
 		
 	</body>
