@@ -125,32 +125,34 @@
 					"client_secret":"2a14cb0576b1a8e4aa5b168fb99efcec"
 				};
 				var tokenTotalUrl = tokenUrl+"?"+parseParam(tokenData);
-				$("#ttsIframe").attr("src",tokenTotalUrl);
-				setInterval(function(){
-				var win = document.getElementById('ttsIframe').contentWindow;
-    			console.info( win.document.body.innerText );
-				},1000);
-				console.info($("#ttsIframe").html());
+				// $("#ttsIframe").attr("src",tokenTotalUrl);
+				// setInterval(function(){
+				// var win = document.getElementById('ttsIframeconsole.info').contentWindow;
+    			// console.info( win.document.body.innerText );
+				// },1000);
+				// console.info($("#ttsIframe").html());
 
 				// $.post(tokenUrl,
 				// 	tokenData,
 				// 	function(data){
 				// 		var token = data["access_token"];
-				// 		var url = "http://tsn.baidu.com/text2audio";
-				// 		var data={
-				// 			"tex":ttsContent,
-				// 			"lan":"zh",
-				// 			"tok":token,
-				// 			"ctp":"1",
-				// 			"cuid":"ac:87:a3:01:6c:49",
-				// 			"spd":"5",
-				// 			"pit":"5",
-				// 			"vol":"5",
-				// 			"per":"0"
-				// 		};
-				// 		var parastr  = parseParam(data);
-				// 		$("#ttsIframe").attr("src",url+"?"+parastr);
+				
 				// },"json");
+
+					var url = "http://tsn.baidu.com/text2audio";
+						var data={
+							"tex":ttsContent,
+							"lan":"zh",
+							"tok":"24.7f829121e5f20648612992d15199ece3.2592000.1443419603.282335-6733891",
+							"ctp":"1",
+							"cuid":"ac:87:a3:01:6c:49",
+							"spd":"5",
+							"pit":"5",
+							"vol":"5",
+							"per":"0"
+						};
+						var parastr  = parseParam(data);
+						$("#ttsIframe").attr("src",url+"?"+parastr);
 				
 
 			}
