@@ -67,7 +67,7 @@
 					</tr>
 					<tr>
 						<td>access_token:</td>
-						<td><input type="text" name="tok" value="24.7f829121e5f20648612992d15199ece3.2592000.1443419603.282335-6733891"/></td>
+						<td><input type="text" name="tok" value="24.8228bfdafc19cc567ad60c4ec1b3d40d.2592000.1443581397.282335-6733891"/></td>
 					</tr>
 					<tr>
 						<td>客户端类型选择:</td>
@@ -120,7 +120,8 @@
 
 			function testTTS(ttsContent){
 				var tokenUrl = "https://openapi.baidu.com/oauth/2.0/token";
-				var tokenData ={"grant_type":"client_credentials",
+				var tokenData ={
+					"grant_type":"client_credentials",
 					"client_id":"MHOY6cW7vlCpluhDMnoh9qdx",
 					"client_secret":"2a14cb0576b1a8e4aa5b168fb99efcec"
 				};
@@ -143,7 +144,7 @@
 						var data={
 							"tex":ttsContent,
 							"lan":"zh",
-							"tok":"24.7f829121e5f20648612992d15199ece3.2592000.1443419603.282335-6733891",
+							"tok":"24.8228bfdafc19cc567ad60c4ec1b3d40d.2592000.1443581397.282335-6733891",
 							"ctp":"1",
 							"cuid":"ac:87:a3:01:6c:49",
 							"spd":"5",
@@ -159,7 +160,7 @@
 
 			</script>
 			<input type="button" value="测试" onclick="testTTS('我是超级无敌super man')" />
-			<video src=""  id="ttsIframe" width="320" height="240" controls autobuffer style="display:none"></video>
+			<video src=""  id="ttsIframe" width="320" height="240" controls autobuffer style="display:none" autoplay="autoplay"></video>
 		</fieldset>
 		
 	</body>
