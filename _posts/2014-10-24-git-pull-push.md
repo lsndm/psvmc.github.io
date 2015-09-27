@@ -69,7 +69,7 @@ category: git
 + 分支衍合  
      分支衍合和分支合并的差别在于，分支衍合不会保留合并的日志，不留痕迹，而 分支合并则会保留合并的日志。  
      要将开发中的分支（`develop`），衍合到稳定分支（`master`）。  
-     首先切换的master分支：`git checkout master`。  
+     首先切换的`master`分支：`git checkout master`。  
      然后执行衍和操作：`git rebase develop`。  
      如果有冲突，会提示你，调用`git status`查看冲突文件。  
      解决冲突，然后调用`git add`或`git rm`将解决后的文件暂存。  
