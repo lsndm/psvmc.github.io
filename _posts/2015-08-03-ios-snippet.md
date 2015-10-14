@@ -7,7 +7,7 @@ keywords: ios,代码段
 categories: ios swift
 
 ---
-作为初学者，ios的有些属性老是记不住，所以就简要记录一下
+
 ###ImageView圆角
 ```swift
 var layer = cell.leftImageView.layer;
@@ -47,6 +47,10 @@ searchBarAppear.backgroundImage = UIImage();
 优先级高的会覆盖优先级低的配置，比如storybord中的设置了navigationbar的样式 那么全局设置就不生效
 
 ###设置状态栏
+`Info.plist`添加两个配置项  
+`View controller-based status bar appearance` 设置为 `NO`  
+`Status bar style` 设置为 `UIStatusBarStyleLightContent`   
+
 ```swift
 //文字白色
 UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
