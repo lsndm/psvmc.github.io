@@ -50,7 +50,11 @@ searchBarAppear.backgroundImage = UIImage();
 ```swift
 //文字白色
 UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
-//文字白色
+
+```
+
+```swift
+//文字黑色
 UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.Default, animated: true)
 ```
 ####注意 
@@ -110,3 +114,23 @@ override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 }
 ```
 
+###边缘手势
+```swift
+//禁止边缘手势
+self.navigationController?.interactivePopGestureRecognizer!.enabled = false;
+```
+
+###关闭页面
+
+```swift
+//关闭push的页面
+self.navigationController?.popViewControllerAnimated(true);
+
+```
+
+```swift
+//关闭model的页面
+self.dismissViewControllerAnimated(true, completion: {
+     ()->Void in
+})
+```
