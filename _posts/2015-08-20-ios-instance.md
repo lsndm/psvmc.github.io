@@ -9,20 +9,36 @@ categories: ios swift
 ---
 
 ###实例化TableCell
+在设置delegate之前注册xib
+
 ```swift
-var cell = tableView.dequeueReusableCellWithIdentifier("textLeftCell") as? TextLeftTableViewCell;
-if(cell == nil){
-	var arr = NSBundle.mainBundle().loadNibNamed("TextLeftTableViewCell", owner: nil, options: nil);
-	cell = arr[0] as? TextLeftTableViewCell;
-}
+self.tableView.registerNib(UINib.init(nibName: "ImageLabelTableViewCell", bundle: nil), forCellReuseIdentifier: "imageLabelCell");
 ```
-如果用的xib或storybord中的tableview的cell直接用`dequeueReusableCellWithIdentifier`方法就行了  
+实例化Cell
+
+```swift
+let  cell = tableView.dequeueReusableCellWithIdentifier("imageLabelCell", forIndexPath: indexPath) as! ImageLabelTableViewCell;
+```
+如果用的storybord中的tableview的cell直接用`dequeueReusableCellWithIdentifier`方法就行了  
 注意`dequeueReusableCellWithIdentifier`方法是从已经实例化的cell中查找id为`textLeftCell`的对象并进行拷贝 
-`loadNibNamed`方法是查找文件名为`TextLeftTableViewCell`的文件  
-一定要记得设置`tableViewCell`的id
+
 
 ###实例化视图控制器
+从storyboard中
+
 ```swift
 self.storyboard?.instantiateViewControllerWithIdentifier("renwuMy") as! RenwuMyViewController;
 ```
 
+###实例化UICollectionCell
+
+在设置delegate之前注册xib
+
+```swift
+collectionView.registerNib(UINib.init(nibName: "MainBigCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "mainBigCollCell");
+```
+实例化Cell
+
+```swift
+let cell = collectionView.dequeueReusableCellWithReuseIdentifier("mainBigCollCell", forIndexPath: indexPath) as! MainBigCollectionViewCell;
+```
