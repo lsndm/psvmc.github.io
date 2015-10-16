@@ -47,6 +47,7 @@ searchBarAppear.backgroundImage = UIImage();
 优先级高的会覆盖优先级低的配置，比如storybord中的设置了navigationbar的样式 那么全局设置就不生效
 
 ###设置状态栏
+####iOS9以下
 `Info.plist`添加两个配置项  
 `View controller-based status bar appearance` 设置为 `NO`  
 `Status bar style` 设置为 `UIStatusBarStyleLightContent`   
@@ -61,9 +62,26 @@ UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightConten
 //文字黑色
 UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.Default, animated: true)
 ```
-####注意 
-项目的配置`Info`中添加key为`View controller-based status bar appearance`值为`NO`  
-也可以设置全局的样式 添加key为`Status bar style`值为`UIStatusBarStyleLightContent`
+
+####iOS7-9
+ios升到9以后上面的设置会报一下错误  
+`CGContextRestoreGState: invalid context 0x0. If you want to see the backtrace`  
+
+`Info.plist`添加两个配置项  
+`View controller-based status bar appearance` 设置为 `YES` 
+
+```swift
+//navigationController管理的页面
+//这样是设置是为了让状态栏文字变成白色   
+self.navigationController?.navigationBar.barStyle = UIBarStyle.Black;
+```
+
+```swift
+//无navigationController的页面
+override func preferredStatusBarStyle() -> UIStatusBarStyle {
+   return UIStatusBarStyle.LightContent;
+}
+```
 ###NavigationController
 属性设置
 
@@ -137,4 +155,33 @@ self.navigationController?.popViewControllerAnimated(true);
 self.dismissViewControllerAnimated(true, completion: {
      ()->Void in
 })
+```
+
+###计算tableCell的高度
+
+定义全局变量
+
+```swift
+//用于缓存计算高度的cell
+var offscreenCells:[String:AnyObject] = [:];
+```
+保存计算高度的Cell实例  
+
+```swift
+let cell = NSBundle.mainBundle().loadNibNamed("PingjiaTableViewCell", owner: nil, options: nil)[0] as! PingjiaTableViewCell;
+self.offscreenCells["PingjiaTableViewCell"] = cell;
+```
+计算高度
+
+```swift
+func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+   let item = tableItem[indexPath.section][indexPath.row];
+   let cell = self.offscreenCells["PingjiaTableViewCell"] as! PingjiaTableViewCell;
+   cell.pingjiaLabel.text = item["text"];
+   //不定高度的label的高度
+   let textHeight = cell.pingjiaLabel.sizeThatFits(CGSizeMake(cell.pingjiaLabel.frame.size.width, CGFloat(FLT_MAX))).height;
+   //把label当成一行所得到的高度
+   let minHeight = cell.contentView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize).height + 1;
+   return textHeight + minHeight - 10;
+}
 ```
