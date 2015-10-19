@@ -185,3 +185,14 @@ func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSInde
    return textHeight + minHeight - 10;
 }
 ```
+
+###TTS
+```swift
+let player = AVSpeechSynthesizer();
+let u = AVSpeechUtterance(string: "应英国女王伊丽莎白二世邀请，习近平主席于今日至23日对英国进行国事访问，此访是10年来中国国家主席首次对英国进行国事访问");
+u.voice = AVSpeechSynthesisVoice(language: "zh-CN");
+u.volume = 1.0;//音量 [0-1] Default = 1
+u.rate = 0.48;//播放速度
+u.pitchMultiplier = 1.0;//播放基准音调 [0.5 - 2] Default = 1
+player.speakUtterance(u);
+```
