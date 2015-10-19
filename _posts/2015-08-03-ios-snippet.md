@@ -189,7 +189,7 @@ func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSInde
 ###TTS
 ```swift
 let player = AVSpeechSynthesizer();
-let u = AVSpeechUtterance(string: "应英国女王伊丽莎白二世邀请，习近平主席于今日至23日对英国进行国事访问，此访是10年来中国国家主席首次对英国进行国事访问");
+let u = AVSpeechUtterance(string: "今天天气不错挺风和日丽的!");
 u.voice = AVSpeechSynthesisVoice(language: "zh-CN");
 u.volume = 1.0;//音量 [0-1] Default = 1
 u.rate = 0.48;//播放速度
