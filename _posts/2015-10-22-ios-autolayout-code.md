@@ -11,20 +11,19 @@ categories: swift ios
 ###简单示例
 
 ```swift
-override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-   super.init(style: style, reuseIdentifier: reuseIdentifier)
-
-   self.contentView.addSubview(self.userImage)
-   self.contentView.addSubview(self.userName)
-   self.contentView.addConstraints(self.layoutConstraints())
+override func viewDidLoad() {
+   super.viewDidLoad()
+   baiduMap =  BMKMapView(forAutoLayout: {}())
+   self.mapView.addSubview(baiduMap);
+   self.mapView.addConstraints(self.layoutConstraints())
+  
 }
     
 func layoutConstraints() -> [NSLayoutConstraint]{
-   let views = ["image": self.userImage, "name": self.userName ]
-   let metrics = [ "imgSize": 40.0, "margin": 12.0]
-   var result = NSLayoutConstraint.constraintsWithVisualFormat("H:|-(margin)-[image(imgSize)]-(margin)-[name]", options:NSLayoutFormatOptions.AlignAllTop, metrics: metrics, views: views)
-   result += NSLayoutConstraint.constraintsWithVisualFormat("V:[image(imgSize)]", options:NSLayoutFormatOptions.AlignAllCenterY, metrics:metrics, views: views);
-   result += NSLayoutConstraint.constraintsWithVisualFormat("V:|-[name]-|", options:NSLayoutFormatOptions.AlignAllCenterY, metrics:metrics, views: views);
+   let views = ["map": self.baiduMap ]
+   let metrics = ["margin": 0]
+   var result = NSLayoutConstraint.constraintsWithVisualFormat("H:|-(margin)-[map]-(margin)-|", options:NSLayoutFormatOptions.AlignAllTop, metrics: metrics, views: views)
+   result += NSLayoutConstraint.constraintsWithVisualFormat("V:|-(margin)-[map]-(margin)-|", options:NSLayoutFormatOptions.AlignAllLeft , metrics:metrics, views: views);
    return result
 }
 ```
