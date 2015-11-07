@@ -31,6 +31,8 @@ categories: swift ios
 
 ###提交AppStore－预览图
 <table>
-	<tr><td>Retina HD 5.5</td><td>1242 x 2208</td></tr>
-	<tr><td>Retina HD 4.7</td><td>750 x 1334</td></tr>
+	<tr><td>5.5英寸</td><td>1242 x 2208</td></tr>
+	<tr><td>4.7英寸</td><td>750 x 1334</td></tr>
+	<tr><td>4英寸</td><td>640 x 1136</td></tr>
+	<tr><td>3.5英寸</td><td>640 x 960</td></tr>
 </table>
