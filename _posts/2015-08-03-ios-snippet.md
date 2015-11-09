@@ -196,3 +196,22 @@ u.rate = 0.48;//播放速度
 u.pitchMultiplier = 1.0;//播放基准音调 [0.5 - 2] Default = 1
 player.speakUtterance(u);
 ```
+
+###获取AppDelegate实例
+```swift
+let appDelegate=UIApplication.sharedApplication().delegate as! AppDelegate;
+```
+
+###NSUserDefaults读写
+####写
+```swift
+let defaults = NSUserDefaults.standardUserDefaults();
+defaults.setObject("zhangjian", forKey: "imUserName");
+defaults.synchronize();
+```
+
+####读
+```swift
+let defaults = NSUserDefaults.standardUserDefaults();
+let userName = defaults.stringForKey("imUserName");
+```
