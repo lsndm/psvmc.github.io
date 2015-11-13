@@ -42,3 +42,8 @@ collectionView.registerNib(UINib.init(nibName: "MainBigCollectionViewCell", bund
 ```swift
 let cell = collectionView.dequeueReusableCellWithReuseIdentifier("mainBigCollCell", forIndexPath: indexPath) as! MainBigCollectionViewCell;
 ```
+
+###从xib中实例化对象
+```swift
+let cell = NSBundle.mainBundle().loadNibNamed("FuImageLabelTableViewCell", owner: self, options: nil).first as! FuImageLabelTableViewCell;
+```
