@@ -215,3 +215,10 @@ defaults.synchronize();
 let defaults = NSUserDefaults.standardUserDefaults();
 let userName = defaults.stringForKey("imUserName");
 ```
+
+###点击空白隐藏输入法
+```swift
+override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+   self.view.endEditing(true);
+}
+```
