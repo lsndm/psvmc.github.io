@@ -20,6 +20,8 @@ var totalNum:Int = 60;
     
 //验证点击事件
 @IBAction func valiClick(sender: AnyObject) {
+	//防止反复点击，因为定时器1s后才执行
+	self.valiButton.enabled = false;
    self.timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("timerAction"), userInfo: nil, repeats: true);
 }
     
