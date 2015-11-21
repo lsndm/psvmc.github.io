@@ -8,7 +8,7 @@ exclude: ['vendor', 'README.md', 'Gemfile', 'Gemfile.lock', 'config.ru', 'unicor
 
 #站点基础配置
 title: '{剑}'
-subTitle: 算命的说我将来是个科学家
+subTitle: 一成不变的生活......
 description: 那一天我老了，就不折腾了
 keywords: psvmc,java,jekyll,swift
 url: http://www.psvmc.cn
