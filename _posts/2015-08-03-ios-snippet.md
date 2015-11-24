@@ -222,3 +222,37 @@ override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
    self.view.endEditing(true);
 }
 ```
+
+###View添加点击事件
+```swift
+var tapRecognizer1:UITapGestureRecognizer!;
+var tapRecognizer2:UITapGestureRecognizer!;
+var tapRecognizer3:UITapGestureRecognizer!;
+
+//初始化    
+tapRecognizer1 = UITapGestureRecognizer(target: self, action: "presentImagePicker:");
+tapRecognizer2 = UITapGestureRecognizer(target: self, action: "presentImagePicker:");
+tapRecognizer3 = UITapGestureRecognizer(target: self, action: "presentImagePicker:");
+   
+//添加事件
+card1Image.addGestureRecognizer(tapRecognizer1);
+//别忘了加这句
+card1Image.userInteractionEnabled = true;
+card2Image.addGestureRecognizer(tapRecognizer2);
+card2Image.userInteractionEnabled = true;
+card3Image.addGestureRecognizer(tapRecognizer3);
+card3Image.userInteractionEnabled = true;
+        
+func presentImagePicker(gestureRecognizer: UITapGestureRecognizer) {
+   //触发事件的View
+   //gestureRecognizer.view
+   if(gestureRecognizer == tapRecognizer1){
+
+   }else if(gestureRecognizer == tapRecognizer2){
+
+   }else if(gestureRecognizer == tapRecognizer3){
+
+   }
+
+}
+```
