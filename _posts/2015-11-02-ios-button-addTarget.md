@@ -61,7 +61,7 @@ class SonghuoViewController: UIViewController{
 
 ####创建关联
 ```swift
-objc_setAssociatedObject(cell.luxianButton, &SonghuoViewController.luxian, indexPath, objc_AssociationPolicy.OBJC_ASSOCIATION_ASSIGN);
+objc_setAssociatedObject(cell.luxianButton, &SonghuoViewController.luxian, indexPath, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 ```
 
 该函数需要四个参数：源对象，关键字，关联的对象和一个关联策略  
@@ -78,6 +78,6 @@ objc_getAssociatedObject(button, &SonghuoViewController.luxian)
 ####删除关联
 传入nil即可  
 ```swift
-objc_setAssociatedObject(cell.luxianButton, &SonghuoViewController.luxian, nil, objc_AssociationPolicy.OBJC_ASSOCIATION_ASSIGN);
+objc_setAssociatedObject(cell.luxianButton, &SonghuoViewController.luxian, nil, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 ```
 
