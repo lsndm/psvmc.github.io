@@ -4,7 +4,7 @@ layout: post
 title: iOS 页面传值
 description: iOS 页面传值
 keywords: ios swift
-category: ios swift
+category: ios
 
 ---
 

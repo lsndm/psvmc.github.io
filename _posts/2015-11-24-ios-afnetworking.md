@@ -4,7 +4,7 @@ layout: post
 title: afnetworking上传文件-swift
 description: afnetworking上传文件-swift
 keywords: swift
-categories: swift ios
+categories: ios
 
 ---
 
