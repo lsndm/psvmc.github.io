@@ -4,7 +4,7 @@ layout: post
 title: iOS git忽略文件
 description: iOS git忽略文件
 keywords: git
-category: git
+category: git ios
 
 ---
 

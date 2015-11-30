@@ -4,7 +4,7 @@ layout: post
 title: iOS地图开发3-原生封装的调用(swift)
 description:  iOS地图开发3(swift)
 keywords:  地图
-categories: swift
+categories: swift ios
 
 ---
 

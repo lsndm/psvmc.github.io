@@ -4,7 +4,7 @@ layout: post
 title: Xcode常用的配置
 description: Xcode常用的配置
 keywords: swift,ios
-category: swift
+category: swift ios
 
 ---
 

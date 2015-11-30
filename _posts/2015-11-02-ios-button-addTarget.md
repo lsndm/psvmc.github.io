@@ -4,7 +4,7 @@ layout: post
 title: iOS按钮事件传參
 description: iOS按钮事件传參的二种方式
 keywords: swift
-categories: swift
+categories: swift ios
 
 ---
 

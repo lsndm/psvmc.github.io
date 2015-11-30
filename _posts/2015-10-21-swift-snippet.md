@@ -4,7 +4,7 @@ layout: post
 title: swift代码段
 description: swift代码段
 keywords: swift
-categories: swift
+categories: swift ios
 
 ---
 

@@ -4,7 +4,7 @@ layout: post
 title: 支付宝SDK swift
 description: 支付宝SDK用swift的调用方法
 keywords: swift
-categories: swift
+categories: swift ios
 
 ---
 ###AppDelegate.swift配置
