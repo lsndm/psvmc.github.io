@@ -7,7 +7,7 @@ baseurl: "/"
 exclude: ['vendor', 'README.md', 'Gemfile', 'Gemfile.lock', 'config.ru', 'unicorn.rb', 'Procfile']
 
 #站点基础配置
-title: '{剑行者}'
+title: '剑行者'
 subTitle: 像剑一样不为世事打磨圆滑...
 description: 那一天我老了，就不折腾了
 keywords: 剑行者,java,ios,swift
