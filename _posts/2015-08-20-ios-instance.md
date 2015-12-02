@@ -47,3 +47,4 @@ let cell = collectionView.dequeueReusableCellWithReuseIdentifier("mainBigCollCel
 ```swift
 let cell = NSBundle.mainBundle().loadNibNamed("FuImageLabelTableViewCell", owner: self, options: nil).first as! FuImageLabelTableViewCell;
 ```
+

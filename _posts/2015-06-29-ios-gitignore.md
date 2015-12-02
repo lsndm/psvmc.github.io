@@ -28,3 +28,4 @@ category: git
 	.idea/
 	*.xcbkptlist
 	Podfile.lock
+
